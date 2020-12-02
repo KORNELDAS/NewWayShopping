@@ -59,8 +59,8 @@
                             <div class="footer-link">
                                 <h4>Information</h4>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Customer Service</a></li>
+                                    <li><a href="about.jsp">About Us</a></li>
+                                    <li><a href="services.jsp">Customer Service</a></li>
                                     <li><a href="#">Our Sitemap</a></li>
                                     <li><a href="#">Terms &amp; Conditions</a></li>
                                     <li><a href="#">Privacy Policy</a></li>
@@ -73,16 +73,14 @@
                                 <h4>Contact Us</h4>
                                 <ul>
                                     <li>
-                                        <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston
-                                            Street Wichita,<br> KS 67213 </p>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: Kolkata. Days 3756 <br>West Bengal,<br> 700009 </p>
                                     </li>
                                     <li>
-                                        <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705
-                                                770</a></p>
+                                        <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+918016375535">+918016375535</a></p>
                                     </li>
                                     <li>
                                         <p><i class="fas fa-envelope"></i>Email: <a
-                                                href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                                href="mailto:contactinfo@gmail.com">korneldas00@gmail.com</a></p>
                                     </li>
                                 </ul>
                             </div>
