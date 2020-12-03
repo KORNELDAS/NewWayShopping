@@ -39,10 +39,8 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-widget">
-                                <h4>About ThewayShop</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                <h4>About NewWayShop</h4>
+                                <p>Here you can buy & sell any product just by bid the product.Do you want to buy a new product or Do you want to sell your own product but you don't know the right site? Don't worry we are here with a solution of your problems.
                                 </p>
                                 <ul>
                                     <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
@@ -93,7 +91,7 @@
 
         <!-- Start copyright  -->
         <div class="footer-copyright">
-            <p class="footer-company">All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
+            <p class="footer-company">All Rights Reserved. &copy; 2020 <a href="#">NewWayShopping</a> Design By :
                 <a href="https://html.design/">html design</a></p>
         </div>
         <!-- End copyright  -->
