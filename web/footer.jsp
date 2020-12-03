@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-widget">
-                                <h4>About NewWayShop</h4>
+                                <h4>About NewWayShopping</h4>
                                 <p>Here you can buy & sell any product just by bid the product.Do you want to buy a new product or Do you want to sell your own product but you don't know the right site? Don't worry we are here with a solution of your problems.
                                 </p>
                                 <ul>
