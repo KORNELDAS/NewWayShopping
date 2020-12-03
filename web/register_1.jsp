@@ -19,25 +19,61 @@
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-        <title>User Details</title>
-
+        <title>Registration Page</title>
+        
+        <style>
+            .divider{
+                position:relative;
+                text-align: center;
+                margin: 15px 0px;
+            }
+            .divider span{
+                padding: 8px;
+                position: relative;
+                font-size: 15px;
+                z-index: 20 !important;
+            }
+            .divider:after{
+                content: "";
+                position: absolute;
+                width: 100%;
+                border-bottom: 3px solid black;
+                top: 50%;
+                left: 0;
+                z-index: 1 !important;
+            }
+        </style>
     </head>
     
     <body>
         <div class="container">
             <div class="card bg-light">
                 <div class ="card-body mx-auto">
-                    <h2 class="card-title mt-3 text-center">User Information</h2>
+                    <h2 class="card-title mt-3 text-center">Create Account Register Here..</h2>
                     <p class="text-center">Please start fill-up the form Step by step..!!</p>
+                    
+                    <a href="#!" class="btn btn-danger">
+                        <i class="fab fa-google-plus"></i>Login with Google</a>
+                        
+                        <a href="#!" class="btn btn-primary">
+                            <i class="fab fa-facebook"></i>Login with Facebook</a>
+                            <a href="#!" class="btn btn-primary">
+                                <i class="fab fa-twitter"></i>Login with twitter</a>
+                                
+                                <p class="divider">
+                                    <span class="bg-light">OR</span>
+                                </p>
                                 
                                 <div class="col">
-                                    <form action="#" method="post">
+                                    <form action="#!" method="post">
                                         
                                         <!--Code for Name-->
                                         
                                         <div class="input-group flex-nowrap">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
                                             </div>
                                             <input type="text" name="name"  id="name" class="form-control" aria-label="Name"  placeholder="Enter Name" aria-describedby="addon-wrapping" required>
                                             <div class="invalid-feedback">Name required </div>
@@ -47,19 +83,39 @@
                                         
                                         <div class="input-group flex-nowrap">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id="addon-wrapping"><i class="fa fa-envelope"></i> </span>
+                                                <span class="input-group-text" id="addon-wrapping"> <i class="fa fa-envelope"></i> </span>
                                             </div>
                                             <input type="text" name="email" id="email" class="form-control" aria-label="email"  placeholder="Enter Email" aria-describedby="addon-wrapping" required>
                                             <div class="invalid-feedback">Email required </div>
                                         </div><br>
                                         
-                                        <!--Code for Phone Number-->
+                                        <!--Code for Password-->
                                         
                                         <div class="input-group flex-nowrap">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id="addon-wrapping"> <i class="fa fa-phone"></i> </span>
+                                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                             </div>
-                                            <input type="text" name="phone" id="phone" class="form-control" aria-label="phone" placeholder="Enter Phone" aria-describedby="addon-wrapping" required>
+                                            <input type="password" name="password" id="name" class="form-control" aria-label="Pass" placeholder="Password" aria-describedby="addon-wrapping" required>
+                                            <div class="invalid-feedback">Password required </div>
+                                        </div><br>
+                                        
+                                        <!--Code for Confirm Password-->
+                                        
+                                        <div class="input-group flex-nowrap">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                            </div>
+                                            <input type="password" name="password" id="name" class="form-control" aria-label="Pass" placeholder="Confirm Password" aria-describedby="addon-wrapping" required>
+                                            <div class="invalid-feedback">Password Mismatch </div>
+                                        </div><br>
+                                        
+                                        <!--Code for Phone-->
+                                        
+                                        <div class="input-group flex-nowrap">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="addon-wrapping"> <i class="fa fa-mobile"></i> </span>
+                                            </div>
+                                            <input type="text" name="phone" id="phone" class="form-control" aria-label="phone" placeholder="Enter Phone Number" aria-describedby="addon-wrapping" required>
                                             <div class="invalid-feedback">Phone number required </div>
                                         </div><br>
                                         
@@ -69,7 +125,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="addon-wrapping"> <i class="fa fa-mobile"></i> </span>
                                             </div>
-                                            <input type="text" name="phone" id="phone" class="form-control" aria-label="phone" placeholder="Alternate Phone" aria-describedby="addon-wrapping" required>
+                                            <input type="text" name="phone" id="phone" class="form-control" aria-label="phone" placeholder="Alternate Phone" aria-describedby="addon-wrapping">
                                             <div class="invalid-feedback">Phone number required </div>
                                         </div><br>
                                         
@@ -115,7 +171,7 @@
                                             <div class="invalid-feedback">Address required </div>
                                         </div><br>
                                         
-                                        <!--Code for Address-->
+                                        <!--Code for Address2-->
                                         
                                         <div class="input-group flex-nowrap">
                                             <div class="input-group-prepend">
@@ -125,7 +181,7 @@
                                             <div class="invalid-feedback">Address2 required </div>
                                         </div><br>
                                         
-                                        <!--Code for Country-->
+                                         <!--Code for Country-->
                                         
                                         <div class="row">
                                             <div class="col-md-5 mb-3">
@@ -170,68 +226,17 @@
                                             <button class="middle btn btn-primary" data-toggle="modal" data-target="#exampleModal">Upload Image</button>
                                         </div><br>
                                         
-                                        <!--Code for Payment-->
-                                        
-                                        <hr class="mb-4">
-                                        <div class="title"> <h2>Payment Method...</h2> </div><br>
-                                        <div class="d-block my-3">
-                                            <div class="custom-control custom-radio">
-                                                <input id="upi" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                                                <label class="custom-control-label" for="upi">UPI</label>
-                                            </div>
-                                            <div class="custom-control custom-radio">
-                                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                                                <label class="custom-control-label" for="credit">Credit card</label>
-                                            </div>
-                                            <div class="custom-control custom-radio">
-                                                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                                                <label class="custom-control-label" for="debit">Debit card</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <label for="cc-name">Name on card</label>
-                                                <input type="text" class="form-control" id="cc-name" placeholder="" required> <small class="text-muted">Full name as displayed on card</small>
-                                                <div class="invalid-feedback"> Name on card is required </div>
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="cc-number">Card number</label>
-                                                <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                                                <div class="invalid-feedback"> Card number is required </div>                                                   
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-3 mb-3">
-                                                <label for="cc-expiration">Expiration</label>
-                                                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                                                <div class="invalid-feedback"> Expiration date required </div>
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label for="cc-expiration">CVV</label>
-                                                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                                                <div class="invalid-feedback"> Security code required </div>
-                                            </div>
-                                            <!--<div class="col-md-6 mb-3">
-                                                <div class="payment-icon">
-                                                    <ul>
-                                                        <li><img class="img-fluid" src="images\image.jpg" alt=""></li>
-                                                        <li><img class="img-fluid" src="images\paytm.jpg" alt=""></li>
-                                                        <li><img class="img-fluid" src="images\rupay.jpg" alt=""></li>
-                                                    </ul>
-                                                </div>
-                                            </div>-->
-                                        </div>
-                                        
-                                        <!--Code for Check Box-->
+                                        <!--Code for Check box-->
                                         
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="same-address" required>
                                             <label class="custom-control-label" for="same-address">Accept terms & conditions....</label>
+                                            <div class="invalid-feedback">Accept terms & conditions required </div>
                                         </div><br>
+                                          
+                                        <!--Code for Register button-->
                                         
-                                        <!--Code for Submit Button-->
-                                        
-                                        <button class="btn btn-success btn-lg btn-block" type="submit" value="Register" id="submit">Submit</button>&ensp;&ensp;
+                                        <button class="btn btn-success btn-lg btn-block" type="submit" value="Register" id="submit">Create Account</button>&ensp;&ensp;
                                         <a href="#">Back to Home</a>
                                         <br>
                                     </form><br>
@@ -241,4 +246,3 @@
         </div>
     </body>
 </html>
-
