@@ -22,7 +22,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-      
+
 
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -34,10 +34,10 @@
     <body>
 
         <!-- Start Main Top -->
-     <!--   <div class="main-top"> -->
-          <!--  <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="main-top"> 
+            <div class="container-fluid">
+                <div class="row d-flex justify-content-end">
+                    <!--<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="text-slid-box">
                             <div id="offer-box" class="carouselTicker">
                                 <ul class="offer-box">
@@ -68,8 +68,8 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    </div>-->
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ">
 
                         <div class="right-phone-box">
                             <p>Call US :- <a href="#">+91 8016375535</a></p>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div> 
         <!-- End Main Top -->
 
         <!-- Start Main Top -->
@@ -115,8 +115,8 @@
                             <li class="nav-item"><a class="nav-link" href="bidproduct.jsp">BidProduct</a></li>
                             <li class="nav-item"><a class="nav-link" href="services.jsp">OurService</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Contact Us</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Login</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Sign-Up</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="register.jsp">Sign-Up</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -125,7 +125,7 @@
                     <div class="attr-nav">
                         <ul>
                             <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                           
+
                         </ul>
                     </div>
                 </div>    
