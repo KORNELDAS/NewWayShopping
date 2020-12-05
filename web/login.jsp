@@ -33,16 +33,16 @@
         <link rel="stylesheet" href="css/responsive.css">
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
-     
-       <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
+        <link rel="stylesheet" href="css/loginback.css">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
         <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
     </head>
     <body>
         <%@include file="header.jsp" %>
         <div class="container  d-flex justify-content-center ">
-             <div class="card my-3" style="width: 28rem;">
-            
+            <div class="card my-3" style="width: 28rem;">
+
 
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
@@ -66,6 +66,7 @@
                                 <button  type="submit" class="btn btn-primary">Submit</button>
                             </div>
                             <a href="registration.jsp"><h4 style="color:grey;font-weight: bolder">Don't have account?</h4></a>
+                            <a href="registration.jsp"><h4 style="color:grey;font-weight: bolder">Forget Email or Password?</h4></a>
                             <hr>
                             <h3 style="text-align: center">Also Login with</h3><svg class="bi bi-alert-triangle text-success" width="32" height="32" viewBox="0 0 20 20" color="red">
                             <div style="text-align: center">
@@ -87,10 +88,10 @@
 
                 </div>
 
-           
+
+            </div>
         </div>
-        </div>
-       
+
         <!--<div style="width:50%;   margin-left: 40px;
              margin-right: 40px; border: 10px solid green;background-color:LightGray;padding:10px">
 

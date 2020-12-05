@@ -94,7 +94,7 @@
         <!-- Start copyright  -->
         <div class="footer-copyright">
             <p class="footer-company">All Rights Reserved. &copy; 2020 <a href="#">NewWayShopping</a> Design By :
-                <a href="https://html.design/">html design</a></p>
+                <a href="https://www.w3schools.com/html/">html design</a>,<a href="https://www.w3schools.com/css/">css</a>,<a href="https://www.w3schools.com/javascript/">javascript</a></p>
         </div>
         <!-- End copyright  -->
 
