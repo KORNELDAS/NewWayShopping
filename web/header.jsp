@@ -116,7 +116,7 @@
                             <li class="nav-item"><a class="nav-link" href="services.jsp">OurService</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Contact Us</a></li>
                             <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="register.jsp">Sign-Up</a></li>
+                            <li class="nav-item"><a class="nav-link" href="register_1.jsp">Sign-Up</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
