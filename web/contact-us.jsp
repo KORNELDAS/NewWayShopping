@@ -1,8 +1,3 @@
-<%-- 
-    Document   : contact-us
-    Created on : 1 Dec, 2020, 8:16:57 PM
-    Author     : Asus
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+        <title>NewWayShopping</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -53,7 +48,7 @@
                     <div class="col-lg-12">
                         <h2>Contact Us</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
                             <li class="breadcrumb-item active"> Contact Us </li>
                         </ul>
                     </div>

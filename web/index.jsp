@@ -1,8 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 30 Nov, 2020, 12:39:04 PM
-    Author     : Asus
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -146,7 +141,7 @@
                 <div class="col-lg-12">
                     <div class="title-all text-center">
                         <h1>Featured Products</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                        <p>describe of features</p>
                     </div>
                 </div>
             </div>
@@ -278,7 +273,7 @@
                 <div class="col-lg-12">
                     <div class="title-all text-center">
                         <h1>latest blog</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                        <p>describe latest blog</p>
                     </div>
                 </div>
             </div>
