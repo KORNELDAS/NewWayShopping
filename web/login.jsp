@@ -66,14 +66,14 @@
                                 <button  type="submit" class="btn btn-primary">Submit</button>
                             </div>
                             <a href="registration.jsp"><h4 style="color:grey;font-weight: bolder">Don't have account?</h4></a>
-                            <a href="registration.jsp"><h4 style="color:grey;font-weight: bolder">Forget Email or Password?</h4></a>
+                            <a href="registration.jsp"><h4 style="color:grey;font-weight: bolder">Forget Password?</h4></a>
                             <hr>
                             <h3 style="text-align: center">Also Login with</h3><svg class="bi bi-alert-triangle text-success" width="32" height="32" viewBox="0 0 20 20" color="red">
                             <div style="text-align: center">
-                                <i class='fab fa-google' style='font-size:50px;color:red;margin-right: 15px'></i>
-                                <i class='fab fa-facebook' style='font-size:50px;color:blue;margin-right: 15px'></i>
-                                <i class='fab fa-twitter' style='font-size:50px;color:lightblue;margin-right: 15px'></i>
-                                <i class='fab fa-github' style='font-size:50px;color:black;margin-right: 15px'></i>
+                                <a href="#"> <i class='fab fa-google' style='font-size:50px;color:red;margin-right: 15px'></i></a>
+                                <a href="#"> <i class='fab fa-facebook' style='font-size:50px;color:blue;margin-right: 15px'></i></a>
+                                <a href="#"> <i class='fab fa-twitter' style='font-size:50px;color:lightblue;margin-right: 15px'></i></a>
+                                <a href="#"> <i class='fab fa-github' style='font-size:50px;color:black;margin-right: 15px'></i></a>
 
                             </div>
 
