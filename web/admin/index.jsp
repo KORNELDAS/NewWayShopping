@@ -31,7 +31,7 @@
             %>
         
         <!--vertical navbar-->
-        <div class="vertical-nav bg-whie" id="sidebar">
+        <div class="vertical-nav bg-whie" id="mySidenav">
             <div class="py-4 px-3 mb-4 bg-grey">
                 <div class="media d-flex align-items-center">
                     <img src="image/resume.jpg" alt="..." width="80" height="80" class="mr-3 rounded-circle img-thumbnail shadow-sm">
@@ -94,14 +94,7 @@
         
         <!--main content and toogle button-->
         
-        <div class="page-content p-5" id="content">
-            <button onclick="myFunction()">Try it</button>
-            <span  >
-                <i class="fa fa-bars toogle1" aria-hidden="true" onclick="demo()"></i>
-                
-            </span>
-            
-        </div>
+        
         <%
             }else{
             %>
@@ -155,7 +148,17 @@
                 }
                 %>
 
+                <script>
+                    function openNav() {
+                        document.getElementById("mySidenav").style.width = "250px";
+                      }
 
+                      function closeNav() {
+                        document.getElementById("mySidenav").style.width = "0";
+                      }
+
+                    
+                </script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
