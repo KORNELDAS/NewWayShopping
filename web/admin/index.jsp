@@ -15,7 +15,21 @@
         <link href="admin.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <%
+                HttpSession ses = request.getSession(false);
+                out.print(request.getParameter("check_login"));
+                if(request.getParameter("check_login")!=null){
+                        if(request.getParameter("admin_id").equals("admin") && request.getParameter("pass").equals("12345")){
+                            ses.setAttribute("admin_log", "success");
+                        }
+                        else{
+                            out.print("<script>alert('invalid credentials');</script>");
+                        }
 
+                }
+                if(ses.getAttribute("admin_log")!=null){
+            %>
+        
         <!--vertical navbar-->
         <div class="vertical-nav bg-whie" id="sidebar">
             <div class="py-4 px-3 mb-4 bg-grey">
@@ -88,7 +102,58 @@
             </span>
             
         </div>
-        
+        <%
+            }else{
+            %>
+            
+            <div class="container  d-flex justify-content-center ">
+            <div class="card my-3" style="width: 28rem;">
+
+
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 style="text-decoration:underline " align="center">Admin LOG IN</h1>
+
+                        <form action="#" method="post">
+                            
+                            <!--code for email-->
+                            
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">admin id</label>
+                                <input type="text" name="admin_id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            
+                            <!--code for password-->
+                            
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            
+                            <!--code for check box-->
+                            
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                            
+                            <!--code for submit-->
+                            
+                            <div style="text-align: center">                    
+                                <button  name="check_login" type="submit" class="btn btn-primary" style='font-size:25px'>Submit</button>
+                            </div>
+                            
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+            <%
+                }
+                %>
 
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

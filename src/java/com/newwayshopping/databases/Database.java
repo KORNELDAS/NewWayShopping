@@ -1,4 +1,3 @@
-
 package com.newwayshopping.databases;
 
 import java.sql.Connection;
@@ -8,7 +7,7 @@ import java.sql.PreparedStatement;
 
 public class Database {
 
-    public static Connection main(String[] args) {
+    public static Connection getConnection() {
                     Connection con = null;
             try{
                 Class.forName("com.mysql.jdbc.Driver");
