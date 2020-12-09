@@ -1,8 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : 4 Dec, 2020, 5:40:06 PM
-    Author     : Asus
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -46,99 +41,57 @@
 
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
-                        <h1 style="text-decoration:underline " align="middle">LOG IN</h1>
+                        <h1 style="text-decoration:underline " align="center">LOG IN</h1>
 
                         <form action="login.jsp " method="Post">
+                            
+                            <!--code for email-->
+                            
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
                                 <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                             </div>
+                            
+                            <!--code for password-->
+                            
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
                                 <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
                             </div>
+                            
+                            <!--code for check box-->
+                            
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
+                            
+                            <!--code for submit-->
+                            
                             <div style="text-align: center">                    
-                                <button  type="submit" class="btn btn-primary">Submit</button>
+                                <button  type="submit" class="btn btn-primary" style='font-size:25px'>Submit</button>
                             </div>
-                            <a href="registration.jsp"><h4 style="color:grey;font-weight: bolder">Don't have account?</h4></a>
-                            <a href="registration.jsp"><h4 style="color:grey;font-weight: bolder">Forget Email or Password?</h4></a>
+                            
+                            <a href="register_1.jsp"><h4 style="color:blue;font-weight: bolder">Don't have account?</h4></a>
+                            <a href="#"><h4 style="color:blue;font-weight: bolder">Forget Password?</h4></a>
+                            
+                            <!--code for icon-->
+                            
                             <hr>
                             <h3 style="text-align: center">Also Login with</h3><svg class="bi bi-alert-triangle text-success" width="32" height="32" viewBox="0 0 20 20" color="red">
                             <div style="text-align: center">
-                                <i class='fab fa-google' style='font-size:50px;color:red;margin-right: 15px'></i>
-                                <i class='fab fa-facebook' style='font-size:50px;color:blue;margin-right: 15px'></i>
-                                <i class='fab fa-twitter' style='font-size:50px;color:lightblue;margin-right: 15px'></i>
-                                <i class='fab fa-github' style='font-size:50px;color:black;margin-right: 15px'></i>
-
+                                <a href="#"> <i class='fab fa-google-plus' style='font-size:40px;color:red;margin-right: 15px'></i></a>
+                                <a href="#"> <i class='fab fa-facebook' style='font-size:40px;color:blue;margin-right: 15px'></i></a>
+                                <a href="#"> <i class='fab fa-twitter' style='font-size:40px;color:lightblue;margin-right: 15px'></i></a>
+                                <a href="#"> <i class='fab fa-github' style='font-size:40px;color:black;margin-right: 15px'></i></a>
                             </div>
-
-
-
                         </form>
-
                     </div>
-
-
-
-
                 </div>
-
-
             </div>
         </div>
 
-        <!--<div style="width:50%;   margin-left: 40px;
-             margin-right: 40px; border: 10px solid green;background-color:LightGray;padding:10px">
-
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 style="text-decoration:underline " align="middle">LOG IN</h1>
-
-                    <form action="login.jsp " method="Post">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                        <div style="text-align: center">                    
-                            <button  type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                        <a href="registration.jsp"><h4 style="color:grey;font-weight: bolder">Don't have account?</h4></a>
-                        <hr>
-                        <h3 style="text-align: center">Also Login with</h3><svg class="bi bi-alert-triangle text-success" width="32" height="32" viewBox="0 0 20 20" color="red">
-                        <div style="text-align: center">
-                            <i class='fab fa-google' style='font-size:50px;color:red;margin-right: 15px'></i>
-                            <i class='fab fa-facebook' style='font-size:50px;color:blue;margin-right: 15px'></i>
-                            <i class='fab fa-twitter' style='font-size:50px;color:lightblue;margin-right: 15px'></i>
-                            <i class='fab fa-github' style='font-size:50px;color:black;margin-right: 15px'></i>
-
-                        </div>
-
-
-
-                    </form>
-
-                </div>
-
-
-
-
-            </div>
-
-        </div>-->
         <%@include file="footer.jsp" %>
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

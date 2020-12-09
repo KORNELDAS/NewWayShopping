@@ -1,8 +1,3 @@
-<%-- 
-    Document   : about
-    Created on : 1 Dec, 2020, 8:04:51 PM
-    Author     : Asus
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+        <title>NewWayShopping</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -54,7 +49,7 @@
                     <div class="col-lg-12">
                         <h2>ABOUT US</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
                             <li class="breadcrumb-item active">ABOUT US</li>
                         </ul>
                     </div>
@@ -85,19 +80,19 @@
                     <div class="col-sm-6 col-lg-4">
                         <div class="service-block-inner">
                             <h3>We are Trusted</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                            <p>bio</p>
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-4">
                         <div class="service-block-inner">
                             <h3>We are Professional</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                            <p>bio</p>
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-4">
                         <div class="service-block-inner">
                             <h3>We are Expert</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                            <p>bio</p>
                         </div>
                     </div>
                 </div>
@@ -107,9 +102,9 @@
                     </div>
                     <div class="col-sm-6 col-lg-3">
                         <div class="hover-team">
-                            <div class="our-team"> <img src="images/img-1.jpg" alt="" />
+                            <div class="our-team"> <img src="images/" alt="" />
                                 <div class="team-content">
-                                    <h3 class="title">Williamson</h3> <span class="post">Web Developer</span> </div>
+                                    <h3 class="title"> </h3> <span class="post">Web Developer</span> </div>
                                 <ul class="social">
                                     <li>
                                         <a href="#" class="fab fa-facebook"></a>
@@ -127,15 +122,15 @@
                                 <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
                             </div>
                             <div class="team-description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
+                                <p>bio</p>
                             </div>
                             <hr class="my-0"> </div>
                     </div>
                     <div class="col-sm-6 col-lg-3">
                         <div class="hover-team">
-                            <div class="our-team"> <img src="images/img-2.jpg" alt="" />
+                            <div class="our-team"> <img src="images/" alt="" />
                                 <div class="team-content">
-                                    <h3 class="title">Kristiana</h3> <span class="post">Web Developer</span> </div>
+                                    <h3 class="title"> </h3> <span class="post">Web Developer</span> </div>
                                 <ul class="social">
                                     <li>
                                         <a href="#" class="fab fa-facebook"></a>
@@ -153,15 +148,15 @@
                                 <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
                             </div>
                             <div class="team-description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
+                                <p>bio</p>
                             </div>
                             <hr class="my-0"> </div>
                     </div>
                     <div class="col-sm-6 col-lg-3">
                         <div class="hover-team">
-                            <div class="our-team"> <img src="images/img-3.jpg" alt="" />
+                            <div class="our-team"> <img src="images/" alt="" />
                                 <div class="team-content">
-                                    <h3 class="title">Steve Thomas</h3> <span class="post">Web Developer</span> </div>
+                                    <h3 class="title"> </h3> <span class="post">Web Developer</span> </div>
                                 <ul class="social">
                                     <li>
                                         <a href="#" class="fab fa-facebook"></a>
@@ -179,15 +174,15 @@
                                 <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
                             </div>
                             <div class="team-description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
+                                <p>bio</p>
                             </div>
                             <hr class="my-0"> </div>
                     </div>
                     <div class="col-sm-6 col-lg-3">
                         <div class="hover-team">
-                            <div class="our-team"> <img src="images/img-1.jpg" alt="" />
+                            <div class="our-team"> <img src="images/" alt="" />
                                 <div class="team-content">
-                                    <h3 class="title">Williamson</h3> <span class="post">Web Developer</span> </div>
+                                    <h3 class="title"> </h3> <span class="post">Web Developer</span> </div>
                                 <ul class="social">
                                     <li>
                                         <a href="#" class="fab fa-facebook"></a>
@@ -205,7 +200,7 @@
                                 <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
                             </div>
                             <div class="team-description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
+                                <p>bio</p>
                             </div>
                             <hr class="my-0"> </div>
                     </div>
