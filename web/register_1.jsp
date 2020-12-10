@@ -72,7 +72,7 @@
                     <p class="text-center">Please start fill-up the form Step by step..!!</p><br>
 
                     <div class="col">
-                        <form action="reg.jsp" method="post" >
+                        <form action="Registration_servlet" method="post" >
 
                             <!--Code for Name-->
 
