@@ -1,20 +1,24 @@
 package com.newwayshopping.databases;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.*;
 
 
 public class Database {
 
+    private static  Connection con;
     public static Connection getConnection() {
-                    Connection con = null;
-            try{
-                Class.forName("com.mysql.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/newwayshopping", "root", "");
-            }catch(Exception e){
-                System.out.println(e.getMessage());    
+        try{
+            if(con==null){
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3308/newwayshopping", "root", "");
             }
-            return con;
+       
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return con;
     }
-    }
+    
+    
+    
+}

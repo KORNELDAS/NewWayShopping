@@ -1,4 +1,5 @@
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -69,9 +70,9 @@
                 <div class ="card-body mx-auto">
                     <h2 class="card-title mt-3 text-center">Create Account Register Here..</h2>
                     <p class="text-center">Please start fill-up the form Step by step..!!</p><br>
-                   
+
                     <div class="col">
-                        <form action="#!" method="post">
+                        <form action="reg.jsp" method="post" >
 
                             <!--Code for Name-->
 
@@ -109,7 +110,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                 </div>
-                                <input type="password" name="password" id="name" class="form-control" aria-label="Pass" placeholder="Confirm Password" aria-describedby="addon-wrapping" required>
+                                <input type="password" name="password1" id="name" class="form-control" aria-label="Pass" placeholder="Confirm Password" aria-describedby="addon-wrapping" required>
                                 <div class="invalid-feedback">Password Mismatch </div>
                             </div><br>
 
@@ -129,7 +130,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping"> <i class="fa fa-mobile"></i> </span>
                                 </div>
-                                <input type="text" name="phone" id="phone" class="form-control" aria-label="phone" placeholder="Alternate Phone" aria-describedby="addon-wrapping">
+                                <input type="text" name="phone1" id="phone" class="form-control" aria-label="phone" placeholder="Alternate Phone" aria-describedby="addon-wrapping">
                             </div><br>
 
                             <!--Code for Date Of Birth-->
@@ -180,7 +181,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping"> <i class="fa fa-home"></i> </span>
                                 </div>
-                                <textarea name="address" id="address" class="form-control" placeholder="Enter Address2" aria-describedby="addon-wrapping"></textarea>
+                                <textarea name="address1" id="address" class="form-control" placeholder="Enter Address2" aria-describedby="addon-wrapping"></textarea>
                             </div><br>
 
                             <!--Code for Country-->
@@ -190,9 +191,25 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Country : </span>
                                     </div>
-                                    <select class="wide w-100" id="country">
+                                    <select name="country" class="wide w-100" id="country">
                                         <option value="Choose..." data-display="Select">Choose Country...</option>
                                         <option value="United States">United States</option>
+                                        <option value="United States">India</option>
+                                        <option value="United States">Pakistan</option>
+                                        <option value="United States">Srilanka</option>
+                                        <option value="United States">Afhganistan</option>
+                                        <option value="United States">Australia</option>
+                                        <option value="United States">England</option>
+                                        <option value="United States">NewZealand</option>
+                                        <option value="United States">China</option>
+                                        <option value="United States">Russia</option>
+                                        <option value="United States">South Africa</option>
+                                        <option value="United States">WestIndies</option>
+                                        <option value="United States">Bangladesh</option>
+                                        <option value="United States">Scotland</option>
+                                        <option value="United States">Japan</option>
+                                        <option value="United States">Nepal</option>
+                                        <option value="United States">Khalistan</option>
                                     </select>
                                     <div class="invalid-feedback">Country required </div>
                                 </div>
@@ -203,8 +220,26 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">State : </span>
                                     </div>
-                                    <select class="wide w-100" id="state">
+                                    <select name="state" class="wide w-100" id="state">
                                         <option data-display="Select">Choose State...</option>
+                                        <option>West Bengal</option>
+                                        <option>Bihar</option>
+                                        <option>Delhi</option>
+                                        <option>UttarPradesh</option>
+                                        <option>Gujrat</option>
+                                        <option>Rajasthan</option>
+                                        <option>Mumbai</option>
+                                        <option>Telangana</option>
+                                        <option>Tamil Nadu</option>
+                                        <option>Karnatka</option>
+                                        <option></option>
+                                        <option>West Bengal</option>
+                                        <option>West Bengal</option>
+                                        <option>West Bengal</option>
+                                        <option>West Bengal</option>
+                                        <option>West Bengal</option>
+                                        <option>West Bengal</option>
+                                        <option>West Bengal</option>
                                         <option>West Bengal</option>
                                     </select>
                                     <div class="invalid-feedback">State required </div>
@@ -224,14 +259,14 @@
                             <!--Code for Image-->
 
                             <div>
-                                <img src="" width="350" height="350" class="image" alt="Responsive image">
-                                <button class="middle btn btn-primary" data-toggle="modal" data-target="#exampleModal">Upload Image</button>
+                                <label class="file-select" for="myfile">Select a file:</label>
+                                <input type="file" id="myfile" name="myfile">
                             </div><br>
 
                             <!--Code for Check box-->
 
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="same-address" required>
+                                <input name="check-box" type="checkbox" class="custom-control-input" id="same-address" required>
                                 <label class="custom-control-label" for="same-address">Accept terms & conditions....</label>
                                 <div class="invalid-feedback">Accept terms & conditions required </div>
                             </div><br>
@@ -241,9 +276,9 @@
                             <button class="btn btn-success btn-lg btn-block" type="submit" value="Register" id="submit">Create Account</button>&ensp;&ensp;
                             <a href="index.jsp"> <<-Back to Home</a>
                             <br>
-                            
+
                             <!--code for icon-->
-                            
+
                             <p class="divider">
                                 <span class="bg-light">OR</span>
                             </p>
@@ -258,9 +293,12 @@
                 </div>
             </div>
         </div> 
-        
+
+       
+
         <%@include file="footer.jsp" %>
         
+         
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -280,5 +318,8 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
+        
+      
+
     </body>
 </html>

@@ -4,3 +4,38 @@ body{
    
 }
 
+.file-select{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+#myfile{
+    margin-left: 10px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: bold;
+    outline: none;
+    background: white;
+    width: 400px;
+    box-shadow: 5px 5px 10px black;
+    color: black;
+}
+
+::-webkit-file-upload-button{
+    border-radius: 50px;
+    background: teal;
+    color: white;
+    padding: 6px;
+    outline: none;
+    box-shadow: 1px 0 1px 1px #6b4559;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+::-webkit-file-upload-button:hover{
+    background: #438a5e;
+    transition: all 0.4s;
+}
+
