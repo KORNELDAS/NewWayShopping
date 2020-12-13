@@ -33,7 +33,8 @@
         <link rel="stylesheet" href="css/loginback.css">
         <!-- Bootstrap CSS -->
         <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">-->
+        -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -68,12 +69,16 @@
         <div class="container d-flex justify-content-center my-3">
             <div class="card " style="width: 38rem;"> 
                 <div class ="card-body mx-auto">
-                    <h2 class="card-title mt-3 text-center">Create Account Register Here..</h2>
-                    <p class="text-center">Please start fill-up the form Step by step..!!</p><br>
+
 
                     <div class="col">
-                        <form action="Registration_servlet" method="post" >
 
+
+
+
+                        <form action="Registration_servlet" method="POST" id="frm" >
+                            <h2 class="card-title mt-1 text-center font-weight-bold" style="font-size:35px;text-decoration: underline;">Create Account</h2>
+                            <p id="error-msg" class="text-center text-danger font-weight-bold" style="display:none;font-size: 18px">something wrong Please fill-up the form correctly..!!</p><br>
                             <!--Code for Name-->
 
                             <div class="input-group flex-nowrap">
@@ -232,9 +237,9 @@
                                         <option>Telangana</option>
                                         <option>Tamil Nadu</option>
                                         <option>Karnatka</option>
-                                        <option></option>
-                                        <option>West Bengal</option>
-                                        <option>West Bengal</option>
+                                        <option>Andhra Pradesh</option>
+                                        <option>J&K</option>
+                                        <option>Chattisgarh</option>
                                         <option>West Bengal</option>
                                         <option>West Bengal</option>
                                         <option>West Bengal</option>
@@ -258,10 +263,10 @@
 
                             <!--Code for Image-->
 
-                            <div>
-                                <label class="file-select" for="myfile">Select a file:</label>
-                                <input type="file" id="myfile" name="myfile">
-                            </div><br>
+                            <!-- <div>
+                                 <label class="file-select" for="myfile">Select a file:</label>
+                                 <input type="file" id="myfile" name="myfile">
+                             </div><br>-->
 
                             <!--Code for Check box-->
 
@@ -289,19 +294,83 @@
                                 <a href="#"> <i class='fab fa-github' style='font-size:40px;color:black;margin-right: 15px'></i></a>
                             </div>
                         </form><br>
+
+                        <div id="loader" class="container text-center p-3 " style="display:none;transition: all 0.6s!important" >
+                            <i class="fa fa-refresh  text-primary  fa-spin" aria-hidden="true" style="font-size:110px;"></i>
+                            <h3 style="font-weight:bold;">Please Wait..........</h3>
+
+                        </div>
+                        <div id="ticker" class="container text-center p-3 " style="display:none;transition: all 0.6s!important" >
+                            <i class="fa fa-check text-success" aria-hidden="true" style="font-size:110px;"></i>
+                            <h2 class="text-success mb-2">Success</h2>
+                            <h3 style="font-weight:bold;">Please Wait we redirecting to login page</h3>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div> 
 
-       
+
+
+
+
+
 
         <%@include file="footer.jsp" %>
-        
-         
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+
+
+
+        <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>-->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
+
+        <script>
+            $(document).ready(function () {
+                console.log("page is ready");
+                $("#frm").on('submit', function (event) {
+                    event.preventDefault();
+                    let full_data = $(this).serialize();
+                    $("#frm").hide();
+                    $("#loader").show();
+
+                    $.ajax({
+                        url: 'Registration_servlet',
+                        data: full_data,
+                        type: 'POST',
+                        success: function (data, textStatus, jqXHR) {
+                            console.log(data);
+                            $("#loader").hide();
+                            
+
+                            if (data.trim() === 'done') {
+                                swal("Successfully Registered","Click on the ok button for redirecting to login page","success")
+                                        .then((value) => {
+                                           window.location="login.jsp";
+                                        });
+                            }
+                            else{
+                                 swal(data,"something went wrong","danger");
+                            }
+                           
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log('error');
+                            $("#loader").hide();
+                            $("#frm").show();
+                            $("#error-msg").show();
+
+                        }
+
+                    });
+                });
+            });
+        </script>
+
 
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>
@@ -318,8 +387,8 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
-        
-      
+        <script src="js/change_something.js" type="text/javascript"></script>
+
 
     </body>
 </html>

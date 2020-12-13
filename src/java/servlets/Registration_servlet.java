@@ -10,6 +10,7 @@ import com.newwayshopping.databases.Database;
 import entities.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,14 +37,9 @@ public class Registration_servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Registration_servlet</title>");
-            out.println("</head>");
-            out.println("<body>");
+           
 
-          
+            
             String s15 = request.getParameter("check-box");
            
             if (s15 == null) {
@@ -66,13 +62,14 @@ public class Registration_servlet extends HttpServlet {
             String s11 = request.getParameter("country");
             String s12 = request.getParameter("state");
             String s13 = request.getParameter("pin");
-            String s14 = request.getParameter("myfile");
-               Users use = new Users(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14);  
+          //  String s14 = request.getParameter("myfile");
+               Users use = new Users(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13);  
                 
                 Userdao ud = new Userdao(Database.getConnection());
                 if (ud.saveUser(use)) {
+                   
                     out.println("done");
-                    out.println(s1);
+                  /*  out.println(s1);
                     out.println(s2);
                     out.println(s3);
                     out.println(s4);
@@ -85,11 +82,17 @@ public class Registration_servlet extends HttpServlet {
                     out.println(s11);
                     out.println(s12);
                     out.println(s13);
-                    out.println(s14);
+                   // out.println(s14);
+                    String send=String.valueOf(status);
+                    request.setAttribute("fetch","hello");
+                    RequestDispatcher rd=request.getRequestDispatcher("register_1.jsp");
+                    rd.forward(request, response);
+                 //   response.sendRedirect("register_1.jsp");*/
 
                 } else {
+                   
                     out.println("something error");
-                     out.println(s1);
+                    /* out.println(s1);
                     out.println(s2);
                     out.println(s3);
                     out.println(s4);
@@ -102,12 +105,11 @@ public class Registration_servlet extends HttpServlet {
                     out.println(s11);
                     out.println(s12);
                     out.println(s13);
-                    out.println(s14);
+                   // out.println(s14);*/
                 }
             }
 
-            out.println("</body>");
-            out.println("</html>");
+         
         }
     }
 

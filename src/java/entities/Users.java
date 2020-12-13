@@ -18,14 +18,14 @@ public class Users {
     private String country;
     private String state;
     private String postal_code;
-    private String image;
+   // private String image;
     private Timestamp regdate;
 
     //constructors
     
    
 
-    public Users(String name, String email, String password, String confirm_password, String phone_number, String alternative_phone_number, String date_of_birth, String gender, String address_1, String address_2, String country, String state, String postal_code, String image) {
+    public Users(String name, String email, String password, String confirm_password, String phone_number, String alternative_phone_number, String date_of_birth, String gender, String address_1, String address_2, String country, String state, String postal_code) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -39,7 +39,7 @@ public class Users {
         this.country = country;
         this.state = state;
         this.postal_code = postal_code;
-        this.image = image;
+       // this.image = image;
        
     }
     
@@ -157,13 +157,6 @@ public class Users {
         this.postal_code = postal_code;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 
     public Timestamp getRegdate() {
         return regdate;

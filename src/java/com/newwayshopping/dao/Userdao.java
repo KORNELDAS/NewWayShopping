@@ -16,7 +16,7 @@ public class Userdao {
         boolean f=false;
         try {
             //users--> databse
-            String query = "insert into registration(name,email,password,confirm_password,phone_number,alternative_phone_number,date_of_birth,gender,address_1,address_2,country,state,postal_code,image) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String query = "insert into registration(name,email,password,confirm_password,phone_number,alternative_phone_number,date_of_birth,gender,address_1,address_2,country,state,postal_code) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pstmt = this.con.prepareStatement(query);
             pstmt.setString(1, users.getName());
             pstmt.setString(2, users.getEmail());
@@ -31,7 +31,7 @@ public class Userdao {
             pstmt.setString(11, users.getCountry());
             pstmt.setString(12, users.getState());
             pstmt.setString(13, users.getPostal_code());
-            pstmt.setString(14, users.getImage());
+           // pstmt.setString(14, users.getImage());
             
             pstmt.executeUpdate();
             f=true;
