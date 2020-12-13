@@ -1,6 +1,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page errorPage="error_page.jsp" %>
 
 <!DOCTYPE html>
 <html>
