@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import passEncrypt.EncryptText;
 
 
 /**
@@ -50,9 +51,9 @@ public class Registration_servlet extends HttpServlet {
             String s1 = request.getParameter("name");
             String s2 = request.getParameter("email");
             String s3 = request.getParameter("password");
-           // s3 = EncryptText.getEncrypted(EncryptText.getEncrypted(EncryptText.getEncrypted(s3, "MD5"), "SHA-1"), "MD5");
+            s3 = EncryptText.getEncrypted(EncryptText.getEncrypted(EncryptText.getEncrypted(s3, "MD5"), "SHA-1"), "MD5");
             String s4 = request.getParameter("password1");
-            //s4 = EncryptText.getEncrypted(EncryptText.getEncrypted(EncryptText.getEncrypted(s4, "MD5"), "SHA-1"), "MD5");
+            s4 = EncryptText.getEncrypted(EncryptText.getEncrypted(EncryptText.getEncrypted(s4, "MD5"), "SHA-1"), "MD5");
             String s5 = request.getParameter("phone");
             String s6 = request.getParameter("phone1");
             String s7 = request.getParameter("dob");

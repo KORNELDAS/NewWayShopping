@@ -18,7 +18,7 @@ public class Users {
     private String country;
     private String state;
     private String postal_code;
-   // private String image;
+    private String image;
     private Timestamp regdate;
 
     //constructors
@@ -41,6 +41,9 @@ public class Users {
         this.postal_code = postal_code;
        // this.image = image;
        
+    }
+
+    public Users() {
     }
     
     // getter and setter
@@ -164,6 +167,14 @@ public class Users {
 
     public void setRegdate(Timestamp regdate) {
         this.regdate = regdate;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
     

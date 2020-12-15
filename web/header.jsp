@@ -109,14 +109,14 @@
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                             <li class="nav-item active"><a class="nav-link" href="index.jsp">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.jsp">About Us</a></li>
+                            <li class="nav-item"><a class="nav-link" style="cursor: pointer"  onclick="invent()">About Us</a></li>
 
-                            <li class="nav-item"><a class="nav-link" href="addproduct.jsp">AddProduct</a></li>
-                            <li class="nav-item"><a class="nav-link" href="bidproduct.jsp">BidProduct</a></li>
-                            <li class="nav-item"><a class="nav-link" href="services.jsp">OurService</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Contact Us</a></li>
-                            <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="register_1.jsp">Sign-Up</a></li>
+                            <li class="nav-item"><a class="nav-link" style="cursor: pointer" onclick="invent()">AddProduct</a></li>
+                            <li class="nav-item"><a class="nav-link" style="cursor: pointer" onclick="invent()">BidProduct</a></li>
+                            <li class="nav-item"><a class="nav-link" style="cursor: pointer" onclick="invent()">OurService</a></li>
+                            <li class="nav-item"><a class="nav-link" style="cursor: pointer" onclick="invent()">Contact Us</a></li>
+                            <li  class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li> 
+                            <li  class="nav-item"><a class="nav-link" href="register_1.jsp">Sign-Up</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -152,7 +152,8 @@
         <!--  <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script> -->
-       
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
+        <script src="js/changing.js" type="text/javascript"></script>
 
     </body>
 

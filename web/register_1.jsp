@@ -353,8 +353,13 @@
                                            window.location="login.jsp";
                                         });
                             }
+                           
                             else{
-                                 swal(data,"something went wrong","danger");
+                                
+                                 swal("Something error","email already existed!","warning")
+                                            .then((value) => {
+                                           window.location="register_1.jsp";
+                                        });
                             }
                            
 

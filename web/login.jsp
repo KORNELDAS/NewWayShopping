@@ -1,4 +1,5 @@
 
+<%@page import="entities.Message"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -41,43 +42,54 @@
 
                 <div class="jumbotron jumbotron-fluid">
                     <div class="container">
+                        <%
+                        Message sure=(Message)session.getAttribute("user1");
+                        if(sure!=null){
+                        %>
+                        <div class="alert <%=sure.getCssclass()%>  mb-1" role="alert">
+                            <%=sure.getContent()%>
+                        </div>
+                        <%
+                            session.removeAttribute("user1");
+                        }
+                        %>
                         <h1 style="text-decoration:underline " align="center">LOG IN</h1>
 
-                        <form action="login.jsp " method="Post">
-                            
+                        <form action="Login " method="Post">
+
                             <!--code for email-->
-                            
+
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input type="email" required="" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                             </div>
-                            
+
                             <!--code for password-->
-                            
+
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
+                                <input type="password" required="" name="pass" class="form-control" id="exampleInputPassword1">
                             </div>
-                            
+
                             <!--code for check box-->
-                            
+
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
-                            
+
                             <!--code for submit-->
-                            
+
                             <div style="text-align: center">                    
                                 <button  type="submit" class="btn btn-primary" style='font-size:25px'>Submit</button>
                             </div>
-                            
+
                             <a href="register_1.jsp"><h4 style="color:blue;font-weight: bolder">Don't have account?</h4></a>
                             <a href="#"><h4 style="color:blue;font-weight: bolder">Forget Password?</h4></a>
-                            
+
                             <!--code for icon-->
-                            
+
                             <hr>
                             <h3 style="text-align: center">Also Login with</h3><svg class="bi bi-alert-triangle text-success" width="32" height="32" viewBox="0 0 20 20" color="red">
                             <div style="text-align: center">
