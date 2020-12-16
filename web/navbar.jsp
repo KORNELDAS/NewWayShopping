@@ -124,7 +124,7 @@
                         </button>
                         <!--images/favicon.ico-->
                         <!--images/logo.png-->
-                        <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo1" class="logo" alt=""></a>
+                        <a class="navbar-brand" href="index.jsp"><img src="images/logo2.png"  alt=""></a>
 
                     </div>
                     <!-- End Header Navigation -->
