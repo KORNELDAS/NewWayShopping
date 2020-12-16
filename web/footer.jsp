@@ -80,7 +80,7 @@
                                     </li>
                                     <li>
                                         <p><i class="fas fa-envelope"></i>Email: <a
-                                                href="mailto:contactinfo@gmail.com">korneldas00@gmail.com</a></p>
+                                                href="mailto:newwayshopping20@gmail.com">newwayshopping20@gmail.com</a></p>
                                     </li>
                                 </ul>
                             </div>
