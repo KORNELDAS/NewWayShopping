@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3308
--- Generation Time: Dec 10, 2020 at 06:16 PM
+-- Generation Time: Dec 16, 2020 at 08:14 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `newwayshopping`
+-- Database: `newwayshopping2`
 --
 
 -- --------------------------------------------------------
@@ -56,9 +56,16 @@ CREATE TABLE `registration` (
   `country` varchar(50) NOT NULL,
   `state` varchar(50) NOT NULL,
   `postal_code` int(10) NOT NULL,
-  `image` varchar(50) NOT NULL,
+  `image` varchar(500) DEFAULT NULL,
   `reg_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`serial_number`, `name`, `email`, `password`, `confirm_password`, `phone_number`, `alternative_phone_number`, `date_of_birth`, `gender`, `address_1`, `address_2`, `country`, `state`, `postal_code`, `image`, `reg_date`) VALUES
+(55, 'Sabyasachi', 'sachisabya41999@gmail.com', '153c69a56beaee5827d08e2f18b14b54', '153c69a56beaee5827d08e2f18b14b54', '6294683141', '8809836648', '2020-12-28', 'Male', 'Mahavir Colony, Beur More,Anisabad Patna', 'Mahavir Colony, Beur More,Anisabad Patna\r\nbeur', 'United States', 'Bihar', 800002, NULL, '2020-12-15 18:28:10');
 
 -- --------------------------------------------------------
 
@@ -83,8 +90,22 @@ CREATE TABLE `saler` (
 --
 
 CREATE TABLE `test` (
-  `Sl_No` int(11) NOT NULL
+  `email` varchar(100) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `pic` varchar(500) NOT NULL,
+  `name1` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`email`, `password`, `pic`, `name1`) VALUES
+('sachisabya41999@gmail.com', '2233', '', ''),
+('sachisabya41999@gmail.com', 'ffff', '', ''),
+('Sabyasachi', 'sachisabya41999@gmail.com', 'ssscc', ''),
+('Sabyasachi', 'sachisabya41999@gmail.com', 'nbbbb', 'Sabyasachi'),
+('Sabyasachi', 'sachisabya41999@gmail.com', 'sabya', 'Sabyasachi');
 
 --
 -- Indexes for dumped tables
@@ -100,7 +121,8 @@ ALTER TABLE `product`
 -- Indexes for table `registration`
 --
 ALTER TABLE `registration`
-  ADD PRIMARY KEY (`serial_number`);
+  ADD PRIMARY KEY (`serial_number`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `saler`
@@ -122,7 +144,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `serial_number` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `serial_number` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `saler`

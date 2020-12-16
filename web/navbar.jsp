@@ -35,7 +35,52 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
 
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .dropdown{
+               position: absolute;
+               top: 65px;
+               right: 0;
+               background-color: black;
+               color: white;
+               font-weight: bolder;
+               padding: 8px 6px;
+               border-radius: 5px;
+               display: none;
+               transition: 0.6s;
+              
+            }
+            .dropdown .fa{
+                margin-right: 2px;
+            }
+            .dropdown li a{
+                 font-weight: bolder;
+                color: white;
+                cursor: pointer;
+                 transition: 0.4s;
+            }
+            .dropdown li a:hover{
+                 
+                color: red;
+                transition: 0.4s;
+            }
+            .dropdown li:hover{
+                 cursor: pointer;
+                color: red;
+                transition: 0.4s;
+            }
+            
+            .dropdown::before{
+                content: "";
+                position: absolute;
+                top: -20%;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 10px solid;
+                border-color: transparent transparent black transparent;
+            }
+            
+        </style>
 
 
 
@@ -55,7 +100,7 @@
                         </div>
                         <div class="our-link">
                             <ul>
-                                <li><a href="#">My Account</a></li>
+                               
                                 <li><a href="#">Our location</a></li>
                                 <li><a href="#">Contact Us</a></li>
                             </ul>
@@ -87,25 +132,36 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item active"><a class="nav-link" href="index.jsp">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" >About Us</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="welcome.jsp">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.jsp" >About Us</a></li>
 
-                            <li class="nav-item"><a class="nav-link" >AddProduct</a></li>
-                            <li class="nav-item"><a class="nav-link" >BidProduct</a></li>
-                            <li class="nav-item"><a class="nav-link" >OurService</a></li>
-                            <li class="nav-item"><a class="nav-link" >Contact Us</a></li>
-                           
+                            <li class="nav-item"><a class="nav-link" href="addproduct.jsp" >AddProduct</a></li>
+                            <li class="nav-item"><a class="nav-link" href="bidprodeuct" >BidProduct</a></li>
+                            <li class="nav-item"><a class="nav-link" href="services.jsp" >OurService</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp" >Contact Us</a></li>
+                            <li class="nav-item"><a class="nav-link" ><i class="fa fa-bell" aria-hidden="true"></i></a></li>
+
                         </ul>
                     </div>
-                    <div class="py-4 px-3 mb-4 bg-grey">
+                    <div class=" bg-grey">
                         <div class="media d-flex align-items-center">
-                            <img src="image/resume.jpg" alt="..." width="80" height="80" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-                            <div class="media-body">
-                                <h4 class="m-0 text-white">Sabyasachi</h4>
-                               
+                            <img src="images/error.png" alt="..." width="50" height="50" class=" rounded-circle img-thumbnail shadow-sm">
+                            <div class="media-body d-flex">
+                                <h4 class=" text-dark">sabyasachi</h4>
+                                <i id="down" onclick="demo()" class="fa fa-chevron-down text-dark" style="cursor:pointer;"  aria-hidden="true"></i>
+                                <i id="up" onclick="demo1()" class="fa fa-chevron-up text-dark" style="cursor:pointer;display: none" aria-hidden="true"></i>
+                                <div id="dorp" class="dropdown">
+                                    <ul>
+                                        <li><a href="profile.jsp"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+                                        <li><a href="setting.jsp"><i class="fa fa-cog" aria-hidden="true"></i>Setting</a></li>
+                                        <li><a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                                    </ul>
+                                </div>
+
                             </div> 
                         </div>
                     </div>
+
                     <!-- /.navbar-collapse -->
 
                     <!-- Start Atribute Navigation -->
@@ -148,6 +204,25 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
+        <script>
+            function demo(){
+                let down=document.getElementById("down");
+                let up=document.getElementById("up");
+                let dorp=document.getElementById("dorp");
+                dorp.setAttribute("style","display:block;transition: 0.6s;");
+                down.setAttribute("style","display:none;transition: 0.6s;");
+                up.setAttribute("style","cursor:pointer;display:block;transition: 0.6s;");
+            }
+            function demo1(){
+                  let down=document.getElementById("down");
+                let up=document.getElementById("up");
+                let dorp=document.getElementById("dorp");
+                dorp.setAttribute("style","display:none;transition: 0.6s;");
+                down.setAttribute("style","cursor:pointer;display:block;transition: 0.6s;");
+                up.setAttribute("style","cursor:pointer;display:none;transition: 0.6s;");
+            }
+            
+        </script>
     </body>
 
 </html>
