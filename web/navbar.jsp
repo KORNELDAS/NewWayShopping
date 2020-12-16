@@ -1,9 +1,10 @@
-<%-- 
-    Document   : header
-    Created on : 1 Dec, 2020, 4:05:12 PM
-    Author     : Asus
---%>
 
+<%@page import="entities.Users"%>
+<%
+HttpSession hs=request.getSession(false);
+Users us=(Users)session.getAttribute("currentUser");
+
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -147,13 +148,13 @@
                         <div class="media d-flex align-items-center">
                             <img src="images/error.png" alt="..." width="50" height="50" class=" rounded-circle img-thumbnail shadow-sm">
                             <div class="media-body d-flex">
-                                <h4 class=" text-dark">sabyasachi</h4>
+                                <h4 class=" text-dark" style="font-weight:bolder;"><%=us.getName()%></h4>
                                 <i id="down" onclick="demo()" class="fa fa-chevron-down text-dark" style="cursor:pointer;"  aria-hidden="true"></i>
                                 <i id="up" onclick="demo1()" class="fa fa-chevron-up text-dark" style="cursor:pointer;display: none" aria-hidden="true"></i>
                                 <div id="dorp" class="dropdown">
                                     <ul>
                                         <li><a href="profile.jsp"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
-                                        <li><a href="setting.jsp"><i class="fa fa-cog" aria-hidden="true"></i>Setting</a></li>
+                                        
                                         <li><a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
                                     </ul>
                                 </div>

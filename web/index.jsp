@@ -1,4 +1,15 @@
+<%
+HttpSession hs=request.getSession(false);
 
+
+if(hs.getAttribute("currentUser")!=null){
+    response.sendRedirect("welcome.jsp");
+}
+
+
+
+
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="error_page.jsp" %>
 <!DOCTYPE html>
