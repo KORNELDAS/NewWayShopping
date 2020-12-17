@@ -1,8 +1,8 @@
 
 <%@page import="entities.Users"%>
 <%
-HttpSession hs=request.getSession(false);
-Users us=(Users)session.getAttribute("currentUser");
+    HttpSession hs = request.getSession(false);
+    Users us = (Users) session.getAttribute("currentUser");
 
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -37,40 +37,41 @@ Users us=(Users)session.getAttribute("currentUser");
         <link rel="stylesheet" href="css/custom.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         
         <style>
             .dropdown{
-               position: absolute;
-               top: 65px;
-               right: 0;
-               background-color: black;
-               color: white;
-               font-weight: bolder;
-               padding: 8px 6px;
-               border-radius: 5px;
-               display: none;
-               transition: 0.6s;
-              
+                position: absolute;
+                top: 65px;
+                right: 0;
+                background-color: black;
+                color: white;
+                font-weight: bolder;
+                padding: 8px 6px;
+                border-radius: 5px;
+                display: none;
+                transition: 0.6s;
+
             }
             .dropdown .fa{
                 margin-right: 2px;
             }
             .dropdown li a{
-                 font-weight: bolder;
+                font-weight: bolder;
                 color: white;
                 cursor: pointer;
-                 transition: 0.4s;
+                transition: 0.4s;
             }
             .dropdown li a:hover{
-                 
+
                 color: red;
                 transition: 0.4s;
             }
             .dropdown li:hover{
-                 cursor: pointer;
+                cursor: pointer;
                 color: red;
                 transition: 0.4s;
             }
-            
+
             .dropdown::before{
                 content: "";
                 position: absolute;
@@ -80,7 +81,7 @@ Users us=(Users)session.getAttribute("currentUser");
                 border: 10px solid;
                 border-color: transparent transparent black transparent;
             }
-            
+
         </style>
 
 
@@ -101,7 +102,7 @@ Users us=(Users)session.getAttribute("currentUser");
                         </div>
                         <div class="our-link">
                             <ul>
-                               
+
                                 <li><a href="#">Our location</a></li>
                                 <li><a href="#">Contact Us</a></li>
                             </ul>
@@ -136,7 +137,7 @@ Users us=(Users)session.getAttribute("currentUser");
                             <li class="nav-item active"><a class="nav-link" href="welcome.jsp">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp" >About Us</a></li>
 
-                            <li class="nav-item"><a class="nav-link" href="addproduct.jsp" >AddProduct</a></li>
+                            <li class="nav-item"><a class="nav-link" href="addproduct.jsp" data-toggle="modal"  data-target="#exampleModal">AddProduct</a></li>
                             <li class="nav-item"><a class="nav-link" href="bidprodeuct" >BidProduct</a></li>
                             <li class="nav-item"><a class="nav-link" href="services.jsp" >OurService</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp" >Contact Us</a></li>
@@ -153,8 +154,8 @@ Users us=(Users)session.getAttribute("currentUser");
                                 <i id="up" onclick="demo1()" class="fa fa-chevron-up text-dark" style="cursor:pointer;display: none" aria-hidden="true"></i>
                                 <div id="dorp" class="dropdown">
                                     <ul>
-                                        <li><a href="profile.jsp"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
-                                        
+                                        <li><a href="profile.jsp" data-toggle="modal"  data-target="#profile-modal"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+
                                         <li><a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
                                     </ul>
                                 </div>
@@ -181,17 +182,65 @@ Users us=(Users)session.getAttribute("currentUser");
         </header>
         <!-- End Main Top -->
 
-        <!-- Start Top Search -->
-        <!-- <div class="top-search">
-             <div class="container">
-                 <div class="input-group">
-                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                     <input type="text" class="form-control" placeholder="Search">
-                     <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                 </div>
-             </div>
-         </div>-->
-        <!-- End Top Search -->
+        <!--profile modal-->
+
+        <div class="modal fade" id="profile-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                        <h2 class="modal-title " id="exampleModalLabel" style="font-weight:bold;">User Profile</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container text-center">
+                            <img src="pics/<%=us.getImage()%>" class="img-fluid" style="border-radius:50%;max-width: 130px;">
+                            <h2 class="modal-title " id="exampleModalLabel" style="font-weight:bold;"><%=us.getName()%></h2>
+                        </div>
+                        
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:black">Close</button>
+                        <button type="button" class="btn btn-danger">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <!--end profile modal-->
+
+        <!--addproduct modal-->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><%=us.getName()%></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end addproduct modal-->
+
+
 
 
         <script src="js/jquery.superslides.min.js"></script>
@@ -206,23 +255,23 @@ Users us=(Users)session.getAttribute("currentUser");
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
         <script>
-            function demo(){
-                let down=document.getElementById("down");
-                let up=document.getElementById("up");
-                let dorp=document.getElementById("dorp");
-                dorp.setAttribute("style","display:block;transition: 0.6s;");
-                down.setAttribute("style","display:none;transition: 0.6s;");
-                up.setAttribute("style","cursor:pointer;display:block;transition: 0.6s;");
-            }
-            function demo1(){
-                  let down=document.getElementById("down");
-                let up=document.getElementById("up");
-                let dorp=document.getElementById("dorp");
-                dorp.setAttribute("style","display:none;transition: 0.6s;");
-                down.setAttribute("style","cursor:pointer;display:block;transition: 0.6s;");
-                up.setAttribute("style","cursor:pointer;display:none;transition: 0.6s;");
-            }
-            
+                                    function demo() {
+                                        let down = document.getElementById("down");
+                                        let up = document.getElementById("up");
+                                        let dorp = document.getElementById("dorp");
+                                        dorp.setAttribute("style", "display:block;transition: 0.6s;");
+                                        down.setAttribute("style", "display:none;transition: 0.6s;");
+                                        up.setAttribute("style", "cursor:pointer;display:block;transition: 0.6s;");
+                                    }
+                                    function demo1() {
+                                        let down = document.getElementById("down");
+                                        let up = document.getElementById("up");
+                                        let dorp = document.getElementById("dorp");
+                                        dorp.setAttribute("style", "display:none;transition: 0.6s;");
+                                        down.setAttribute("style", "cursor:pointer;display:block;transition: 0.6s;");
+                                        up.setAttribute("style", "cursor:pointer;display:none;transition: 0.6s;");
+                                    }
+
         </script>
     </body>
 
