@@ -37,7 +37,8 @@
         <link rel="stylesheet" href="css/custom.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-         
+
+
         <style>
             .dropdown{
                 position: absolute;
@@ -197,25 +198,156 @@
                         <div class="container text-center">
                             <img src="pics/<%=us.getImage()%>" class="img-fluid" style="border-radius:50%;max-width: 130px;">
                             <h2 class="modal-title " id="exampleModalLabel" style="font-weight:bold;"><%=us.getName()%></h2>
+                            <!--user detail-->
+                            <div id="user-detail" style="transition: all 0.4s;">
+                                <table class="table table-striped table-dark">
+
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Name:</th>
+                                            <td><%=us.getName()%></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Id:</th>
+                                            <td><%=us.getSerial_number()%></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email:</th>
+                                            <td><%=us.getEmail()%></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Phone:</th>
+                                            <td><%=us.getPhone_number()%></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Gender:</th>
+                                            <td><%=us.getGender()%></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Address:</th>
+                                            <td><%=us.getAddress_1()%></td> 
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Country:</th>
+                                            <td><%=us.getCountry()%></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">State:</th>
+                                            <td><%=us.getState()%></td> 
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Postal:</th>
+                                            <td><%=us.getPostal_code()%></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Registered on:</th>
+                                            <td><%=us.getRegdate()%></td> 
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--end user detail-->
+
+                            <!--start editing part-->
+                            <div id="edit-user-detail" style="display:none;transition: all 0.4s;">
+                                <h2 class="modal-title " id="exampleModalLabel" style="font-weight:bold;">Edit</h2>
+                                <form action="EditUser" method="POST">
+                                    <table class="table table-striped table-dark ">
+
+
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Name:</th>
+                                                <td><input type="text" required class="form-control" aria-describedby="emailHelp" name="name" value="<%=us.getName()%>"></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Id:</th>
+                                                <td><%=us.getSerial_number()%></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Email:</th>
+                                                <td><input type="email" required class="form-control" name="email" value="<%=us.getEmail()%>"></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Phone:</th>
+                                                <td><input type="phone" required class="form-control" name="phone" value="<%=us.getPhone_number()%>"></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Gender:</th>
+                                                <td><%=us.getGender().toUpperCase()%></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Address:</th>
+                                                <td><textarea rows="3" required class="form-control" name="address"><%=us.getAddress_1()%></textarea></td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Country:</th>
+                                                <td><%=us.getCountry().toUpperCase()%></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">State:</th>
+                                                <td><%=us.getState().toUpperCase()%></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Postal:</th>
+                                                <td><%=us.getPostal_code().toUpperCase()%></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Registered on:</th>
+                                                <td><%=us.getRegdate()%></td> 
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="text-centered">
+                                        <button id="submit" type="submit" class="btn btn-danger">Save Changes</button>
+                                    </div>
+                                </form>
+
+
+                            </div>
+                            <!--end editing part-->
+
                         </div>
-                        
-                       
+
+
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:black">Close</button>
-                        <button type="button" class="btn btn-danger">Edit</button>
+                        <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:black">Close</button>
+                        <button id="edit" type="button" class="btn btn-danger">Edit</button>
                     </div>
                 </div>
             </div>
         </div>
 
 
-
-
-
-
-
         <!--end profile modal-->
+
+
+
+
+
+
 
         <!--addproduct modal-->
 
@@ -242,7 +374,7 @@
 
 
 
-
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="js/jquery.superslides.min.js"></script>
         <script src="js/bootstrap-select.js"></script>
         <script src="js/inewsticker.js"></script>
@@ -272,6 +404,28 @@
                                         up.setAttribute("style", "cursor:pointer;display:none;transition: 0.6s;");
                                     }
 
+        </script>
+
+        <!--its for user detail-->
+        <script>
+            $(document).ready(function () {
+                let status = false;
+                $("#edit").click(function () {
+
+                    if (status === false) {
+                        $("#user-detail").hide();
+                        $("#edit-user-detail").show();
+                        $("#edit").text("Back");
+                        status = true;
+                    } else {
+                        $("#user-detail").show();
+                        $("#edit-user-detail").hide();
+                        $("#edit").text("Edit");
+                        status = false;
+                    }
+                });
+
+            });
         </script>
     </body>
 

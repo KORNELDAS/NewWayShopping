@@ -64,6 +64,9 @@ public class Userdao {
                 user.setCountry(rs.getString("country"));
                 user.setGender(rs.getString("gender"));
                 user.setImage(rs.getString("image"));
+                user.setState(rs.getString("state"));
+                user.setPostal_code(rs.getString("postal_code"));
+                user.setRegdate(rs.getTimestamp("reg_date"));
                 
             }
             
