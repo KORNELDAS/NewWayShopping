@@ -5,17 +5,28 @@
  */
 package servlets;
 
+import com.newwayshopping.dao.Userdao;
+import com.newwayshopping.databases.Database;
+import entities.Users;
+import helper.Helper;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+
 
 /**
  *
  * @author Asus
  */
+@MultipartConfig
 public class EditUser extends HttpServlet {
 
     /**
@@ -35,10 +46,59 @@ public class EditUser extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EditUser</title>");            
+            out.println("<title>Servlet NewServlet</title>");
+
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet EditUser at " + request.getContextPath() + "</h1>");
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            String state = request.getParameter("state");
+            String pin = request.getParameter("pin");
+            
+            //yahi par error aa raha hai jabki kisi or project me use kar rahe hai to ye error nahi aa raha;
+            Part part = request.getPart("image");
+            String path = part.getSubmittedFileName();
+    
+            
+            
+            //this is for fetching current user data 
+            HttpSession hs = request.getSession(false);
+            Users us = (Users) hs.getAttribute("currentUser");
+            
+            //this is for set new data into current user data
+            us.setName(name);
+            us.setEmail(email);
+            us.setPhone_number(phone);
+            us.setAddress_1(address);
+            us.setState(state);
+            us.setPostal_code(pin);
+            us.setImage(path); 
+            
+            
+        
+     
+            //update into databse;
+            Userdao ud = new Userdao(Database.getConnection());
+            boolean ans = ud.updateuser(us);
+            if (ans) {
+                //this is for upload image into server folder pics
+                String path1=request.getRealPath("/")+"pics"+File.separator+us.getImage();
+                Helper.deleteFile(path);
+                
+                if(Helper.saveFile(part.getInputStream(), path)){
+                    out.println("pic uploaded");
+                }
+                else{
+                    out.println("not uploded");
+                }
+                
+                out.println("updated");
+            } else {
+                out.println("no update");
+            }
+
             out.println("</body>");
             out.println("</html>");
         }

@@ -19,6 +19,14 @@
         <servlet-name>EditUser</servlet-name>
         <servlet-class>servlets.EditUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserUpdate</servlet-name>
+        <servlet-class>servlets.UserUpdate</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>folder.NewServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration_servlet</servlet-name>
         <url-pattern>/Registration_servlet</url-pattern>
@@ -34,6 +42,14 @@
     <servlet-mapping>
         <servlet-name>EditUser</servlet-name>
         <url-pattern>/EditUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserUpdate</servlet-name>
+        <url-pattern>/UserUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

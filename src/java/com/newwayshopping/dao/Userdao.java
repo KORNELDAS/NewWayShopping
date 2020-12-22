@@ -76,5 +76,29 @@ public class Userdao {
         }
         return user;
     }
+    
+    public boolean updateuser(Users user){
+        boolean status=false;
+        try{
+            String query="update registration set name=?, email=?, phone_number=?, address_1=?, state=?, postal_code=?,image=? where serial_number=?";
+            PreparedStatement ps=con.prepareStatement(query);
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPhone_number());
+            ps.setString(4, user.getAddress_1());
+            ps.setString(5, user.getState());
+            ps.setString(6, user.getPostal_code());
+            ps.setString(7, user.getImage());
+            ps.setInt(8, user.getSerial_number());
+            ps.executeUpdate();
+            status=true;
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+            
+        }
+        return status;
+        
+    }
 
 }

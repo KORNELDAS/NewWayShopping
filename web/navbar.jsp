@@ -39,6 +39,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+
         <style>
             .dropdown{
                 position: absolute;
@@ -82,6 +83,55 @@
                 border: 10px solid;
                 border-color: transparent transparent black transparent;
             }
+
+            /*for image hoverley effect;*/
+            .middleorder{
+                text-align: center;
+            }
+            .container-image {
+                position: relative;
+
+
+                max-width:130px;
+            }
+
+            .image-hover {
+                opacity: 1;
+                display: block;
+                width: 100%;
+                height: auto;
+                transition: .5s ease;
+                backface-visibility: hidden;
+                border-radius:50%;
+            }
+
+            .middle-image {
+                transition: .5s ease;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                text-align: center;
+                max-width:50px;
+            }
+
+            .container-image:hover .image-hover {
+                opacity: 0.3;
+            }
+
+            .container-image:hover .middle-image {
+                opacity: 1;
+            }
+
+            .text-image {
+                text-align:center;
+                color: black;
+                font-size: 16px;
+
+            }
+            /*end of hoverely effect*/
 
         </style>
 
@@ -185,7 +235,7 @@
 
         <!--profile modal-->
 
-        <div class="modal fade" id="profile-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade animated bounceIn" id="profile-modal" tabindex="-1" role="dialog" aria-labelledby="profile-modal" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-danger">
@@ -196,18 +246,25 @@
                     </div>
                     <div class="modal-body">
                         <div class="container text-center">
-                            <img src="pics/<%=us.getImage()%>" class="img-fluid" style="border-radius:50%;max-width: 130px;">
-                            <h2 class="modal-title " id="exampleModalLabel" style="font-weight:bold;"><%=us.getName()%></h2>
-                            <!--user detail-->
-                            <div id="user-detail" style="transition: all 0.4s;">
+                            <div id="user-detail" style="transition: .4s ease;">
+                                <div class="container d-flex justify-content-center">
+                                    <div class="container-image text-center">
+                                        <img src="pics/default.png"  alt="Avatar" class="image-hover" style="width:100%">
+                                        <div class="middle-image">
+                                            <div class="text-image"><i style="cursor:pointer;" class="fa fa-camera fa-3x"  aria-hidden="true">
+
+                                                </i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <img src="pics/default.png" class="img-fluid" style="border-radius:50%;max-width: 130px;"/>-->
+                                <h2 class="modal-title " id="exampleModalLabel" style="font-weight:bold;"><%=us.getName()%></h2>
+                                <!--user detail-->
+
                                 <table class="table table-striped table-dark">
 
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">Name:</th>
-                                            <td><%=us.getName()%></td>
 
-                                        </tr>
                                         <tr>
                                             <th scope="row">Id:</th>
                                             <td><%=us.getSerial_number()%></td>
@@ -259,16 +316,29 @@
                             <!--end user detail-->
 
                             <!--start editing part-->
-                            <div id="edit-user-detail" style="display:none;transition: all 0.4s;">
+                            <div id="edit-user-detail" style="display:none;transition: .4s ease;">
+                                <div class="container d-flex justify-content-center">
+                                    <div class="container-image text-center">
+                                        <img src="pics/default.png"  alt="Avatar" class="image-hover" style="width:100%">
+                                        <div class="middle-image">
+                                            <div class="text-image"><i style="cursor:pointer;" class="fa fa-camera fa-3x"  aria-hidden="true">
+
+                                                </i></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--  <img src="pics/default.png" class="img-fluid" style="border-radius:50%;max-width: 130px;"/>-->
+                                <h2 class="modal-title " id="exampleModalLabel" style="font-weight:bold;"><%=us.getName()%></h2>
                                 <h2 class="modal-title " id="exampleModalLabel" style="font-weight:bold;">Edit</h2>
-                                <form action="EditUser" method="POST">
+                                <form action="EditUser" method="POST" enctype="multipart/form-data">
                                     <table class="table table-striped table-dark ">
 
 
                                         <tbody>
                                             <tr>
                                                 <th scope="row">Name:</th>
-                                                <td><input type="text" required class="form-control" aria-describedby="emailHelp" name="name" value="<%=us.getName()%>"></td>
+                                                <td><input type="text" required class="form-control"  name="name" value="<%=us.getName()%>"></td>
 
                                             </tr>
                                             <tr>
@@ -278,7 +348,7 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">Email:</th>
-                                                <td><input type="email" required class="form-control" name="email" value="<%=us.getEmail()%>"></td>
+                                                <td><input type="email" required class="form-control form-check " aria-describedby="emailHelp" name="email" value="<%=us.getEmail()%>"></td>
 
                                             </tr>
                                             <tr>
@@ -304,14 +374,46 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">State:</th>
-                                                <td><%=us.getState().toUpperCase()%></td>
+                                                <td>
+
+                                                    <select  name="state" class="wide w-100 form-control" id="state">
+                                                        <option data-display="Select"><%=us.getState()%></option>
+                                                        <option>West Bengal</option>
+                                                        <option>Bihar</option>
+                                                        <option>Delhi</option>
+                                                        <option>UttarPradesh</option>
+                                                        <option>Gujrat</option>
+                                                        <option>Rajasthan</option>
+                                                        <option>Mumbai</option>
+                                                        <option>Telangana</option>
+                                                        <option>Tamil Nadu</option>
+                                                        <option>Karnatka</option>
+                                                        <option>Andhra Pradesh</option>
+                                                        <option>J&K</option>
+                                                        <option>Chattisgarh</option>
+                                                        <option>West Bengal</option>
+                                                        <option>West Bengal</option>
+                                                        <option>West Bengal</option>
+                                                        <option>West Bengal</option>
+                                                        <option>West Bengal</option>
+                                                        <option>West Bengal</option>
+                                                    </select>
+
+                                                </td>
 
                                             </tr>
                                             <tr>
                                                 <th scope="row">Postal:</th>
-                                                <td><%=us.getPostal_code().toUpperCase()%></td>
+                                                <td><input type="text" required class="form-control" name="pin" value="<%=us.getPostal_code()%>"></td>
+
 
                                             </tr>
+                                            <tr>
+                                                <th scope="row">Profile Pic:</th>
+                                                <td><input type="file" class="form-control" name="image"> </td> 
+
+                                            </tr>
+
                                             <tr>
                                                 <th scope="row">Registered on:</th>
                                                 <td><%=us.getRegdate()%></td> 
@@ -396,12 +498,16 @@
                                         up.setAttribute("style", "cursor:pointer;display:block;transition: 0.6s;");
                                     }
                                     function demo1() {
+                                        let userdetail = document.getElementById("user-detail");
+                                        let edituserdetail = document.getElementById("edit-user-detail");
                                         let down = document.getElementById("down");
                                         let up = document.getElementById("up");
                                         let dorp = document.getElementById("dorp");
                                         dorp.setAttribute("style", "display:none;transition: 0.6s;");
                                         down.setAttribute("style", "cursor:pointer;display:block;transition: 0.6s;");
                                         up.setAttribute("style", "cursor:pointer;display:none;transition: 0.6s;");
+                                        // userdetail.setAttribute("style","display:block;");
+                                        //edituserdetail.setAttribute("style","display:none;");
                                     }
 
         </script>
@@ -427,6 +533,7 @@
 
             });
         </script>
+        
     </body>
 
 </html>
