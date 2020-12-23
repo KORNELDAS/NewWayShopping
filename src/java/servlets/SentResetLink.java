@@ -5,31 +5,26 @@
  */
 package servlets;
 
-import com.newwayshopping.dao.Userdao;
 import com.newwayshopping.databases.Database;
-import entities.Message;
-import entities.Users;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import mailing.SendingMail;
 import passEncrypt.EncryptText;
 
 /**
  *
- * @author Asus
+ * @author gagan
  */
-public class Login extends HttpServlet {
+public class SentResetLink extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,41 +40,30 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            
-            //fetch data from database;
-            
-            String userEmail=request.getParameter("email");
-            String userPwd=request.getParameter("pass");
-            userPwd=EncryptText.getEncrypted(EncryptText.getEncrypted(EncryptText.getEncrypted(userPwd, "MD5"), "SHA-1"), "MD5");
-            
-            Userdao ud=new Userdao(Database.getConnection());
-            Users us=ud.getUserByEmailAndPass(userEmail, userPwd);
-            
-            if(us==null){
-                //for error;
-                Message msg=new Message("Invalid user please Try again !","error","alert-danger");
-               HttpSession hp=request.getSession();
-               hp.setAttribute("user1",msg);
-                response.sendRedirect("login.jsp");
+            Random r = new Random();
+            String email = request.getParameter("email");
+            String key = EncryptText.getEncrypted(email+r.nextInt(1000),"MD5");
+            String link = "http://localhost:8083/NewWayShopping/forgotpwd.jsp?key="+key;
+            SendingMail.send(email, "Reset Password Link", link);
+            Connection con = null;
+            PreparedStatement ps = null;
+            try{
+                con = Database.getConnection();
+                ps = con.prepareStatement("insert into reset_link(Email,res_key) values(?,?)");
+                ps.setString(1, email);
+                ps.setString(2, key);
+                ps.executeUpdate();
+            }catch(Exception e){
+                out.print("Reset 2nd Time");
+                try{
+                ps = con.prepareStatement("update reset_link set res_key=? where Email=?");
+                ps.setString(1, key);
+                ps.setString(2, email);
+                ps.executeUpdate();
+                }catch(Exception e1){
+                    out.print(e1.getMessage());
+                }
             }
-            else{
-                //for success
-                HttpSession hsp=request.getSession();
-                hsp.setAttribute("currentUser", us);
-                response.sendRedirect("welcome.jsp");
-    
-            }
-           
-            out.println("</body>");
-            out.println("</html>");
-            
-            
         }
     }
 
@@ -94,7 +78,7 @@ public class Login extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException{
         processRequest(request, response);
     }
 

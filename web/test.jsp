@@ -14,11 +14,8 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        
-        <%
-            int i=5/0;
-        
-        
-        %>
+        <form>
+            <input type="text" style="border-radius: 10px"/>
+        </form>
     </body>
 </html>

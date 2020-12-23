@@ -13,5 +13,21 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <%
+            if(request.getParameter("key")==null){
+        %>
+        <form action="SentResetLink" method="get">
+            <input name="email" type="text" />
+            <input type="submit" value="send mail"/>    
+        </form>
+        <% }
+            else{%>
+            <form action="ResetPassword" method="post">
+                <input type="hidden" name="key" value="<% out.print(request.getParameter("key")); %>"/>
+                <input name="pass" type="password" />
+                <input type="submit" value="Reset Pass"/>  
+            </form>
+            <%}%>
+
     </body>
 </html>

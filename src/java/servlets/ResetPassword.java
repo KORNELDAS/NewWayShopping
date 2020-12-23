@@ -5,31 +5,18 @@
  */
 package servlets;
 
-import com.newwayshopping.dao.Userdao;
-import com.newwayshopping.databases.Database;
-import entities.Message;
-import entities.Users;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import passEncrypt.EncryptText;
 
 /**
  *
- * @author Asus
+ * @author gagan
  */
-public class Login extends HttpServlet {
+public class ResetPassword extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,41 +32,15 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
-            out.println("</head>");
-            out.println("<body>");
             
-            //fetch data from database;
+            String key = request.getParameter("key");
+            String pass = request.getParameter("pass");
+            /*
+                select email from reset_link where key=?
+                
+                update registration set password=? where Email =?
             
-            String userEmail=request.getParameter("email");
-            String userPwd=request.getParameter("pass");
-            userPwd=EncryptText.getEncrypted(EncryptText.getEncrypted(EncryptText.getEncrypted(userPwd, "MD5"), "SHA-1"), "MD5");
-            
-            Userdao ud=new Userdao(Database.getConnection());
-            Users us=ud.getUserByEmailAndPass(userEmail, userPwd);
-            
-            if(us==null){
-                //for error;
-                Message msg=new Message("Invalid user please Try again !","error","alert-danger");
-               HttpSession hp=request.getSession();
-               hp.setAttribute("user1",msg);
-                response.sendRedirect("login.jsp");
-            }
-            else{
-                //for success
-                HttpSession hsp=request.getSession();
-                hsp.setAttribute("currentUser", us);
-                response.sendRedirect("welcome.jsp");
-    
-            }
-           
-            out.println("</body>");
-            out.println("</html>");
-            
-            
+            */
         }
     }
 

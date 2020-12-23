@@ -242,11 +242,6 @@
                                         <option>J&K</option>
                                         <option>Chattisgarh</option>
                                         <option>West Bengal</option>
-                                        <option>West Bengal</option>
-                                        <option>West Bengal</option>
-                                        <option>West Bengal</option>
-                                        <option>West Bengal</option>
-                                        <option>West Bengal</option>
                                     </select>
                                     <div class="invalid-feedback">State required </div>
                                 </div>

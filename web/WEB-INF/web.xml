@@ -27,6 +27,14 @@
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>folder.NewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SentResetLink</servlet-name>
+        <servlet-class>servlets.SentResetLink</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResetPassword</servlet-name>
+        <servlet-class>servlets.ResetPassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration_servlet</servlet-name>
         <url-pattern>/Registration_servlet</url-pattern>
@@ -50,6 +58,14 @@
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SentResetLink</servlet-name>
+        <url-pattern>/SentResetLink</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPassword</servlet-name>
+        <url-pattern>/ResetPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

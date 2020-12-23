@@ -52,9 +52,7 @@ public class Registration_servlet extends HttpServlet {
             String s2 = request.getParameter("email");
             String s3 = request.getParameter("password");
             s3 = EncryptText.getEncrypted(EncryptText.getEncrypted(EncryptText.getEncrypted(s3, "MD5"), "SHA-1"), "MD5");
-            String s4 = request.getParameter("password1");
-            s4 = EncryptText.getEncrypted(EncryptText.getEncrypted(EncryptText.getEncrypted(s4, "MD5"), "SHA-1"), "MD5");
-            String s5 = request.getParameter("phone");
+             String s5 = request.getParameter("phone");
             String s6 = request.getParameter("phone1");
             String s7 = request.getParameter("dob");
             String s8 = request.getParameter("gen");
@@ -64,7 +62,7 @@ public class Registration_servlet extends HttpServlet {
             String s12 = request.getParameter("state");
             String s13 = request.getParameter("pin");
           //  String s14 = request.getParameter("myfile");
-               Users use = new Users(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13);  
+               Users use = new Users(s1, s2, s3, s5, s6, s7, s8, s9, s10, s11, s12, s13);  
                 
                 Userdao ud = new Userdao(Database.getConnection());
                 if (ud.saveUser(use)) {

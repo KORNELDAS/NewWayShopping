@@ -8,7 +8,6 @@ public class Users {
     private String name;
     private String email;
     private String password;
-    private String confirm_password;
     private String phone_number;
     private String alternative_phone_number;
     private String date_of_birth;
@@ -25,11 +24,11 @@ public class Users {
     
    
 
-    public Users(String name, String email, String password, String confirm_password, String phone_number, String alternative_phone_number, String date_of_birth, String gender, String address_1, String address_2, String country, String state, String postal_code) {
+    public Users(String name, String email, String password, String phone_number, String alternative_phone_number, String date_of_birth, String gender, String address_1, String address_2, String country, String state, String postal_code) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.confirm_password = confirm_password;
+        
         this.phone_number = phone_number;
         this.alternative_phone_number = alternative_phone_number;
         this.date_of_birth = date_of_birth;
@@ -80,13 +79,7 @@ public class Users {
         this.password = password;
     }
 
-    public String getConfirm_password() {
-        return confirm_password;
-    }
 
-    public void setConfirm_password(String confirm_password) {
-        this.confirm_password = confirm_password;
-    }
 
     public String getPhone_number() {
         return phone_number;
