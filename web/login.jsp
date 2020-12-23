@@ -36,12 +36,12 @@
     </head>
     <body>
         <%@include file="header.jsp" %>
-        <div class="container  d-flex justify-content-center ">
-            <div class="card my-3" style="width: 28rem;">
+        <div class="container  d-flex justify-content-center my-3">
+            <div class="card " style="width: 28rem;;">
 
 
-                <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
+                <div class="jumbotron jumbotron-fluid bg-light">
+                    <div class="container bg-light">
                         <%
                         Message sure=(Message)session.getAttribute("user1");
                         if(sure!=null){
@@ -53,30 +53,30 @@
                             session.removeAttribute("user1");
                         }
                         %>
-                        <h1 style="text-decoration:underline " align="center">LOG IN</h1>
+                        <h1 style="text-decoration:underline ;font-weight: bolder" align="center">LOG IN</h1>
 
                         <form action="Login " method="Post">
 
                             <!--code for email-->
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" required="" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                <label for="exampleInputEmail1" style="color:black;">Email address</label>
+                                <input type="email" required name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <small id="emailHelp" class="form-text text-dark">We'll never share your email with anyone else.</small>
                             </div>
 
                             <!--code for password-->
 
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" required="" name="pass" class="form-control" id="exampleInputPassword1">
+                                <label for="exampleInputPassword1" style="color:black;">Password</label>
+                                <input type="password" required name="pass" class="form-control" id="exampleInputPassword1">
                             </div>
 
                             <!--code for check box-->
 
                             <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                                <label class="form-check-label" for="exampleCheck1" style="color:black;">Check me out</label>
                             </div>
 
                             <!--code for submit-->
@@ -85,19 +85,12 @@
                                 <button  type="submit" class="btn btn-primary" style='font-size:25px'>Submit</button>
                             </div>
 
-                            <a href="register_1.jsp"><h4 style="color:blue;font-weight: bolder">Don't have account?</h4></a>
-                            <a href="#"><h4 style="color:blue;font-weight: bolder">Forget Password?</h4></a>
+                            <a href="register_1.jsp" ><h4 style="color:gray;font-weight: bolder">Don't have account?</h4></a>
+                            <a href="#"><h4 style="color:gray;font-weight: bolder">Forget Password?</h4></a>
 
                             <!--code for icon-->
 
-                            <hr>
-                            <h3 style="text-align: center">Also Login with</h3><svg class="bi bi-alert-triangle text-success" width="32" height="32" viewBox="0 0 20 20" color="red">
-                            <div style="text-align: center">
-                                <a href="#"> <i class='fab fa-google-plus' style='font-size:40px;color:red;margin-right: 15px'></i></a>
-                                <a href="#"> <i class='fab fa-facebook' style='font-size:40px;color:blue;margin-right: 15px'></i></a>
-                                <a href="#"> <i class='fab fa-twitter' style='font-size:40px;color:lightblue;margin-right: 15px'></i></a>
-                                <a href="#"> <i class='fab fa-github' style='font-size:40px;color:black;margin-right: 15px'></i></a>
-                            </div>
+                          
                         </form>
                     </div>
                 </div>

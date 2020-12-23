@@ -86,7 +86,7 @@ public class EditUser extends HttpServlet {
                 }
                 if (Helper.saveFile(part.getInputStream(), newpath)) {
                     out.println("pic uploaded");
-                    
+                    response.sendRedirect("welcome.jsp");
                 } else {
                     out.println("not uploded");
                 }
