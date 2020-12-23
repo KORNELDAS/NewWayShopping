@@ -198,7 +198,7 @@
                     </div>
                     <div class=" bg-grey">
                         <div class="media d-flex align-items-center">
-                            <img src="images/error.png" alt="..." width="50" height="50" class=" rounded-circle img-thumbnail shadow-sm">
+                            <img src="pics/<%=us.getImage()%>" alt="..." width="50" height="50" class=" rounded-circle img-thumbnail shadow-sm">
                             <div class="media-body d-flex">
                                 <h4 class=" text-dark" style="font-weight:bolder;"><%=us.getName()%></h4>
                                 <i id="down" onclick="demo()" class="fa fa-chevron-down text-dark" style="cursor:pointer;"  aria-hidden="true"></i>
@@ -249,7 +249,7 @@
                             <div id="user-detail" style="transition: .4s ease;">
                                 <div class="container d-flex justify-content-center">
                                     <div class="container-image text-center">
-                                        <img src="pics/default.png"  alt="Avatar" class="image-hover" style="width:100%">
+                                        <img src="pics/<%=us.getImage()%>"  alt="Avatar" class="image-hover" style="width:100%">
                                         <div class="middle-image">
                                             <div class="text-image"><i style="cursor:pointer;" class="fa fa-camera fa-3x"  aria-hidden="true">
 
@@ -319,7 +319,7 @@
                             <div id="edit-user-detail" style="display:none;transition: .4s ease;">
                                 <div class="container d-flex justify-content-center">
                                     <div class="container-image text-center">
-                                        <img src="pics/default.png"  alt="Avatar" class="image-hover" style="width:100%">
+                                        <img src="pics/<%=us.getImage()%>"  alt="Avatar" class="image-hover" style="width:100%">
                                         <div class="middle-image">
                                             <div class="text-image"><i style="cursor:pointer;" class="fa fa-camera fa-3x"  aria-hidden="true">
 
