@@ -5,12 +5,17 @@
  */
 package servlets;
 
+import com.newwayshopping.databases.Database;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import passEncrypt.EncryptText;
 
 /**
  *
@@ -34,7 +39,26 @@ public class ResetPassword extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             String key = request.getParameter("key");
+            out.println(key);
             String pass = request.getParameter("pass");
+            pass= EncryptText.getEncrypted(EncryptText.getEncrypted(EncryptText.getEncrypted(pass, "MD5"), "SHA-1"), "MD5");
+            
+            try{
+                Connection con=Database.getConnection();
+                PreparedStatement ps=con.prepareStatement("select Email from reset_link where res_key=?");
+                ps.setString(1,key);
+                ResultSet rs=ps.executeQuery();
+                if(rs.next()){
+                    String email=rs.getString("Email");
+                    PreparedStatement ps1=con.prepareStatement("update registration set password=? where email=?");
+                    ps1.setString(1, pass);
+                    ps1.setString(2,email);
+                    ps1.executeUpdate();
+                    response.sendRedirect("login.jsp");
+                }
+            }catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
             /*
                 select email from reset_link where key=?
                 
