@@ -86,7 +86,7 @@
                             </div>
 
                             <a href="register_1.jsp" ><h4 style="color:gray;font-weight: bolder">Don't have account?</h4></a>
-                            <a href="#"><h4 style="color:gray;font-weight: bolder">Forget Password?</h4></a>
+                            <a href="forgotpwd.jsp"><h4 style="color:gray;font-weight: bolder">Forget Password?</h4></a>
 
                             <!--code for icon-->
 
