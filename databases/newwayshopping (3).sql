@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3308
--- Generation Time: Dec 25, 2020 at 09:37 AM
+-- Generation Time: Dec 29, 2020 at 01:24 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -32,7 +32,10 @@ CREATE TABLE `product` (
   `product_name` varchar(100) NOT NULL,
   `product_type` varchar(100) NOT NULL,
   `product_cost` varchar(100) NOT NULL,
-  `product_image` varchar(50) NOT NULL
+  `product_image` varchar(50) NOT NULL,
+  `start_date` varchar(200) NOT NULL,
+  `end_date` varchar(200) NOT NULL,
+  `puser` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -55,7 +58,7 @@ CREATE TABLE `registration` (
   `country` varchar(50) NOT NULL,
   `state` varchar(50) NOT NULL,
   `postal_code` int(10) NOT NULL,
-  `image` varchar(500) DEFAULT NULL,
+  `image` varchar(500) DEFAULT 'default.png',
   `reg_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -85,7 +88,7 @@ CREATE TABLE `reset_link` (
 
 INSERT INTO `reset_link` (`Sl_No`, `Email`, `res_key`) VALUES
 (15, 'gagan.training@gmail.com', '5514b4b4748d01ea4f0d38e4cc385f50'),
-(18, 'sachisabya41999@gmail.com', 'f64e465a39b22f54357fa7fbc22fbc09');
+(18, 'sachisabya41999@gmail.com', 'e6126ef30e28b1af14b7983075fcbd9f');
 
 -- --------------------------------------------------------
 
@@ -135,7 +138,8 @@ INSERT INTO `test` (`email`, `password`, `pic`, `name1`) VALUES
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`);
+  ADD PRIMARY KEY (`product_id`),
+  ADD KEY `users` (`puser`);
 
 --
 -- Indexes for table `registration`
@@ -165,25 +169,35 @@ ALTER TABLE `saler`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(250) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `serial_number` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `serial_number` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `reset_link`
 --
 ALTER TABLE `reset_link`
-  MODIFY `Sl_No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Sl_No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `saler`
 --
 ALTER TABLE `saler`
   MODIFY `saler_id` int(250) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `users` FOREIGN KEY (`puser`) REFERENCES `registration` (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

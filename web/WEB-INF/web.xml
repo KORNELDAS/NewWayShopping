@@ -35,6 +35,10 @@
         <servlet-name>ResetPassword</servlet-name>
         <servlet-class>servlets.ResetPassword</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddProduct</servlet-name>
+        <servlet-class>servlets.AddProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration_servlet</servlet-name>
         <url-pattern>/Registration_servlet</url-pattern>
@@ -66,6 +70,10 @@
     <servlet-mapping>
         <servlet-name>ResetPassword</servlet-name>
         <url-pattern>/ResetPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProduct</servlet-name>
+        <url-pattern>/AddProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

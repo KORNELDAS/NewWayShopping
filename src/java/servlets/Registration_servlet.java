@@ -68,43 +68,12 @@ public class Registration_servlet extends HttpServlet {
                 if (ud.saveUser(use)) {
                    
                     out.println("done");
-                  /*  out.println(s1);
-                    out.println(s2);
-                    out.println(s3);
-                    out.println(s4);
-                    out.println(s5);
-                    out.println(s6);
-                    out.println(s7);
-                    out.println(s8);
-                    out.println(s9);
-                    out.println(s10);
-                    out.println(s11);
-                    out.println(s12);
-                    out.println(s13);
-                   // out.println(s14);
-                    String send=String.valueOf(status);
-                    request.setAttribute("fetch","hello");
-                    RequestDispatcher rd=request.getRequestDispatcher("register_1.jsp");
-                    rd.forward(request, response);
-                 //   response.sendRedirect("register_1.jsp");*/
+                 
 
                 } else {
                    
                     out.println("something error");
-                    /* out.println(s1);
-                    out.println(s2);
-                    out.println(s3);
-                    out.println(s4);
-                    out.println(s5);
-                    out.println(s6);
-                    out.println(s7);
-                    out.println(s8);
-                    out.println(s9);
-                    out.println(s10);
-                    out.println(s11);
-                    out.println(s12);
-                    out.println(s13);
-                   // out.println(s14);*/
+                 
                 }
             }
 

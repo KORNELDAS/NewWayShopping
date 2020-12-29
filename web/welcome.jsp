@@ -14,6 +14,7 @@
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page errorPage="error_page.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -438,9 +439,10 @@
             </div>
         </div>
         
-        
-        <!--Addroduct modal-->
-        
+         <!--end-->
+        <!-- End Instagram Feed  -->
+        <%@include file="footer.jsp" %>
+         
         
         
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -452,9 +454,7 @@
         
         
         
-        <!--end-->
-        <!-- End Instagram Feed  -->
-        <%@include file="footer.jsp" %>
+       
         
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>
