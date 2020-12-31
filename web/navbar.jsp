@@ -266,7 +266,7 @@
                             <li class="nav-item"><a class="nav-link" href="about.jsp" >About Us</a></li>
 
                             <li class="nav-item"><a class="nav-link" href="addproduct.jsp" data-toggle="modal"  data-target="#exampleModal">AddProduct</a></li>
-                            <li class="nav-item"><a class="nav-link" href="bidprodeuct" >BidProduct</a></li>
+                            <li class="nav-item"><a class="nav-link" href="test.jsp" >BidProduct</a></li>
                             <li class="nav-item"><a class="nav-link" href="services.jsp" >OurService</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp" >Contact Us</a></li>
                             <li class="nav-item"><a class="nav-link" ><i class="fa fa-bell" aria-hidden="true"></i></a></li>

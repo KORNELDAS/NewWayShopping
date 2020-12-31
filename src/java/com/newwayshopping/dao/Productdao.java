@@ -3,6 +3,13 @@ package com.newwayshopping.dao;
 import entities.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import static java.util.Collections.list;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Productdao {
@@ -33,5 +40,32 @@ public class Productdao {
         }
 
         return flag;
+    }
+    
+    public ArrayList<Product> getProduct(String email){
+        ArrayList<Product> list=new ArrayList<>();
+        try {
+            String query="select * from product where puser=?";
+            PreparedStatement ps=con.prepareStatement(query);
+            ps.setString(1, email);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                int pid=rs.getInt("product_id");
+                
+                String pname=rs.getString("product_name");
+                String ptype=rs.getString("product_type");
+                String pcost=rs.getString("product_cost");
+                String pimage=rs.getString("product_image");
+                String start_date=rs.getString("start_date");
+                String end_date=rs.getString("end_date");
+                String puser=rs.getString("puser");
+                Product product=new Product(pid,pname,ptype,pcost,pimage,start_date,end_date,puser);
+                list.add(product);
+            }
+            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
     }
 }
