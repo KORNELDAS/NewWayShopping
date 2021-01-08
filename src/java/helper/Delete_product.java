@@ -7,8 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.websocket.ClientEndpoint;
+
 
 public class Delete_product {
+ 
     public static int delete1(int id){
         return id+100;
         

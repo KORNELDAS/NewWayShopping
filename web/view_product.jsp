@@ -8,10 +8,10 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%
- HttpSession hs1=request.getSession(false);
- if(hs1.getAttribute("currentUser")==null){ 
-     response.sendRedirect("index.jsp");
- }
+    HttpSession hs1 = request.getSession(false);
+    if (hs1.getAttribute("currentUser") == null) {
+        response.sendRedirect("index.jsp");
+    }
 
 
 %>
@@ -50,6 +50,16 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+            .cros-but{
+                color: black;
+                transition: 0.5s ease;
+            }
+            .cros-but:hover{
+                color: #17a2b8;
+                transition: 0.5s ease;
+            }
+        </style>
     </head>
     <body>
         <%@include file="navbar.jsp" %>
@@ -59,11 +69,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>Added Product</h2>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                            <li class="breadcrumb-item active">Cart</li>
-                        </ul>
+                        <h2>Your Added Product</h2>
+                        
                     </div>
                 </div>
             </div>
@@ -88,51 +95,55 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%
-                                        Users users1=(Users)session.getAttribute("currentUser");
-                                       
-                                        Productdao pr=new Productdao(Database.getConnection());
-                                        ArrayList<Product> list=pr.getProduct(users1.getEmail());
-                                      
-                                        for(Product li:list){
-                                            
+                                    <%                                        Users users1 = (Users) session.getAttribute("currentUser");
+
+                                        Productdao pr = new Productdao(Database.getConnection());
+                                        ArrayList<Product> list = pr.getProduct(users1.getEmail());
+
+                                        int k = 0;
+                                        for (Product li : list) {
+
+                                            k++;
                                     %>
-                                    <tr id="<%= li.getProduct_id() %>">
+                                    <tr id="<%= k%>">
                                         <td class="thumbnail-img">
                                             <a href="#">
-                                                <img class="img-fluid" src="product_image/<%=li.getProduct_image() %>" alt="" />
+                                                <img class="img-fluid" src="product_image/<%=li.getProduct_image()%>" alt="" />
                                             </a>
                                         </td>
                                         <td class="name-pr">
                                             <a href="#">
-                                                <%= li.getProduct_name() %>
+                                                <%= li.getProduct_name()%>
                                             </a>
                                         </td>
                                         <td class="price-pr">
-                                            <p><%= li.getProduct_cost() %></p>
+                                            <p><%= li.getProduct_cost()%></p>
                                         </td>
-                                        <td class="quantity-box"><%= li.getProduct_type() %></td>
+                                        <td class="quantity-box"><%= li.getProduct_type()%></td>
                                         <td class="total-pr">
                                             <p>$ 80.0</p>
                                         </td>
-                                        <td class="remove-pr">
-                                            <a href="#">
-                                                <i class="fas fa-times" onclick="deletpro(<%= li.getProduct_id() %>)"></i>
-                                            </a>
+                                        <td class="remove-r">
+
+                                            <form action="DeleteProduct" id="<%= li.getProduct_id()%>" method="post">
+                                                <input type="hidden" name="del_id" value="<%= li.getProduct_id()%>">
+                                            </form>
+                                            <i class="fas fa-times cros-but" onclick="deletpro(<%= k%>,<%= li.getProduct_id()%>)"></i>
+
                                         </td>
                                     </tr>
-                                    
+
                                     <%
-                                    }
+                                        }
                                     %>
-                               
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
 
-             
+
 
             </div>
         </div>-
@@ -225,15 +236,15 @@
         </div>
         <!-- End Instagram Feed  -->
 
-      <%@include file="footer.jsp" %>
+        <%@include file="footer.jsp" %>
 
 
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-         
+
 
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>
@@ -250,23 +261,40 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
-        
+
         <!--its for deleting product from database-->
         <script>
-            
-            function deletpro(id){
-                document.getElementById(id).style.display="none";
-                let itr1=100;
-                console.log(itr1);
+                                                function deletpro(k, id) {
+                                                    let tbrow = document.getElementById(k);
+                                                    let dele_frm = document.getElementById(id);
+                                                    swal({
+                                                        title: "Are you sure?",
+                                                        text: "Once deleted, you will not be able to recover this Product",
+                                                        icon: "warning",
+                                                        buttons: true,
+                                                        dangerMode: true
+                                                    })
+                                                            .then((willDelete) => {
+                                                                if (willDelete) {
+                                                                    tbrow.style.display = "none";
 
-               var myClass = Java.type("helper.Delete_product");
-               let itr=myClass.delete1(id);
-                
-                print(itr);
-            }
-            
+                                                                    swal("Successfully Registered", "Click on the ok button for redirecting to login page", "success")
+                                                                            .then((value) => {
+                                                                                dele_frm.submit();
+                                                                            });
+                                                                } else {
+                                                                    swal("Your Product is safe!");
+                                                                }
+                                                            });
+
+                                                }
+
+
         </script>
-        
+
+
+
+
         <!--End-->
 
     </body>

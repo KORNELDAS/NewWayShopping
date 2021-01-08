@@ -8,7 +8,7 @@ public class Database {
     private static  Connection con;
     public static Connection getConnection() {
         try{
-          Thread.sleep(4000);
+          Thread.sleep(2000);
             if(con==null){
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3308/newwayshopping", "root", "");

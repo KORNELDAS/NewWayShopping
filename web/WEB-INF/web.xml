@@ -39,6 +39,14 @@
         <servlet-name>AddProduct</servlet-name>
         <servlet-class>servlets.AddProduct</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>userServlet</servlet-name>
+        <servlet-class>servlets.Product_delete</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteProduct</servlet-name>
+        <servlet-class>servlets.DeleteProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration_servlet</servlet-name>
         <url-pattern>/Registration_servlet</url-pattern>
@@ -74,6 +82,14 @@
     <servlet-mapping>
         <servlet-name>AddProduct</servlet-name>
         <url-pattern>/AddProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userServlet</servlet-name>
+        <url-pattern>/userServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteProduct</servlet-name>
+        <url-pattern>/DeleteProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

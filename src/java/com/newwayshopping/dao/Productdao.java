@@ -42,6 +42,8 @@ public class Productdao {
         return flag;
     }
     
+    
+  // this is for user saw their product which he added  
     public ArrayList<Product> getProduct(String email){
         ArrayList<Product> list=new ArrayList<>();
         try {
@@ -67,5 +69,61 @@ public class Productdao {
             System.out.println(ex.getMessage());
         }
         return list;
+    }
+    
+    
+    //this is for product showing in index.jsp from database
+      public ArrayList<Product> getProduct1(){
+        ArrayList<Product> list=new ArrayList<>();
+        try {
+            String query="select * from product";
+            PreparedStatement ps=con.prepareStatement(query);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                int pid=rs.getInt("product_id");
+                
+                String pname=rs.getString("product_name");
+                String ptype=rs.getString("product_type");
+                String pcost=rs.getString("product_cost");
+                String pimage=rs.getString("product_image");
+                String start_date=rs.getString("start_date");
+                String end_date=rs.getString("end_date");
+                String puser=rs.getString("puser");
+                Product product=new Product(pid,pname,ptype,pcost,pimage,start_date,end_date,puser);
+                list.add(product);
+            }
+            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+      
+     //this is for product showing in welcome.jsp from database
+       public ArrayList<Product> getProduct_welcome(String email){
+        ArrayList<Product> list1=new ArrayList<>();
+        try {
+            String query="select * from product where not puser=?";
+            PreparedStatement ps=con.prepareStatement(query);
+            ps.setString(1, email);
+            ResultSet rs=ps.executeQuery(); 
+            while(rs.next()){
+                int pid=rs.getInt("product_id");
+                
+                String pname=rs.getString("product_name");
+                String ptype=rs.getString("product_type");
+                String pcost=rs.getString("product_cost");
+                String pimage=rs.getString("product_image");
+                String start_date=rs.getString("start_date");
+                String end_date=rs.getString("end_date");
+                String puser=rs.getString("puser");
+                Product product=new Product(pid,pname,ptype,pcost,pimage,start_date,end_date,puser);
+                list1.add(product);
+            }
+            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list1;
     }
 }

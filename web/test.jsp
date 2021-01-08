@@ -22,28 +22,20 @@
     </head>
     <body>
         <%
-                                        Users users1=(Users)session.getAttribute("currentUser");
-                                        out.println(users1.getEmail());
-//                                        Productdao pr=new Productdao(Database.getConnection());
-//                                        ArrayList<Product> list=pr.getProduct(users1.getEmail());
-//                                        out.println("hello");
-//                                        for(Product li:list){
-//                                            out.println(li.getEnd_date());
-//                                        }
-                                        
-                                       Connection con=Database.getConnection();
-                                        out.println(con);
-                                       String q="select * from product where puser=?";
-                                        PreparedStatement ps=con.prepareStatement(q);
-                                        ps.setString(1, users1.getEmail());
-                                       ResultSet rs=ps.executeQuery();
-                                       if(rs.next()){
-                                            out.println(rs.getString("product_name"));
-                                       }
-//                                        while(rs.next()){
-//                                            out.println(rs.getString("product_name"));
-//                                        }
-                                            
-                                    %>
+            try {
+
+                int id = Integer.parseInt(request.getParameter("del_id"));
+
+                Connection con = Database.getConnection();
+                String query = "delete from product where product_id=?";
+                PreparedStatement ps = con.prepareStatement(query);
+                ps.setInt(1, id);
+                ps.executeUpdate();
+                response.sendRedirect("view_product.jsp");
+
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        %>
     </body>
 </html>

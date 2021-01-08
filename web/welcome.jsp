@@ -3,6 +3,10 @@
     Created on : 15 Dec, 2020, 11:55:03 AM
     Author     : Asus
 --%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="entities.Product"%>
+<%@page import="com.newwayshopping.dao.Productdao"%>
+<%@page import="com.newwayshopping.databases.Database"%>
 <%@page import="entities.Users"%>
 <%
     Users user = (Users) session.getAttribute("currentUser");
@@ -35,14 +39,51 @@
         <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
         <!-- Bootstrap CSS -->
-        
+
         <!-- Site CSS -->
         <link rel="stylesheet" href="css/style.css">
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="css/responsive.css">
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
-         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <style>
+            .count-time{
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                color: white;
+                font-weight: bolder;
+                width: 120px;
+                height: 30px;
+                text-align: center;
+                font-size: 15px;
+            }
+            .bid-buttons{
+                position: absolute;
+                z-index: 1;
+                top: 40%;
+                left: 42%;
+                color: white;
+                font-weight: bolder;
+                width:60px;
+                height: 40px;
+                font-size: 25px;
+                border: 2px solid black;
+                border-radius: 8px;
+                text-align: center;
+                cursor: pointer;
+                display: none;
+                transition: 0.5s ease!important;
+            }
+            .bid-buttons:hover{
+                background-color: black!important;
+                transition: 0.5s ease !important;
+            }
+            
+        </style>
     </head>
     <body>
         <%@include file="navbar.jsp" %>
@@ -99,36 +140,36 @@
         <div class="categories-shop">
             <div class="container">
                 <div class="row">
+                    <%
+                        Productdao pr = new Productdao(Database.getConnection());
+                      
+                        ArrayList<Product> list1 = pr.getProduct_welcome(user.getEmail());
+                       int k=0;
+                        for (Product lit : list1) {
+                         k++;
+                    %>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/t-shirts-img.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">T-shirts</a>
+
+                        <div class="shop-cat-box" onmouseover="bid_butt(<%= lit.getProduct_id() %>)" onmouseout="bid_butt_1(<%= lit.getProduct_id() %>)">
+                            <div class="count-time bg-danger">
+                                10h 24m 40s
+                            </div>
+                            <form id="<%= k %>" action="product-detail.jsp" method="post">
+                                <input type="hidden" name="id#" value="<%= lit.getProduct_id() %>">
+                               
+                            </form>
+                            <div class="bid-buttons bg-danger" id="<%= lit.getProduct_id() %>" onclick="product_det(<%= k %>)">
+                                 Bid
+                            </div>
+                            <img class="img-fluid" src="product_image/<%= lit.getProduct_image()%>" alt="" style="height:300px;"/>
+                            <a class="btn hvr-hover" href="#"><%= lit.getProduct_name()%></a>
                         </div>
-                        <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/shirt-img.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Shirt</a>
-                        </div>
+
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/wallet-img.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Wallet</a>
-                        </div>
-                        <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/women-bag-img.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Bags</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/shoes-img.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Shoes</a>
-                        </div>
-                        <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/women-shoes-img.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Women Shoes</a>
-                        </div>
-                    </div>
+                    <%
+                        }
+                    %>
+                   
                 </div>
             </div>
         </div>
@@ -438,24 +479,24 @@
                 </div>
             </div>
         </div>
-        
-         <!--end-->
+
+        <!--end-->
         <!-- End Instagram Feed  -->
         <%@include file="footer.jsp" %>
-         
-        
-        
-          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-        
-        
-        
-        
-        
-       
-        
+
+
+
+
+
+
+
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -471,6 +512,24 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
+        
+        <script>
+            function bid_butt(id){
+                let bid1=document.getElementById(id);
+                bid1.style.display="block";
+            }
+            function bid_butt_1(id){
+                let bid2=document.getElementById(id);
+                bid2.style.display="none";
+            }
+            
+            function product_det(k){
+               let sub=document.getElementById(k);
+               sub.submit();
+            }
+            
+           
+        </script>
 
     </body>
 </html>
