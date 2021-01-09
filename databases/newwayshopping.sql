@@ -2,8 +2,8 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3308
--- Generation Time: Dec 29, 2020 at 01:24 PM
+-- Host: localhost:3008
+-- Generation Time: Jan 09, 2021 at 10:35 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -33,10 +33,19 @@ CREATE TABLE `product` (
   `product_type` varchar(100) NOT NULL,
   `product_cost` varchar(100) NOT NULL,
   `product_image` varchar(50) NOT NULL,
+  `product_image_1` varchar(50) NOT NULL,
+  `product_image_2` varchar(50) NOT NULL,
   `start_date` varchar(200) NOT NULL,
   `end_date` varchar(200) NOT NULL,
   `puser` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `product_name`, `product_type`, `product_cost`, `product_image`, `product_image_1`, `product_image_2`, `start_date`, `end_date`, `puser`) VALUES
+(15, 'avatar', 'Clothes(Female)', '2000 ₹', 'DSC_0184 - Copy.jpg', 'DSC_1595.jpg', 'photo.jpeg', '2021-01-06', '2021-01-21', 'sachisabya41999@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -169,7 +178,7 @@ ALTER TABLE `saler`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `product_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `registration`

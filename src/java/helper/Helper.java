@@ -44,4 +44,49 @@ public class Helper {
         return f;
     }
     
+     public static boolean saveFile_1(InputStream is,String path1){
+        boolean f=false;
+        
+        try{
+            byte b[]=new byte[is.available()];
+            is.read(b);
+            
+            
+            FileOutputStream fos=new FileOutputStream(path1);
+            fos.write(b);
+          
+            fos.flush();
+            fos.close();
+            f=true;
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
+        
+        return f;
+    }
+     
+      public static boolean saveFile_2(InputStream is,String path2){
+        boolean f=false;
+        
+        try{
+            byte b[]=new byte[is.available()];
+            is.read(b);
+            
+            FileOutputStream fos=new FileOutputStream(path2);
+            fos.write(b);
+          
+            fos.flush();
+            fos.close();
+            f=true;
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
+        
+        return f;
+    }
+    
 }

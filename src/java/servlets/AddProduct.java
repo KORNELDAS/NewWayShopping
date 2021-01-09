@@ -56,15 +56,22 @@ public class AddProduct extends HttpServlet {
             Part part=request.getPart("image");
             String s7=part.getSubmittedFileName();
             
-            Product pb=new Product(s1,s2,s3,s7,s4,s5,s6);
+            Part part1=request.getPart("image_1");
+            String s8=part1.getSubmittedFileName();
+            
+            Part part2=request.getPart("image_2");
+            String s9=part2.getSubmittedFileName();
+            
+            Product pb=new Product(s1,s2,s3,s7,s8,s9,s4,s5,s6);
             Productdao pd=new Productdao(Database.getConnection());
             if(pd.saveProduct(pb)){
                 out.println("done");
                 String newpath = request.getRealPath("/") + "product_image" + File.separator + pb.getProduct_image();
-              
-                
+               String newpath1 = request.getRealPath("/") + "product_image" + File.separator + pb.getProduct_image_1();
+                String newpath2 = request.getRealPath("/") + "product_image" + File.separator + pb.getProduct_image_2();
                 Helper.saveFile(part.getInputStream(), newpath);
-                    
+                 Helper.saveFile_1(part1.getInputStream(), newpath1);
+                 Helper.saveFile_2(part2.getInputStream(), newpath2);
                    
                    
                 

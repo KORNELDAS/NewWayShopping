@@ -142,8 +142,8 @@
             }
             .wrapper{
                 position: relative;
-                height: 350px;
-                width: 270px;
+                height: 180px;
+                width: 120px;
                 border: 2px dashed black;
                 border-radius: 15px;
                 background: #fff;
@@ -151,6 +151,7 @@
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
+                margin-right: 15px;
             }
             .wrapper.active{
                 border: none;
@@ -177,9 +178,9 @@
                 bottom: 0px;
                 width: 100%;
                 color: white;
-                font-size: 20px;
+                font-size: 12px;
                 font-weight: bold;
-                padding: 3px;
+                padding: 2px;
                 text-align: center;
                 transition: 0.4s ease;
                 opacity: 0;
@@ -188,9 +189,9 @@
             }
             .icon{
                 position: absolute;
-                top: 32%;
-                left: 41%;
-                font-size: 60px;
+                top: 35%;
+                left: 42%;
+                font-size: 25px;
                 cursor: pointer;
                 color: black;
                 opacity: 0;
@@ -533,8 +534,9 @@
 
 
                             <div id="hidding">
-                                <!--its for blob image-->
+
                                 <div class="containe">
+                                    <!--its for blob image -->
                                     <div  class="wrapper" >
                                         <div class="image1">
                                             <img id="imuge" src="images/upload-icon.png" alt="" >
@@ -546,9 +548,43 @@
                                         <div class="img-name bg-danger" id="flu">File name here</div>
                                     </div>
 
-                                    <input  id="default-btn" type="file"  name="image" hidden>
+                                    <input  id="default-btn" type="file"  name="image" hidden required>
+                                    <!--end blob image -->
+                                    
+                                    <!--its for blob image 1-->
+
+                                    <div  class="wrapper wrapper1" >
+                                        <div class="image1">
+                                            <img id="imuge_1" src="images/upload-icon.png" alt="" >
+                                        </div>
+                                        <div class="content">
+
+                                            <div class="icon" id="choose-btn33" onclick="file_btn_1()"><i class="fa fa-camera" aria-hidden="true" ></i></div>
+                                        </div>
+                                        <div class="img-name bg-danger" id="flu_1">File name here</div>
+                                    </div>
+
+                                    <input  id="default_btn_1" type="file"  name="image_1" hidden required>
+                                    <!--end blob image 1-->
+                                    
+                                    
+                                     <!--its for blob image 2-->
+
+                                    <div  class="wrapper wrapper2" >
+                                        <div class="image1">
+                                            <img id="imuge_2" src="images/upload-icon.png" alt="" >
+                                        </div>
+                                        <div class="content">
+
+                                            <div class="icon" id="choose-btn44" onclick="file_btn_2()"><i class="fa fa-camera" aria-hidden="true" ></i></div>
+                                        </div>
+                                        <div class="img-name bg-danger" id="flu_2">File name here</div>
+                                    </div>
+
+                                    <input  id="default_btn_2" type="file"  name="image_2" hidden required>
+                                    <!--end blob image 2-->
                                 </div>   
-                                <!--end blob image-->
+
 
                                 <!--its for product detail-->
 
@@ -619,14 +655,16 @@
             </div>
         </div>
         <!--end addproduct modal-->
-
-
-        <!--its for blob image-->
-
-        <script>
-            const icon1 = document.getElementById("choose-btn");
+        
+        <!--extras
+         const icon1 = document.getElementById("choose-btn");
             const icon2 = document.getElementById("choose-btn1");
             const icon3 = document.getElementById("choose-btn2");
+        -->
+
+        <!--its for blob image-->
+        <script>
+           
             const dfltbtn = document.getElementById("default-btn");
             const imuge = document.getElementById("imuge");
             const flu = document.getElementById("flu");
@@ -658,9 +696,76 @@
 
 
         </script>
-
-
         <!--end blob image-->
+        
+        
+         <!--its for blob image 1-->
+        <script>
+           const default_btn_1=document.getElementById("default_btn_1");
+              const imuge_1 = document.getElementById("imuge_1");
+            const flu_1 = document.getElementById("flu_1");
+            let wrap1 = document.querySelector(".wrapper1");
+            const regex1 = /[0-9A-Za-z\^\$\&\@\'\{\}\[\]\,\=\?\#\!\*\(\)\.\%\-\_\~]+$/;
+           function file_btn_1(){
+               default_btn_1.click();
+           }
+            default_btn_1.addEventListener("change", function () {
+                const file1 = this.files[0];
+                if (file1) {
+                    const reader1 = new FileReader();
+                    reader1.onload = function () {
+                        const result1 = reader1.result;
+                        imuge_1.src = result1;
+                        wrap1.classList.add("active");
+                    };
+                    reader1.readAsDataURL(file1);
+                }
+                if (this.value) {
+                    let valu1 = this.value.match(regex1);
+                    flu_1.textContent = valu1;
+                }
+            });
+
+
+
+        </script>
+        <!--end blob image 1-->
+        
+         <!--its for blob image 2-->
+        <script>
+           const default_btn_2=document.getElementById("default_btn_2");
+              const imuge_2 = document.getElementById("imuge_2");
+            const flu_2 = document.getElementById("flu_2");
+            let wrap2 = document.querySelector(".wrapper2");
+            const regex2 = /[0-9A-Za-z\^\$\&\@\'\{\}\[\]\,\=\?\#\!\*\(\)\.\%\-\_\~]+$/;
+           function file_btn_2(){
+               default_btn_2.click();
+           }
+           
+            default_btn_2.addEventListener("change", function () {
+                const file2 = this.files[0];
+                if (file2) {
+                    const reader2 = new FileReader();
+                    reader2.onload = function () {
+                        const result2 = reader2.result;
+                        imuge_2.src = result2;
+                        wrap2.classList.add("active");
+                    };
+                    reader2.readAsDataURL(file2);
+                }
+                if (this.value) {
+                    let valu2 = this.value.match(regex2);
+                    flu_2.textContent = valu2;
+                }
+            });
+
+
+        </script>
+        <!--end blob image 2-->
+        
+   
+        
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="js/jquery.superslides.min.js"></script>
@@ -745,7 +850,7 @@
                             } else {
 
                                 swal("Something error", "Please try again!", "warning")
-                                 .then((value) => {
+                                        .then((value) => {
                                             window.location = "welcome.jsp";
                                         });
                             }

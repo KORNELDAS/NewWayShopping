@@ -177,7 +177,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="ins-inner-box">
+                    <div class="ins-inner-box"> 
                         <img src="images/instagram-img-04.jpg" alt="" />
                         <div class="hov-in">
                             <a href="#"><i class="fab fa-instagram"></i></a>
