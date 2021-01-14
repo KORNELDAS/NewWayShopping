@@ -42,46 +42,43 @@ public class AddProduct extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-          
-          try{  
-            String s1=request.getParameter("pname");
-            String s2=request.getParameter("ptype");
-            String s3=request.getParameter("pcost")+" ₹";
-            String s4=request.getParameter("start_date");
-            String s5=request.getParameter("end_date");
-            HttpSession hs=request.getSession();
-            Users us=(Users)hs.getAttribute("currentUser");
-            String s6=us.getEmail();
-            
-            Part part=request.getPart("image");
-            String s7=part.getSubmittedFileName();
-            
-            Part part1=request.getPart("image_1");
-            String s8=part1.getSubmittedFileName();
-            
-            Part part2=request.getPart("image_2");
-            String s9=part2.getSubmittedFileName();
-            
-            Product pb=new Product(s1,s2,s3,s7,s8,s9,s4,s5,s6);
-            Productdao pd=new Productdao(Database.getConnection());
-            if(pd.saveProduct(pb)){
-                out.println("done");
-                String newpath = request.getRealPath("/") + "product_image" + File.separator + pb.getProduct_image();
-               String newpath1 = request.getRealPath("/") + "product_image" + File.separator + pb.getProduct_image_1();
-                String newpath2 = request.getRealPath("/") + "product_image" + File.separator + pb.getProduct_image_2();
-                Helper.saveFile(part.getInputStream(), newpath);
-                 Helper.saveFile_1(part1.getInputStream(), newpath1);
-                 Helper.saveFile_2(part2.getInputStream(), newpath2);
-                   
-                   
-                
+
+            try {
+                String s1 = request.getParameter("pname");
+                String s2 = request.getParameter("ptype");
+                String s3 = request.getParameter("pcost") + " ₹";
+                String s4 = request.getParameter("start_date");
+                String s5 = request.getParameter("end_date");
+                String s10 = request.getParameter("desc");
+                HttpSession hs = request.getSession();
+                Users us = (Users) hs.getAttribute("currentUser");
+                String s6 = us.getEmail();
+
+                Part part = request.getPart("image");
+                String s7 = part.getSubmittedFileName();
+
+                Part part1 = request.getPart("image_1");
+                String s8 = part1.getSubmittedFileName();
+
+                Part part2 = request.getPart("image_2");
+                String s9 = part2.getSubmittedFileName();
+
+                Product pb = new Product(s1, s2, s3, s7, s8, s9, s4, s5, s10, s6);
+                Productdao pd = new Productdao(Database.getConnection());
+                if (pd.saveProduct(pb)) {
+                    out.println("done");
+                    String newpath = request.getRealPath("/") + "product_image" + File.separator + pb.getProduct_image();
+                    String newpath1 = request.getRealPath("/") + "product_image" + File.separator + pb.getProduct_image_1();
+                    String newpath2 = request.getRealPath("/") + "product_image" + File.separator + pb.getProduct_image_2();
+                    Helper.saveFile(part.getInputStream(), newpath);
+                    Helper.saveFile_1(part1.getInputStream(), newpath1);
+                    Helper.saveFile_2(part2.getInputStream(), newpath2);
+                }
+
+            } catch (Exception ex) {
+                out.println(ex.getMessage());
             }
-           
-          }catch(Exception ex){
-              out.println(ex.getMessage());
-          } 
-            
-          
+
         }
     }
 

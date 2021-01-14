@@ -23,7 +23,7 @@ public class Productdao {
         boolean flag = false;
 
         try {
-            String query = "insert into product(product_name,product_type,product_cost,product_image,product_image_1,product_image_2,start_date,end_date,puser) values(?,?,?,?,?,?,?,?,?)";
+            String query = "insert into product(product_name,product_type,product_cost,product_image,product_image_1,product_image_2,start_date,end_date,description,puser) values(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, product.getProduct_name());
             ps.setString(2, product.getProduct_type());
@@ -33,7 +33,8 @@ public class Productdao {
             ps.setString(6, product.getProduct_image_2());
             ps.setString(7, product.getStart_date());
             ps.setString(8, product.getEnd_date());
-            ps.setString(9, product.getPuser());
+            ps.setString(9,product.getDescription());
+            ps.setString(10, product.getPuser());
             ps.executeUpdate();
             flag = true;
         } catch (Exception ex) {
@@ -62,8 +63,9 @@ public class Productdao {
                 String pimage_2 = rs.getString("product_image_2");
                 String start_date = rs.getString("start_date");
                 String end_date = rs.getString("end_date");
+                String desc=rs.getString("description");
                 String puser = rs.getString("puser");
-                Product product = new Product(pid, pname, ptype, pcost, pimage, pimage_1, pimage_2, start_date, end_date, puser);
+                Product product = new Product(pid, pname, ptype, pcost, pimage, pimage_1, pimage_2, start_date, end_date,desc, puser);
                 list.add(product);
             }
 
@@ -91,8 +93,9 @@ public class Productdao {
                 String pimage_2 = rs.getString("product_image_2");
                 String start_date = rs.getString("start_date");
                 String end_date = rs.getString("end_date");
+                 String desc=rs.getString("description");
                 String puser = rs.getString("puser");
-                Product product = new Product(pid, pname, ptype, pcost, pimage, pimage_1, pimage_2, start_date, end_date, puser);
+                 Product product = new Product(pid, pname, ptype, pcost, pimage, pimage_1, pimage_2, start_date, end_date,desc, puser);
                 list.add(product);
             }
 
@@ -121,8 +124,9 @@ public class Productdao {
                 String pimage_2 = rs.getString("product_image_2");
                 String start_date = rs.getString("start_date");
                 String end_date = rs.getString("end_date");
+                 String desc=rs.getString("description");
                 String puser = rs.getString("puser");
-                Product product = new Product(pid, pname, ptype, pcost, pimage, pimage_1, pimage_2, start_date, end_date, puser);
+                  Product product = new Product(pid, pname, ptype, pcost, pimage, pimage_1, pimage_2, start_date, end_date,desc, puser);
                 list1.add(product);
             }
 
@@ -131,4 +135,7 @@ public class Productdao {
         }
         return list1;
     }
+    
+    
+   
 }

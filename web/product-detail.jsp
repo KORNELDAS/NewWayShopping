@@ -1,5 +1,46 @@
 
 
+<%@page errorPage="error_page.jsp" %>
+<%
+    Users user = (Users) session.getAttribute("currentUser");
+    if (user == null) {
+        response.sendRedirect("login.jsp");
+    }
+
+
+%>
+
+<%  int id = Integer.parseInt(request.getParameter("id#"));
+    String product_image_1 = "";
+    String product_image_2 = "";
+    String product_image_3 = "";
+    String product_name = "";
+    String product_price = "";
+    String desc = "";
+    Connection con = Database.getConnection();
+    String query = "select * from product where product_id=?";
+    PreparedStatement ps = con.prepareStatement(query);
+    ps.setInt(1, id);
+    ResultSet rs = ps.executeQuery();
+    while (rs.next()) {
+        product_name = rs.getString("product_name");
+        product_price = rs.getString("product_cost");
+        product_image_1 = rs.getString("product_image");
+        product_image_2 = rs.getString("product_image_1");
+        product_image_3 = rs.getString("product_image_2");
+        desc = rs.getString("description");
+    }
+%>
+
+
+
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="entities.Product"%>
+<%@page import="com.newwayshopping.dao.Productdao"%>
+<%@page import="com.newwayshopping.databases.Database"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,11 +70,24 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+            .corues{
+                border-radius: 15px!important;
+                height: 620px!important;
+            }
+            .crouse_mini{
+                height: 140px!important;
+            }
+            .crouse_mini img{
+                height: 100%!important;
+            }
+
+        </style>
     </head>
     <body>
         <%@include file="navbar.jsp" %>
 
-     
+
         <!-- Start All Title Box -->
         <div class="all-title-box">
             <div class="container">
@@ -55,11 +109,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5 col-lg-5 col-md-6">
+
                         <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
                             <div class="carousel-inner" role="listbox">
-                                <div class="carousel-item active"> <img class="d-block w-100" src="images/big-img-01.jpg" alt="First slide"> </div>
-                                <div class="carousel-item"> <img class="d-block w-100" src="images/big-img-02.jpg" alt="Second slide"> </div>
-                                <div class="carousel-item"> <img class="d-block w-100" src="images/big-img-03.jpg" alt="Third slide"> </div>
+
+                                <div class="corues carousel-item active"> <img class="d-block w-100" src="product_image/<%= product_image_1%>" alt="First slide"> </div>
+                                <div class="corues carousel-item"> <img class="d-block w-100" src="product_image/<%= product_image_2%>" alt="Second slide"> </div>
+                                <div class="corues carousel-item"> <img class="d-block w-100" src="product_image/<%= product_image_3%>"  alt="Third slide"> </div>
                             </div>
                             <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev"> 
                                 <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -70,62 +126,103 @@
                                 <span class="sr-only">Next</span> 
                             </a>
                             <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-1" data-slide-to="0" class="active">
-                                    <img class="d-block w-100 img-fluid" src="images/smp-img-01.jpg" alt="" />
+                                <li data-target="#carousel-example-1" data-slide-to="0" class="crouse_mini active">
+                                    <img class="d-block w-100 img-fluid" src="product_image/<%= product_image_1%>" alt="" />
                                 </li>
-                                <li data-target="#carousel-example-1" data-slide-to="1">
-                                    <img class="d-block w-100 img-fluid" src="images/smp-img-02.jpg" alt="" />
+                                <li data-target="#carousel-example-1" data-slide-to="1" class="crouse_mini">
+                                    <img class="d-block w-100 img-fluid" src="product_image/<%= product_image_2%>" alt="" />
                                 </li>
-                                <li data-target="#carousel-example-1" data-slide-to="2">
-                                    <img class="d-block w-100 img-fluid" src="images/smp-img-03.jpg" alt="" />
+                                <li data-target="#carousel-example-1" data-slide-to="2" class="crouse_mini">
+                                    <img class="d-block w-100 img-fluid" src="product_image/<%= product_image_3%>" alt="" />
                                 </li>
                             </ol>
                         </div>
+
                     </div>
                     <div class="col-xl-7 col-lg-7 col-md-6">
                         <div class="single-product-details">
-                            <h2>Fachion Lorem ipsum dolor sit amet</h2>
-                            <h5> <del>$ 60.00</del> $40.79</h5>
-                            <p class="available-stock"><span> More than 20 available / <a href="#">8 sold </a></span>
+                            <h2 style="text-transform: uppercase;"><%=product_name%></h2>
+                            <h5><h5 style="color:black;font-weight: bolder;font-size: 20px;">Starting Bid:</h5>  <%=product_price%></h5>
+                            <h5><h5 style="color:black;font-weight: bolder;font-size: 20px;">Current Bid:</h5>  <%=product_price%></h5>
+                            <p style="color:black;font-weight: bold;">Time remaining:  <%=product_price%></p> 
+                            <p class="available-stock"><span> More than 20 Bidders bid on this product </span>
                             <p>
-                            <h4>Short Description:</h4>
-                            <p>Nam sagittis a augue eget scelerisque. Nullam lacinia consectetur sagittis. Nam sed neque id eros fermentum dignissim quis at tortor. Nullam ultricies urna quis sem sagittis pharetra. Nam erat turpis, cursus in ipsum at,
-                                tempor imperdiet metus. In interdum id nulla tristique accumsan. Ut semper in quam nec pretium. Donec egestas finibus suscipit. Curabitur tincidunt convallis arcu. </p>
-                            <ul>
+                            <h4> Description:</h4>
+                            <p><%=desc%> </p>
+
+                            <button type="button" class="btn btn-danger hvr-hover" style="margin-bottom:10px;font-weight: bolder;color: white">Bidders</button>
+                            <ul style="display:none">
                                 <li>
-                                    <div class="form-group size-st">
-                                        <label class="size-label">Size</label>
-                                        <select id="basic" class="selectpicker show-tick form-control">
-                                            <option value="0">Size</option>
-                                            <option value="0">S</option>
-                                            <option value="1">M</option>
-                                            <option value="1">L</option>
-                                            <option value="1">XL</option>
-                                            <option value="1">XXL</option>
-                                            <option value="1">3XL</option>
-                                            <option value="1">4XL</option>
-                                        </select>
-                                    </div>
+
                                 </li>
                                 <li>
-                                    <div class="form-group quantity-box">
-                                        <label class="control-label">Quantity</label>
-                                        <input class="form-control" value="0" min="0" max="20" type="number">
-                                    </div>
+
                                 </li>
                             </ul>
 
                             <div class="price-box-bar">
                                 <div class="cart-and-bay-btn">
-                                    <a class="btn hvr-hover" data-fancybox-close="" href="#">Buy New</a>
-                                    <a class="btn hvr-hover" data-fancybox-close="" href="#">Add to cart</a>
+                                    <button type="button" class="btn btn-danger hvr-hover"  data-toggle="modal" data-target="#bid_modal" style="margin-bottom:10px;font-weight: bolder;color: white">Bid Now</button>
+
                                 </div>
                             </div>
+                            <!--bid modal-->
+                            <div class="modal fade" id="bid_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-danger">
+                                            <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight:bolder;color: white;"><%= product_name.toUpperCase()%></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-group" action="Bid_product" method="post">
+                                                <table class="table table-striped table-dark">
+
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Name:</th>
+                                                            <td> <input type="text" name="name" class="form-control"></td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Biding Price:</th>
+                                                            <td>
+                                                                <input type="text" name="price" class="form-control">
+                                                                <h6 style="color:white;">Your bid Price must have to greater than current bid price!</h6>
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Phone:</th>
+                                                            <td><input type="tel" name="phone" class="form-control"  ></td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Email:</th>
+                                                            <td><input type="email" name="email" class="form-control"  ></td>
+
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer bg-danger">
+                                            <button type="button" class="btn " style="background:black;color: white;">Bid</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end modal-->
 
                             <div class="add-to-btn">
                                 <div class="add-comp">
                                     <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
-                                    <a class="btn hvr-hover" href="#"><i class="fas fa-sync-alt"></i> Add to Compare</a>
+
                                 </div>
                                 <div class="share-bar">
                                     <a class="btn hvr-hover" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
@@ -393,7 +490,7 @@
         </div>
         <!-- End Instagram Feed  -->
 
-       <%@include file="footer.jsp" %>
+        <%@include file="footer.jsp" %>
 
 
 
@@ -419,7 +516,7 @@
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
 
-       
+
 
     </body>
 </html>

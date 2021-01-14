@@ -631,6 +631,11 @@
                                             <td><input type="date" name="end_date" class="form-control" aria-describedby="addon-wrapping" required="" /></td>
 
                                         </tr>
+                                        <tr>
+                                            <th scope="row" style="font-weight:bolder;">Description:</th>
+                                            <td><textarea rows="3" name="desc" class="form-control" aria-describedby="addon-wrapping" required="" ></textarea></td>
+
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <!--end product deatil-->

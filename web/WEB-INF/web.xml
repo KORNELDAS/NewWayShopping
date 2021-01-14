@@ -47,6 +47,10 @@
         <servlet-name>DeleteProduct</servlet-name>
         <servlet-class>servlets.DeleteProduct</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Bid_product</servlet-name>
+        <servlet-class>servlets.Bid_product</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration_servlet</servlet-name>
         <url-pattern>/Registration_servlet</url-pattern>
@@ -90,6 +94,10 @@
     <servlet-mapping>
         <servlet-name>DeleteProduct</servlet-name>
         <url-pattern>/DeleteProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Bid_product</servlet-name>
+        <url-pattern>/Bid_product</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
