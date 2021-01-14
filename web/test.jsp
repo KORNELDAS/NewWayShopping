@@ -24,15 +24,15 @@
         <%
             try {
 
-                int id = Integer.parseInt(request.getParameter("del_id"));
+                /*int id = Integer.parseInt(request.getParameter("del_id"));
 
                 Connection con = Database.getConnection();
                 String query = "delete from product where product_id=?";
                 PreparedStatement ps = con.prepareStatement(query);
                 ps.setInt(1, id);
                 ps.executeUpdate();
-                response.sendRedirect("view_product.jsp");
-
+                response.sendRedirect("view_product.jsp");*/
+               
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
