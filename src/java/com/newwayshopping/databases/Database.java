@@ -11,7 +11,7 @@ public class Database {
           Thread.sleep(2000);
             if(con==null){
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/newwayshopping", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3008/newwayshopping", "root", "");
             }
        
         }catch(Exception ex){

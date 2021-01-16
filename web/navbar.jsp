@@ -147,11 +147,12 @@
                 border: 2px dashed black;
                 border-radius: 15px;
                 background: #fff;
-                display: flex;
+               /* display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: center;*/
                 overflow: hidden;
                 margin-right: 15px;
+                 box-shadow: 5px 10px 10px 8px #888888;
             }
             .wrapper.active{
                 border: none;
@@ -160,18 +161,18 @@
                 position: absolute;
                 height: 100%;
                 width: 100%;
-                display: flex;
+               /* display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: center;*/
                 opacity: 1;
                 transition: 0.4s ease;
             }
-            .image1 img{
+            /*.image1 img{
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
 
-            }
+            }*/
 
             .img-name{
                 position: absolute;
@@ -209,6 +210,11 @@
             .wrapper:hover .image1{
                 opacity: 0.5;
                 transition: 0.4s ease;
+            }
+            
+            .cls-img{
+                max-height: 100%;
+                max-width: 100%;
             }
             /*its end for blob image*/
         </style>
@@ -537,9 +543,9 @@
 
                                 <div class="containe">
                                     <!--its for blob image -->
-                                    <div  class="wrapper" >
-                                        <div class="image1">
-                                            <img id="imuge" src="images/upload-icon.png" alt="" >
+                                    <div  class="wrapper d-flex align-items-center justify-content-center" >
+                                        <div class="image1 d-flex align-items-center justify-content-center">
+                                            <img id="imuge" class="cls-img" src="images/upload-icon.png" alt="" >
                                         </div>
                                         <div class="content">
 
@@ -553,9 +559,9 @@
                                     
                                     <!--its for blob image 1-->
 
-                                    <div  class="wrapper wrapper1" >
-                                        <div class="image1">
-                                            <img id="imuge_1" src="images/upload-icon.png" alt="" >
+                                    <div  class="wrapper wrapper1 d-flex align-items-center justify-content-center" >
+                                        <div class="image1 d-flex align-items-center justify-content-center">
+                                            <img id="imuge_1" class="cls-img" src="images/upload-icon.png" alt="" >
                                         </div>
                                         <div class="content">
 
@@ -570,9 +576,9 @@
                                     
                                      <!--its for blob image 2-->
 
-                                    <div  class="wrapper wrapper2" >
-                                        <div class="image1">
-                                            <img id="imuge_2" src="images/upload-icon.png" alt="" >
+                                    <div  class="wrapper wrapper2 d-flex align-items-center justify-content-center" >
+                                        <div class="image1 d-flex align-items-center justify-content-center">
+                                            <img id="imuge_2" class="cls-img" src="images/upload-icon.png" alt="" >
                                         </div>
                                         <div class="content">
 
@@ -621,14 +627,10 @@
                                             </td>
 
                                         </tr>
-                                        <tr>
-                                            <th scope="row" style="font-weight:bolder;">Start:</th>
-                                            <td><input type="date" name="start_date" class="form-control" aria-describedby="addon-wrapping" required="" /></td>
-
-                                        </tr>
+                                        
                                         <tr>
                                             <th scope="row" style="font-weight:bolder;">End:</th>
-                                            <td><input type="date" name="end_date" class="form-control" aria-describedby="addon-wrapping" required="" /></td>
+                                            <td><input type="datetime-local" name="end_date" class="form-control" aria-describedby="addon-wrapping" required="" /></td>
 
                                         </tr>
                                         <tr>

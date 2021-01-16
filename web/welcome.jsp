@@ -47,19 +47,44 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        
+
         <style>
+            .cont-shop{
+                width: 250px;
+                height: 300px;
+                border: 2px solid black;
+                border-radius: 15px;
+                box-shadow: 5px 10px 10px 8px #888888;
+            }
+            .cls-img{
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 15px;
+                transition: .4s ease-in-out;
+            }
+            .cont-shop:hover .cls-img{
+                -webkit-filter: grayscale(100%) blur(2px);
+                filter: grayscale(100%) blur(2px);
+                transition: .4s ease-in-out;
+            }
+            .cont-shop:hover .bid-buttons{
+                display: block;
+            }
+
+
             .count-time{
                 position: absolute;
                 z-index: 1;
-                top: 0;
-                left: 0;
+                top: -30px;
+                left: 27px;
                 color: white;
                 font-weight: bolder;
                 width: 120px;
                 height: 30px;
                 text-align: center;
                 font-size: 15px;
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
             }
             .bid-buttons{
                 position: absolute;
@@ -76,13 +101,23 @@
                 text-align: center;
                 cursor: pointer;
                 display: none;
-                transition: 0.5s ease!important;
+                transition: .4s ease-in-out;
             }
             .bid-buttons:hover{
                 background-color: black!important;
-                transition: 0.5s ease !important;
+                transition: .4s ease-in-out;
             }
-            
+            .img-nam{
+                position: absolute;
+                bottom: 0;
+                width: 250px;
+                color: white;
+                font-weight: bolder;
+                text-align: center;
+                border-bottom-left-radius: 15px;
+                border-bottom-right-radius: 15px;
+            }
+
         </style>
     </head>
     <body>
@@ -138,42 +173,41 @@
 
         <!-- Start Categories  -->
         <div class="categories-shop">
-            <div class="container">
-                <div class="row">
+            <div class="container" >
+                <div class="row justify-content-center">
                     <%
                         Productdao pr = new Productdao(Database.getConnection());
-                      
+
                         ArrayList<Product> list1 = pr.getProduct_welcome(user.getEmail());
-                       int k=0;
+                        int k = 0;
                         for (Product lit : list1) {
-                         k++;
+                            k++;
+
                     %>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-auto ml-md-4 mb-md-5">
+                        <div class="cont-shop d-flex align-items-center justify-content-center">
+                            <form id="<%= k%>" action="product-detail.jsp" method="post">
+                                <input type="hidden" name="id#" value="<%= lit.getProduct_id()%>">
 
-                        <div class="shop-cat-box" onmouseover="bid_butt(<%= lit.getProduct_id() %>)" onmouseout="bid_butt_1(<%= lit.getProduct_id() %>)">
-                            <div class="count-time bg-danger" id="timer<%= k %>">
-                                10h 24m 40s
-                            </div>
-                            <form id="<%= k %>" action="product-detail.jsp" method="post">
-                                <input type="hidden" name="id#" value="<%= lit.getProduct_id() %>">
-                               
                             </form>
-                            <div class="bid-buttons bg-danger" id="<%= lit.getProduct_id() %>" onclick="product_det(<%= k %>)">
-                                 Bid
+                            <div class="bid-buttons bg-danger" id="<%= lit.getProduct_id()%>" onclick="product_det(<%= k%>)">
+                                Bid
                             </div>
-                            <img class="img-fluid" src="product_image/<%= lit.getProduct_image()%>" alt="" style="height:300px;"/>
-                            <a class="btn hvr-hover" href="#"><%= lit.getProduct_name()%></a>
+                            <div class="count-time bg-danger" id="timer<%= k%>" onload="demi(<%= lit.getEnd_date() %>,<%=k%>)">
+                                10h 20m 30s
+                            </div>
+                            <img src="product_image/<%= lit.getProduct_image()%>" class="cls-img">
+                            <div class="img-nam bg-danger"><%= lit.getProduct_name()%> </div>
                         </div>
-
                     </div>
+
                     <%
                         }
                     %>
-                   
                 </div>
             </div>
         </div>
-        <!-- End Categories -->
+        <!-- End Categories -->  
 
         <!-- Start Products  -->
         <div class="products-box">
@@ -512,55 +546,60 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
-        
+
         <script>
-            function bid_butt(id){
-                let bid1=document.getElementById(id);
-                bid1.style.display="block";
-            }
-            function bid_butt_1(id){
-                let bid2=document.getElementById(id);
-                bid2.style.display="none";
-            }
-            
-            function product_det(k){
-               let sub=document.getElementById(k);
-               sub.submit();
-            }
-            
-           
+
+
+                                function product_det(k) {
+                                    let sub = document.getElementById(k);
+                                    sub.submit();
+                                }
+
+
         </script>
+        <%
+            ArrayList<Product> list2=pr.getProduct_welcome(user.getEmail());
+            int j=0;
+        for(Product lit1:list2){
+        j++;
         
+        %>
+
+        <!--this is for timer-->
         <script>
 // Set the date we're counting down to
-var countDownDate = new Date("Jan 5, 2022 15:37:25").getTime();
-
+            var countDownDate = new Date("<%= lit1.getEnd_date()%>").getTime();
+            
 // Update the count down every 1 second
-var x = setInterval(function() {
+            var x = setInterval(function () {
 
-  // Get today's date and time
-  var now = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-    
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  // Output the result in an element with id="demo"
-  document.getElementById("timer<%= k %>").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-    
-  // If the count down is over, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
-</script>
+                // Get today's date and time
+                var now = new Date().getTime();
 
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Output the result in an element with id="demo"
+                document.getElementById("timer<%= j%>").innerHTML = days + "d " + hours + "h "
+                        + minutes + "m " + seconds + "s ";
+
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("demo").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        </script>
+        <!--end of  timer-->
+        <%
+        
+        }
+        %>
     </body>
 </html>

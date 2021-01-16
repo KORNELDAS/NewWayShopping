@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3008
--- Generation Time: Jan 14, 2021 at 02:56 PM
+-- Generation Time: Jan 16, 2021 at 06:15 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -35,26 +35,20 @@ CREATE TABLE `product` (
   `product_image` varchar(50) NOT NULL,
   `product_image_1` varchar(50) NOT NULL,
   `product_image_2` varchar(50) NOT NULL,
-  `start_date` varchar(200) NOT NULL,
   `end_date` varchar(200) NOT NULL,
   `description` varchar(5000) NOT NULL DEFAULT 'No description',
-  `puser` varchar(250) NOT NULL
+  `puser` varchar(250) NOT NULL,
+  `status` int(10) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_id`, `product_name`, `product_type`, `product_cost`, `product_image`, `product_image_1`, `product_image_2`, `start_date`, `end_date`, `description`, `puser`) VALUES
-(17, 'Acer Predator Helios 300', 'Laptop', '94990 ₹', 'acer laptop1.jpeg', 'acer laptop2.jpeg', 'acer laptop3.jpeg', '2021-01-05', '2021-01-23', 'Core i5 10th Gen - (16 GB/1 TB HDD/256 GB SSD/Windows 10 Home/6 GB Graphics/NVIDIA Geforce RTX 2060/144 Hz) PH315-53-594S Gaming Laptop  (15.6 inch, Abyssal Black, 2.5 kg)', 'sachisabya41999@gmail.com'),
-(18, 'Printed Daily Wear Art Silk Saree  (Blue)', 'Clothes(Female)', '499 ₹', 'girl saree1.jpeg', 'girl saree2.jpeg', 'girl saree3.jpeg', '2021-01-20', '2021-01-22', 'Elegance and honourable come together in this ethnic colored festive wear saree. This saree is made of art silk fabric which is highlighted with beautiful prints and tassels border as shown. This saree is comfortable to wear and care. Paired with unstitched art silk fabric blouse piece which can be stitched as per your choice and requirement. You can wear this saree for festivals, casual outings, regular social meets and other homely events. Pair it with traditionally stylish accessories to complete the look. Note:- The actual product may differ slightly in color and design from the one illustrated in the images.', 'rachita666@gmail.com'),
-(19, 'Cute Blue Fur & Heart Teddy Bear', 'Clothes(Kids)', '377 ₹', 'soft toys1.jpeg', 'soft toys2.jpeg', 'soft toys3.jpeg', '2021-01-19', '2021-01-22', 'General\r\nSales Package\r\n1 Teddy bear\r\nSound Support\r\nNo\r\nWashable\r\nYes\r\nIdeal For\r\nBoys and Girls\r\nMinimum Age\r\n2 years\r\nFilling Material\r\nSoft poli cotton\r\nSound Features\r\nno\r\nExternal Material\r\nSoft fur Fabric\r\nDimensions\r\nWidth\r\n30 cm\r\nDepth\r\n30 cm\r\nWeight\r\n499 g\r\nBox Width\r\n35 cm\r\nBox Height\r\n90 cm\r\nBox Depth\r\n35 cm\r\nBox Weight\r\n500 g\r\nMore Details\r\nGeneric Name\r\nStuffed Toy\r\nCountry of Origin\r\nIndia', 'rachita666@gmail.com'),
-(20, '445 Sports Running Shoes For Men  (White, Blue)', 'Clothes(Men)', '399 ₹', 'shoes1.jpeg', 'shoes2.jpeg', 'shoes3.jpeg', '2021-01-06', '2021-01-22', 'Color\r\nWhite, Blue\r\nOuter Material\r\nSynthetic Leather\r\nModel Name\r\n445 Sports\r\nIdeal For\r\nMen\r\nOccasion\r\nSports\r\nClosure\r\nLace-Ups\r\nSales Package\r\n1 Pair Sheos\r\nPack of\r\n1\r\nCrafted with imported Mesh, Synthetic, this pack of shoe is durable and lightweight that will make you go through the daily jostle in an easy way. The design of this shoes is fashionable and can be worn for every use. Chevit presents a new age casual loafers, Running shoes, Sneakers Shoes best suited for casual and outdoor lifestyle wear for Mens. Comfortable: Lightweight shoe provides actual experience of barefoot and natural walk. Optimum cushioning performance that creates a cooler, drier and healthier shoe environment. The cushioned foot-bed and padded sock-liner will keep your feet breathing and at ease. Soft foot bed offers impact cushioning and faster drainage in wet condition.\r\nGeneric Name\r\nShoe\r\nCountry of Origin\r\nIndia', 'rahulkumar41999@gmail.com'),
-(21, 'Polycotton Printed Shirt Fabric  (Unstitched)', 'Clothes(Men)', '360 ₹', 'mens shirt1.jpeg', 'mens shirt2.jpeg', 'mens shirt3.jpeg', '2021-01-06', '2021-01-21', 'Type\r\nShirt Fabric\r\nSales Package\r\n1 Shirt Fabric\r\nIdeal For\r\nMen\r\nOccasion\r\nCasual\r\nFabric Care\r\nRegular Machine Wash\r\nStyle Code\r\nAZ 393\r\nBottom Length\r\nNA\r\nDupatta Length\r\nNA\r\nTop Length\r\n2.35 m\r\nColor\r\nGrey, Black, Red\r\nFabric\r\nPolycotton\r\nPattern\r\nPrinted\r\nStitching Type', 'rahulkumar41999@gmail.com'),
-(22, 'Samsung Galaxy M01 (Blue, 32 GB)  (3 GB RAM)', 'Mobile', '7936 ₹', 'mobile1.jpeg', 'mobile2.jpeg', 'mobile3.jpeg', '2021-01-11', '2021-01-15', '3 GB RAM | 32 GB ROM | Expandable Upto 512 GB\r\n14.48 cm (5.7 inch) HD+ Display\r\n13MP + 2MP | 5MP Front Camera\r\n4000 mAh Lithium-ion Battery\r\nQualcomm Snapdragon (SDM439) Octa Core Processor', 'shyamkumar444@gmail.com'),
-(23, 'Woodness Liberty Solid Wood Bunk Bed  (Finish Color - Dark Brown)', 'Furniture', '12371 ₹', 'furniture1.jpeg', 'furniture2.jpeg', 'furniture3.jpeg', '2021-01-08', '2021-01-10', 'Bed Size: Single\r\nBed Design: Standard Bunk Bed\r\nHeight x Width: 1515 mm x 1975 mm (4 ft 11 in x 6 ft 5 in)\r\nKnock Down - Delivered in non-assembled pieces, installation by service partner', 'shyamkumar444@gmail.com'),
-(24, 'Lenovo Ideapad Flex 5', 'Laptop', '50990 ₹', 'lenovo laptop1.jpeg', 'lenovo laptop2.jpeg', 'lenovo laptop3.jpeg', '2021-01-12', '2021-01-16', 'Core i3 10th Gen - (8 GB/512 GB SSD/Windows 10 Home) 14IIL05 2 in 1 Laptop  (14 inch, Graphite Grey, 1.5 kg, With MS Office);\r\n\r\nSales Package\r\n2 in 1 Laptop, Power Adaptor, User Guide, Warranty Documents\r\nModel Number\r\n14IIL05\r\nPart Number\r\n81X100NDIN\r\nSeries\r\nIdeapad Flex 5\r\nColor\r\nGraphite Grey\r\nType\r\n2 in 1 Laptop\r\nSuitable For\r\nProcessing & Multitasking\r\nBattery Backup\r\nUpto 10 hours\r\nPower Supply\r\n65 W AC Adapter\r\nMS Office Provided\r\nYes', 'shyamkumar444@gmail.com'),
-(25, 'Infocu Bingo 2000', 'Mobile', '3100 ₹', 'WhatsApp Image 2021-01-14 at 7.09.34 PM.jpeg', 'WhatsApp Image 2021-01-14 at 7.09.34 PM (1).jpeg', 'WhatsApp Image 2021-01-14 at 7.09.35 PM.jpeg', '2021-01-20', '2021-01-24', 'Ram: 1GB| Rom: 4GB\r\nbattery: 3000mAh |\r\nscreen: 4inch|\r\ndual camera: front(2mp), back(8mp)|\r\nfront flash| 4G LTE', 'rahulkumar41999@gmail.com');
+INSERT INTO `product` (`product_id`, `product_name`, `product_type`, `product_cost`, `product_image`, `product_image_1`, `product_image_2`, `end_date`, `description`, `puser`, `status`) VALUES
+(26, 'Acer Predator Helios 300', 'Laptop', '94990 ₹', 'acer laptop1.jpeg', 'acer laptop2.jpeg', 'acer laptop3.jpeg', '2021-01-21T21:54', '\r\nSales Package\r\n2 in 1 Laptop, Power Adaptor, User Guide, Warranty Documents\r\nModel Number\r\n14IIL05\r\nPart Number\r\n81X100NDIN\r\nSeries\r\nIdeapad Flex 5\r\nColor\r\nGraphite Grey\r\nType\r\n2 in 1 Laptop\r\nSuitable For\r\nProcessing & Multitasking\r\nBattery Backup\r\nUpto 10 hours\r\nPower Supply\r\n65 W AC Adapter\r\nMS Office Provided\r\nYes', 'sachisabya41999@gmail.com', 1),
+(27, 'Embroidered Fashion Cotton Blend Saree  (Green)', 'Clothes(Female)', '498 ₹', 'girl saree1.jpeg', 'girl saree2.jpeg', 'girl saree3.jpeg', '2021-01-19T22:10', 'Style Code\r\nAARS-001AAAGREEN\r\nPattern\r\nEmbroidered\r\nPack of\r\n1\r\nOccasion\r\nParty & Festive\r\nType of Embroidery\r\nZarodosi Embroidery\r\nHand Embroidery\r\nno\r\nEmbroidery Method\r\nMachine\r\nConstruction Type\r\nmachine\r\nFabric Care\r\nWash with Like Colors\r\nFabric\r\nCotton Blend\r\nType\r\nFashion\r\nBlouse Piece\r\nUnstitched\r\nSari Style\r\nRegular Sari\r\nSari Length\r\n5.5\r\nBlouse Piece Length\r\n0.75\r\nWeight\r\n0.3', 'ghoshsupriya159@gmail.com', 1),
+(28, 'Woodness Liberty Solid Wood Bunk Bed  (Finish Color - Dark Brown)', 'Furniture', '12,371 ₹', 'furniture1.jpeg', 'furniture2.jpeg', 'furniture3.jpeg', '2021-01-27T22:15', 'Bed Size: Single\r\nBed Design: Standard Bunk Bed\r\nHeight x Width: 1515 mm x 1975 mm (4 ft 11 in x 6 ft 5 in)\r\nKnock Down - Delivered in non-assembled pieces, installation by service partner', 'rachita666@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -85,7 +79,7 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`serial_number`, `name`, `email`, `password`, `phone_number`, `alternative_phone_number`, `date_of_birth`, `gender`, `address_1`, `address_2`, `country`, `state`, `postal_code`, `image`, `reg_date`) VALUES
-(55, 'Sabyasachi', 'sachisabya41999@gmail.com', '8bc36b1b8cf0927a05a2268bd8d4d66c', '6294683141', '8809836648', '2020-12-28', 'Male', 'Mahavir Colony, Beur More,Anisabad Patna', 'Mahavir Colony, Beur More,Anisabad Patna\r\nbeur', 'United States', 'Bihar', 800002, 'resume.jpg', '2020-12-15 18:28:10'),
+(55, 'Sabyasachi', 'sachisabya41999@gmail.com', '8bc36b1b8cf0927a05a2268bd8d4d66c', '6294683141', '8809836648', '2020-12-28', 'Male', 'Mahavir Colony, Beur More,Anisabad Patna', 'Mahavir Colony, Beur More,Anisabad Patna\r\nbeur', 'United States', 'Bihar', 800002, 'irrfan-khan-best-hd-photos-download-1080p-whatsapp-dpstatus-images-ommh-667x961.jpg', '2020-12-15 18:28:10'),
 (56, 'Gagandeep', 'gagan.training@gmail.com', '526641bd710f0e083d38ed9a216391c3', '7896541230', '7896541230', '1995-10-07', 'Male', 'barabazar', 'chandannagar', 'United States', 'West Bengal', 712136, 'default.png', '2020-12-23 14:04:59'),
 (58, 'supriya ghosh', 'ghoshsupriya159@gmail.com', '8bc36b1b8cf0927a05a2268bd8d4d66c', '7903346686', '8809836648', '2021-01-07', 'Male', 'Mahavir Colony, Beur More,Anisabad Patna', 'Mahavir Colony, Beur More,Anisabad Patna\r\nbeur', 'United States', 'West Bengal', 700012, 'default.png', '2021-01-09 10:05:47'),
 (59, 'shyam kumar', 'shyamkumar444@gmail.com', '8bc36b1b8cf0927a05a2268bd8d4d66c', '8976564783', '9931715679', '2021-01-06', 'Male', 'Chater, P.s Barahara, Bhojpur( Ara)', 'Chater, P.s Barahara, Bhojpur( Ara)', 'United States', 'Bihar', 802163, 'default.png', '2021-01-14 12:17:50'),
@@ -191,7 +185,7 @@ ALTER TABLE `saler`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `product_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `registration`

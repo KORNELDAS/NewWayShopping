@@ -10,12 +10,21 @@ public class Product {
     private String product_image;
     private String product_image_1;
     private String product_image_2;
-    private String start_date;
+  
     private String end_date;
     private String description;
     private String puser;
+    private int status;
 
-    public Product(int product_id, String product_name, String product_type, String product_cost, String product_image, String product_image_1, String product_image_2, String start_date, String end_date, String description, String puser) {
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Product(int product_id, String product_name, String product_type, String product_cost, String product_image, String product_image_1, String product_image_2, String end_date, String description, String puser, int status) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.product_type = product_type;
@@ -23,20 +32,35 @@ public class Product {
         this.product_image = product_image;
         this.product_image_1 = product_image_1;
         this.product_image_2 = product_image_2;
-        this.start_date = start_date;
         this.end_date = end_date;
         this.description = description;
         this.puser = puser;
+        this.status = status;
     }
+    
 
-    public Product(String product_name, String product_type, String product_cost, String product_image, String product_image_1, String product_image_2, String start_date, String end_date, String description, String puser) {
+    public Product(int product_id, String product_name, String product_type, String product_cost, String product_image, String product_image_1, String product_image_2,  String end_date, String description, String puser) {
+        this.product_id = product_id;
         this.product_name = product_name;
         this.product_type = product_type;
         this.product_cost = product_cost;
         this.product_image = product_image;
         this.product_image_1 = product_image_1;
         this.product_image_2 = product_image_2;
-        this.start_date = start_date;
+        
+        this.end_date = end_date;
+        this.description = description;
+        this.puser = puser;
+    }
+
+    public Product(String product_name, String product_type, String product_cost, String product_image, String product_image_1, String product_image_2,  String end_date, String description, String puser) {
+        this.product_name = product_name;
+        this.product_type = product_type;
+        this.product_cost = product_cost;
+        this.product_image = product_image;
+        this.product_image_1 = product_image_1;
+        this.product_image_2 = product_image_2;
+       
         this.end_date = end_date;
         this.description = description;
         this.puser = puser;
@@ -115,13 +139,7 @@ public class Product {
         this.product_image = product_image;
     }
 
-    public String getStart_date() {
-        return start_date;
-    }
-
-    public void setStart_date(String start_date) {
-        this.start_date = start_date;
-    }
+  
 
     public String getEnd_date() {
         return end_date;

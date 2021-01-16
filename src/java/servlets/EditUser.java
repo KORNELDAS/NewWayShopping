@@ -49,6 +49,7 @@ public class EditUser extends HttpServlet {
 
             out.println("</head>");
             out.println("<body>");
+             String real_path="D:\\projects\\NewWayShopping\\web\\pics\\";  
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
@@ -73,18 +74,22 @@ public class EditUser extends HttpServlet {
             us.setPostal_code(pin);
             String oldpic = us.getImage();
             us.setImage(path);
-
+           
             //update into databse;
             Userdao ud = new Userdao(Database.getConnection());
             boolean ans = ud.updateuser(us);
             if (ans) {
                 //this is for upload image into server folder pics
-                String newpath = request.getRealPath("/") + "pics" + File.separator + us.getImage();
-                String oldpath = request.getRealPath("/") + "pics" + File.separator + oldpic;
+                String path_1=real_path+us.getImage();
+                String del_path=real_path+oldpic;
+                String newpath = request.getRealPath("/")+"pics"+File.separator+ us.getImage();
+                String oldpath = request.getRealPath("/")+"pics"+File.separator+ oldpic;
                 if (!oldpic.equals("default.png")) {
+                    Helper.deleteFile_real(del_path);
                     Helper.deleteFile(oldpath);
                 }
                 if (Helper.saveFile(part.getInputStream(), newpath)) {
+                    Helper.saveFile_real(part.getInputStream(), path_1);
                     out.println("pic uploaded");
                     response.sendRedirect("welcome.jsp");
                 } else {

@@ -4,6 +4,7 @@
     Author     : Asus
 --%>
 
+<%@page import="java.io.File"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -21,8 +22,12 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
         <%
+            
             try {
+               
+               
 
                 /*int id = Integer.parseInt(request.getParameter("del_id"));
 
