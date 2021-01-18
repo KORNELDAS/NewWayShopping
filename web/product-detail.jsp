@@ -16,6 +16,7 @@
     String product_image_3 = "";
     String product_name = "";
     String product_price = "";
+    String end_date="";
     String desc = "";
     Connection con = Database.getConnection();
     String query = "select * from product where product_id=?";
@@ -28,6 +29,7 @@
         product_image_1 = rs.getString("product_image");
         product_image_2 = rs.getString("product_image_1");
         product_image_3 = rs.getString("product_image_2");
+        end_date=rs.getString("end_date");
         desc = rs.getString("description");
     }
 %>
@@ -72,16 +74,36 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <style>
             .corues{
-                border-radius: 15px!important;
+                
                 height: 620px!important;
+                
             }
             .crouse_mini{
                 height: 140px!important;
             }
             .crouse_mini img{
-                height: 100%!important;
+                max-width: 100%!important;
+                max-height: 100%!important;
             }
-
+            .corues img{
+                max-width: 100%!important;
+                max-height: 100%!important;
+            }
+            .active{
+                transition: 0.4s ease-in-out!important;
+                display: flex!important;
+                justify-content: center!important;
+                align-items: center!important;
+            }
+            #timer{
+              
+                animation: contentsize 3s infinite linear;
+                font-size: 25px;
+                font-weight: bolder;
+                font-style: italic;
+               
+            }
+            
         </style>
     </head>
     <body>
@@ -94,10 +116,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h2>Shop Detail</h2>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                            <li class="breadcrumb-item active">Shop Detail </li>
-                        </ul>
+                      
                     </div>
                 </div>
             </div>
@@ -126,13 +145,13 @@
                                 <span class="sr-only">Next</span> 
                             </a>
                             <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-1" data-slide-to="0" class="crouse_mini active">
+                                <li data-target="#carousel-example-1" data-slide-to="0" class="crouse_mini d-flex align-items-center justify-content-center  active">
                                     <img class="d-block w-100 img-fluid" src="product_image/<%= product_image_1%>" alt="" />
                                 </li>
-                                <li data-target="#carousel-example-1" data-slide-to="1" class="crouse_mini">
+                                <li data-target="#carousel-example-1" data-slide-to="1" class="crouse_mini d-flex align-items-center justify-content-center ">
                                     <img class="d-block w-100 img-fluid" src="product_image/<%= product_image_2%>" alt="" />
                                 </li>
-                                <li data-target="#carousel-example-1" data-slide-to="2" class="crouse_mini">
+                                <li data-target="#carousel-example-1" data-slide-to="2" class="crouse_mini d-flex align-items-center justify-content-center ">
                                     <img class="d-block w-100 img-fluid" src="product_image/<%= product_image_3%>" alt="" />
                                 </li>
                             </ol>
@@ -144,7 +163,10 @@
                             <h2 style="text-transform: uppercase;"><%=product_name%></h2>
                             <h5><h5 style="color:black;font-weight: bolder;font-size: 20px;">Starting Bid:</h5>  <%=product_price%></h5>
                             <h5><h5 style="color:black;font-weight: bolder;font-size: 20px;">Current Bid:</h5>  <%=product_price%></h5>
-                            <p style="color:black;font-weight: bold;">Time remaining:  <%=product_price%></p> 
+                            <p style="color:black;font-weight: bold;">Time remaining:  </p> 
+                            <div>
+                                <p id="timer" style="color:red;font-weight: bold;"></p>
+                            </div>
                             <p class="available-stock"><span> More than 20 Bidders bid on this product </span>
                             <p>
                             <h4> Description:</h4>
@@ -516,7 +538,38 @@
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
 
+          <!--this is for timer-->
+        <script>
+// Set the date we're counting down to
+            var countDownDate = new Date("<%= end_date %>").getTime();
+            
+// Update the count down every 1 second
+            var x = setInterval(function () {
 
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Output the result in an element with id="demo"
+                document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+                        + minutes + "m " + seconds + "s ";
+
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("demo").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        </script>
+        <!--end of  timer-->
 
     </body>
 </html>
