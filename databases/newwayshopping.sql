@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3008
--- Generation Time: Jan 16, 2021 at 06:15 AM
+-- Generation Time: Jan 20, 2021 at 03:46 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `newwayshopping`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bidders`
+--
+
+CREATE TABLE `bidders` (
+  `bidder_id` int(250) NOT NULL,
+  `name` varchar(500) NOT NULL,
+  `product_name` varchar(500) NOT NULL,
+  `product_id` int(250) NOT NULL,
+  `biding_price` varchar(500) DEFAULT NULL,
+  `base_price` varchar(500) NOT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `user_email` varchar(500) NOT NULL,
+  `status` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bidders`
+--
+
+INSERT INTO `bidders` (`bidder_id`, `name`, `product_name`, `product_id`, `biding_price`, `base_price`, `phone`, `user_email`, `status`) VALUES
+(2, 'rahul kumar', 'Embroidered Fashion Cotton Blend Saree  (Green)', 27, '602', '498', '9973910344', 'rahulkumar41999@gmail.com', NULL),
+(7, 'rahul kumar', 'Woodness Liberty Solid Wood Bunk Bed  (Finish Color - Dark Brown)', 28, '12403', '12371', '9973910344', 'rahulkumar41999@gmail.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -46,9 +72,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_type`, `product_cost`, `product_image`, `product_image_1`, `product_image_2`, `end_date`, `description`, `puser`, `status`) VALUES
-(26, 'Acer Predator Helios 300', 'Laptop', '94990 ₹', 'acer laptop1.jpeg', 'acer laptop2.jpeg', 'acer laptop3.jpeg', '2021-01-21T21:54', '\r\nSales Package\r\n2 in 1 Laptop, Power Adaptor, User Guide, Warranty Documents\r\nModel Number\r\n14IIL05\r\nPart Number\r\n81X100NDIN\r\nSeries\r\nIdeapad Flex 5\r\nColor\r\nGraphite Grey\r\nType\r\n2 in 1 Laptop\r\nSuitable For\r\nProcessing & Multitasking\r\nBattery Backup\r\nUpto 10 hours\r\nPower Supply\r\n65 W AC Adapter\r\nMS Office Provided\r\nYes', 'sachisabya41999@gmail.com', 1),
-(27, 'Embroidered Fashion Cotton Blend Saree  (Green)', 'Clothes(Female)', '498 ₹', 'girl saree1.jpeg', 'girl saree2.jpeg', 'girl saree3.jpeg', '2021-01-19T22:10', 'Style Code\r\nAARS-001AAAGREEN\r\nPattern\r\nEmbroidered\r\nPack of\r\n1\r\nOccasion\r\nParty & Festive\r\nType of Embroidery\r\nZarodosi Embroidery\r\nHand Embroidery\r\nno\r\nEmbroidery Method\r\nMachine\r\nConstruction Type\r\nmachine\r\nFabric Care\r\nWash with Like Colors\r\nFabric\r\nCotton Blend\r\nType\r\nFashion\r\nBlouse Piece\r\nUnstitched\r\nSari Style\r\nRegular Sari\r\nSari Length\r\n5.5\r\nBlouse Piece Length\r\n0.75\r\nWeight\r\n0.3', 'ghoshsupriya159@gmail.com', 1),
-(28, 'Woodness Liberty Solid Wood Bunk Bed  (Finish Color - Dark Brown)', 'Furniture', '12,371 ₹', 'furniture1.jpeg', 'furniture2.jpeg', 'furniture3.jpeg', '2021-01-27T22:15', 'Bed Size: Single\r\nBed Design: Standard Bunk Bed\r\nHeight x Width: 1515 mm x 1975 mm (4 ft 11 in x 6 ft 5 in)\r\nKnock Down - Delivered in non-assembled pieces, installation by service partner', 'rachita666@gmail.com', 1);
+(26, 'Acer Predator Helios 300', 'Laptop', '94990', 'acer laptop1.jpeg', 'acer laptop2.jpeg', 'acer laptop3.jpeg', '2021-01-21T21:54', '\r\nSales Package\r\n2 in 1 Laptop, Power Adaptor, User Guide, Warranty Documents\r\nModel Number\r\n14IIL05\r\nPart Number\r\n81X100NDIN\r\nSeries\r\nIdeapad Flex 5\r\nColor\r\nGraphite Grey\r\nType\r\n2 in 1 Laptop\r\nSuitable For\r\nProcessing & Multitasking\r\nBattery Backup\r\nUpto 10 hours\r\nPower Supply\r\n65 W AC Adapter\r\nMS Office Provided\r\nYes', 'sachisabya41999@gmail.com', 1),
+(27, 'Embroidered Fashion Cotton Blend Saree  (Green)', 'Clothes(Female)', '498', 'girl saree1.jpeg', 'girl saree2.jpeg', 'girl saree3.jpeg', '2021-01-19T22:10', 'Style Code\r\nAARS-001AAAGREEN\r\nPattern\r\nEmbroidered\r\nPack of\r\n1\r\nOccasion\r\nParty & Festive\r\nType of Embroidery\r\nZarodosi Embroidery\r\nHand Embroidery\r\nno\r\nEmbroidery Method\r\nMachine\r\nConstruction Type\r\nmachine\r\nFabric Care\r\nWash with Like Colors\r\nFabric\r\nCotton Blend\r\nType\r\nFashion\r\nBlouse Piece\r\nUnstitched\r\nSari Style\r\nRegular Sari\r\nSari Length\r\n5.5\r\nBlouse Piece Length\r\n0.75\r\nWeight\r\n0.3', 'ghoshsupriya159@gmail.com', 1),
+(28, 'Woodness Liberty Solid Wood Bunk Bed  (Finish Color - Dark Brown)', 'Furniture', '12371', 'furniture1.jpeg', 'furniture2.jpeg', 'furniture3.jpeg', '2021-01-27T22:15', 'Bed Size: Single\r\nBed Design: Standard Bunk Bed\r\nHeight x Width: 1515 mm x 1975 mm (4 ft 11 in x 6 ft 5 in)\r\nKnock Down - Delivered in non-assembled pieces, installation by service partner', 'rachita666@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -151,6 +177,12 @@ INSERT INTO `test` (`email`, `password`, `pic`, `name1`) VALUES
 --
 
 --
+-- Indexes for table `bidders`
+--
+ALTER TABLE `bidders`
+  ADD PRIMARY KEY (`bidder_id`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -180,6 +212,12 @@ ALTER TABLE `saler`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `bidders`
+--
+ALTER TABLE `bidders`
+  MODIFY `bidder_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product`
