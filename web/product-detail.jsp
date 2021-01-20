@@ -11,12 +11,13 @@
 %>
 
 <%  int id = Integer.parseInt(request.getParameter("id#"));
+
     String product_image_1 = "";
     String product_image_2 = "";
     String product_image_3 = "";
     String product_name = "";
     String product_price = "";
-    String end_date="";
+    String end_date = "";
     String desc = "";
     Connection con = Database.getConnection();
     String query = "select * from product where product_id=?";
@@ -24,17 +25,45 @@
     ps.setInt(1, id);
     ResultSet rs = ps.executeQuery();
     while (rs.next()) {
+
         product_name = rs.getString("product_name");
         product_price = rs.getString("product_cost");
         product_image_1 = rs.getString("product_image");
         product_image_2 = rs.getString("product_image_1");
         product_image_3 = rs.getString("product_image_2");
-        end_date=rs.getString("end_date");
+        end_date = rs.getString("end_date");
         desc = rs.getString("description");
     }
 %>
 
+<%
+    int count = 0;
+    String price = "e";
+    int min = 0;
+    String price_show = "";
+    try {
+        Connection con1 = Database.getConnection();
+        String quer = "select * from bidders where product_id=? order by biding_price desc limit 1";
+        PreparedStatement ps1 = con1.prepareStatement(quer);
+        ps1.setInt(1, id);
+        ResultSet rs1 = ps1.executeQuery();
+        while (rs1.next()) {
+            price = rs1.getString("biding_price");
+            count++;
+        }
 
+    } catch (Exception ex) {
+        System.out.println(ex.getMessage());
+    }
+    if (price != "e") {
+        price_show = price;
+        min = Integer.parseInt(price) + 1;
+    } else {
+        min = Integer.parseInt(product_price) + 1;
+        price_show = product_price;
+    }
+
+%>
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -74,12 +103,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <style>
             .corues{
-                
+
                 height: 620px!important;
-                
+
             }
             .crouse_mini{
-                height: 140px!important;
+                height: 100px!important;
             }
             .crouse_mini img{
                 max-width: 100%!important;
@@ -96,14 +125,14 @@
                 align-items: center!important;
             }
             #timer{
-              
+
                 animation: contentsize 3s infinite linear;
                 font-size: 25px;
                 font-weight: bolder;
                 font-style: italic;
-               
+
             }
-            
+
         </style>
     </head>
     <body>
@@ -116,7 +145,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h2>Shop Detail</h2>
-                      
+
                     </div>
                 </div>
             </div>
@@ -167,19 +196,57 @@
                             <div>
                                 <p id="timer" style="color:red;font-weight: bold;"></p>
                             </div>
-                            <p class="available-stock"><span> More than 20 Bidders bid on this product </span>
+                            <%
+                                String bider_count = "";
+                                if (count == 0) {
+                                    bider_count = "Hurry Up! You become the first bidder on this product";
+                                } else {
+                                    bider_count = "More than " + count + " Bidders bid on this product Hurry Up!";
+                                }
+
+                            %>
+                            <p class="available-stock"><span> <%=bider_count%> </span>
                             <p>
                             <h4> Description:</h4>
                             <p><%=desc%> </p>
+                            <button type="button" class="btn btn-danger hvr-hover" id="sho_bidy" style="margin-bottom:10px;font-weight: bolder;color: white" >Bidders</button>
 
-                            <button type="button" class="btn btn-danger hvr-hover" style="margin-bottom:10px;font-weight: bolder;color: white">Bidders</button>
-                            <ul style="display:none">
-                                <li>
 
+                            <ul id="show_bidy" style="display:none">
+                                <%
+                                    ArrayList<String> list_bid = new ArrayList<>();
+
+                                    try {
+
+                                        String bider_name = "";
+                                        String bider_price = "";
+                                        Connection con2 = Database.getConnection();
+                                        String quer = "select * from bidders where product_id=?";
+                                        PreparedStatement ps2 = con2.prepareStatement(quer);
+                                        ps2.setInt(1, id);
+                                        ResultSet rs2 = ps2.executeQuery();
+                                        while (rs2.next()) {
+                                            bider_name = rs2.getString("name");
+                                            bider_price = rs2.getString("biding_price");
+                                            String help = bider_name + " :-" + " ₹" + bider_price;
+                                            list_bid.add(help);
+                                        }
+
+                                    } catch (Exception ex) {
+                                        System.out.println(ex.getMessage());
+                                    }
+
+                                    for (String liter : list_bid) {
+
+
+                                %>
+                                <li style="font-style:italic;font-weight: bolder;color: black;text-decoration: underline">
+                                    <%=liter%>
                                 </li>
-                                <li>
+                                <%
+                                    }
+                                %>
 
-                                </li>
                             </ul>
 
                             <div class="price-box-bar">
@@ -198,44 +265,56 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
+
+
                                         <div class="modal-body">
-                                            <form class="form-group" action="Bid_product" method="post">
+                                            <form class="form-group" action="Bid_product" method="post"> 
+                                                <input type="hidden" name="productName" class="form-control" value="<%= product_name%>">
+                                                <input type="hidden" name="productPrice" class="form-control" value="<%= product_price%>">
+                                                <input type="hidden" name="productId" class="form-control" value="<%= id%>">   
                                                 <table class="table table-striped table-dark">
 
                                                     <tbody>
                                                         <tr>
                                                             <th scope="row">Name:</th>
-                                                            <td> <input type="text" name="name" class="form-control"></td>
+                                                            <td> <input type="text" name="name" class="form-control" value="<%= user.getName()%>"></td>
 
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">Biding Price:</th>
                                                             <td>
-                                                                <input type="text" name="price" class="form-control">
+
+
+                                                                <input type="number" class="form-control" name="biding_price" min="<%=min%>" max="" step="1" value="<%= price_show %>">  
                                                                 <h6 style="color:white;">Your bid Price must have to greater than current bid price!</h6>
                                                             </td>
-                                                            
+
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">Phone:</th>
-                                                            <td><input type="tel" name="phone" class="form-control"  ></td>
+                                                            <td><input type="tel" name="phone" class="form-control" value="<%= user.getPhone_number()%>" ></td>
 
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">Email:</th>
-                                                            <td><input type="email" name="email" class="form-control"  ></td>
+                                                            <td><input type="email" name="email" class="form-control"  value="<%= user.getEmail()%>"></td>
 
                                                         </tr>
-                                                        
+
                                                     </tbody>
                                                 </table>
-                                            </form>
+                                                <div style="text-align:center;">
+                                                    <button type="submit" class="btn " style="background:black;color: white;">Bid</button>
+                                                </div>
+
+                                            </form> 
                                         </div>
                                         <div class="modal-footer bg-danger">
-                                            <button type="button" class="btn " style="background:black;color: white;">Bid</button>
+
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -538,11 +617,29 @@
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
 
-          <!--this is for timer-->
+        <script>
+//                                function show_bidders() {
+//                                    let show_bider = document.getElementById("show_bidy");
+//                                    if (show_bider.style.display === "none") {
+//                                        show_bider.style.display = "block";
+//                                        show_bider.style.transition = "0.5s ease";
+//                                    } else {
+//                                        show_bider.style.display = "none";
+//                                        show_bider.style.transition = "0.5s ease";
+//                                    }
+//                                }
+            $(document).ready(function () {
+                $("#sho_bidy").click(function () {
+                    $("#show_bidy").slideToggle();
+                });
+            });
+        </script>
+
+        <!--this is for timer-->
         <script>
 // Set the date we're counting down to
-            var countDownDate = new Date("<%= end_date %>").getTime();
-            
+            var countDownDate = new Date("<%= end_date%>").getTime();
+
 // Update the count down every 1 second
             var x = setInterval(function () {
 

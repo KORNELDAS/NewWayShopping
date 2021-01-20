@@ -22,11 +22,28 @@
         <title>JSP Page</title>
     </head>
     <body>
+       
         
         <%
-            
+            int id=24;
+            String price="e";
             try {
-               
+                
+                                                                       Connection con1=Database.getConnection();
+                                                                        String quer = "select * from bidders where product_id=? order by biding_price desc limit 1";
+                                                                        PreparedStatement ps1 = con1.prepareStatement(quer);
+                                                                        ps1.setInt(1, id);
+                                                                        ResultSet rs1 = ps1.executeQuery();
+                                                                        while (rs1.next()) {
+                                                                            price = rs1.getString("biding_price");
+                                                                        }
+                                                                       if(price!="e"){  
+                                                                              out.println(price);
+                                                                       }else{
+                                                                       
+                                                                            out.println(price); 
+                                                                       }
+                                                                   
                
 
                 /*int id = Integer.parseInt(request.getParameter("del_id"));

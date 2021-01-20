@@ -46,7 +46,7 @@ public class AddProduct extends HttpServlet {
             try {
                 String s1 = request.getParameter("pname");
                 String s2 = request.getParameter("ptype");
-                String s3 = request.getParameter("pcost") + " ₹";
+                String s3 = request.getParameter("pcost") ;
                 
                 String s5 = request.getParameter("end_date");
                 String s10 = request.getParameter("desc");
