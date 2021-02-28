@@ -77,7 +77,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h2>Your Bidded Products</h2>
-                        
+
                     </div>
                 </div>
             </div>
@@ -102,31 +102,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%  
-                                     try{   
-                                        Users users1 = (Users) session.getAttribute("currentUser");
-                                        String user_email=users1.getEmail();
-                                        Connection cd=Database.getConnection();
-                                        String quer="select * from bidders where user_email=?";
-                                        PreparedStatement ps=cd.prepareStatement(quer);
-                                        ps.setString(1, user_email);
-                                        ResultSet rs=ps.executeQuery();
-                                       while(rs.next()){
-                                           
-                                           int id=rs.getInt("product_id");
-                                           String image="";
-                                           try{
-                                           Connection cd1=Database.getConnection();
-                                           String quer1="select * from product where product_id=?";
-                                           PreparedStatement ps1=cd1.prepareStatement(quer1);
-                                           ps1.setInt(1, id);
-                                           ResultSet rs1=ps1.executeQuery();
-                                           
-                                           while(rs1.next()){
-                                               image=rs1.getString("product_image_1");
-                                           }}catch(Exception ex1){
-                                                   System.out.println(ex1.getMessage());
-                                                   }
+                                    <%                                        try {
+                                            Users users1 = (Users) session.getAttribute("currentUser");
+                                            String user_email = users1.getEmail();
+                                            Connection cd = Database.getConnection();
+                                            String quer = "select * from bidders where user_email=?";
+                                            PreparedStatement ps = cd.prepareStatement(quer);
+                                            ps.setString(1, user_email);
+                                            ResultSet rs = ps.executeQuery();
+                                            while (rs.next()) {
+
+                                                int id = rs.getInt("product_id");
+                                                String image = "";
+                                                try {
+                                                    Connection cd1 = Database.getConnection();
+                                                    String quer1 = "select * from product where product_id=?";
+                                                    PreparedStatement ps1 = cd1.prepareStatement(quer1);
+                                                    ps1.setInt(1, id);
+                                                    ResultSet rs1 = ps1.executeQuery();
+
+                                                    while (rs1.next()) {
+                                                        image = rs1.getString("product_image_1");
+                                                    }
+                                                } catch (Exception ex1) {
+                                                    System.out.println(ex1.getMessage());
+                                                }
                                     %>
                                     <tr id="temp">
                                         <td class="thumbnail-img">
@@ -143,24 +143,51 @@
                                             <p><%= rs.getString("biding_price")%></p>
                                         </td>
                                         <td class="quantity-box"><%= rs.getString("base_price")%></td>
-                                        <%  
-                                            String status=rs.getString("status");
-                                            String status1="OnGoing";
-                                            if(status!=null){
-                                                status1="Expired";
+                                        <%
+                                            String status = rs.getString("status");
+                                            String status1 = "Active";
+
+                                            if (status != null) {
+                                                status1 = "Expired";
+
+                                            }
+
+                                            if (status1 == "Active") {
+                                        %>
+                                        <td class="total-pr prdct_sts"   style="font-weight:bolder;color:limegreen">
+                                            Active
+                                        </td>
+                                        <%
+                                            }
+                                            if (status1 == "Expired") {
+
+                                        %>
+
+                                        <td class="total-pr prdct_sts"   style="font-weight:bolder;color:red">
+                                            Expired
+                                        </td>
+                                        <%                                            }
+                                            if (status == null) {
+                                        %>
+                                        <td class="remove-r" style="font-weight:bold;color: #007fff"><%=rs.getString("status")%></td> 
+                                        <%
+                                        } else if (status.equals("reject"))  {
+                                        %>
+                                        <td class="" style="font-weight:bold;color: red">Reject</td>
+                                        <%
+                                        } else if (status.equals("confirm")) {
+                                        %>
+                                        <td class="" style="font-weight:bold;color: limegreen">Confirm</td>
+                                        <%
                                             }
                                         %>
-                                        <td class="total-pr">
-                                            <p><%=status1%></p>
-                                        </td>
-                                        <td class="remove-r"><%=status%></td> 
-                                      
                                     </tr>
 
                                     <%
-                                        }}catch(Exception ex){
-                                                System.out.println(ex.getMessage());
-                                                }
+                                            }
+                                        } catch (Exception ex) {
+                                            System.out.println(ex.getMessage());
+                                        }
                                     %>
 
                                 </tbody>
@@ -288,35 +315,37 @@
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
 
+
+
         <!--its for deleting product from database-->
-      <!--  <script>
-                                                function deletpro(k, id) {
-                                                    let tbrow = document.getElementById(k);
-                                                    let dele_frm = document.getElementById(id);
-                                                    swal({
-                                                        title: "Are you sure?",
-                                                        text: "Once deleted, you will not be able to recover this Product",
-                                                        icon: "warning",
-                                                        buttons: true,
-                                                        dangerMode: true
-                                                    })
-                                                            .then((willDelete) => {
-                                                                if (willDelete) {
-                                                                    tbrow.style.display = "none";
-
-                                                                    swal("Successfully Registered", "Click on the ok button for redirecting to login page", "success")
-                                                                            .then((value) => {
-                                                                                dele_frm.submit();
-                                                                            });
-                                                                } else {
-                                                                    swal("Your Product is safe!");
-                                                                }
-                                                            });
-
-                                                }
-
-
-        </script>-->
+        <!--  <script>
+                                                  function deletpro(k, id) {
+                                                      let tbrow = document.getElementById(k);
+                                                      let dele_frm = document.getElementById(id);
+                                                      swal({
+                                                          title: "Are you sure?",
+                                                          text: "Once deleted, you will not be able to recover this Product",
+                                                          icon: "warning",
+                                                          buttons: true,
+                                                          dangerMode: true
+                                                      })
+                                                              .then((willDelete) => {
+                                                                  if (willDelete) {
+                                                                      tbrow.style.display = "none";
+  
+                                                                      swal("Successfully Registered", "Click on the ok button for redirecting to login page", "success")
+                                                                              .then((value) => {
+                                                                                  dele_frm.submit();
+                                                                              });
+                                                                  } else {
+                                                                      swal("Your Product is safe!");
+                                                                  }
+                                                              });
+  
+                                                  }
+  
+  
+          </script>-->
 
 
 
