@@ -41,6 +41,46 @@
 
 
         <style>
+            .modal-body{
+                overflow: hidden;
+                overflow-y: auto;
+                height: 450px;
+            }
+           
+            /*its for add product modal rotate the cross*/
+              #cross-but{
+                  font-size:50px!important;
+                  transition: 0.7s ease;
+                  color: black!important;
+              }
+              #cross-but:hover{
+                  transform-origin: center center;
+                  transform: rotate(360deg);
+                  color: black!important;
+                  transition: 0.7s ease;
+              }
+            /*end*/
+
+
+            /*its for add profile modal rotate the cross*/
+            
+             #cross-but-1{
+                 font-size:50px!important;
+                 transition: 0.7s ease;
+                 color: black!important;
+             }
+             #cross-but-1:hover{
+                 transform-origin: center center;
+                 transform: rotate(360deg);
+                 color: black!important;
+                 transition: 0.7s ease;
+             }
+
+
+            /*end*/
+
+
+
             .dropdown{
                 position: absolute;
                 top: 65px;
@@ -147,12 +187,12 @@
                 border: 2px dashed black;
                 border-radius: 15px;
                 background: #fff;
-               /* display: flex;
-                align-items: center;
-                justify-content: center;*/
+                /* display: flex;
+                 align-items: center;
+                 justify-content: center;*/
                 overflow: hidden;
                 margin-right: 15px;
-                 box-shadow: 5px 10px 10px 8px #888888;
+                box-shadow: 5px 10px 10px 8px #888888;
             }
             .wrapper.active{
                 border: none;
@@ -161,9 +201,9 @@
                 position: absolute;
                 height: 100%;
                 width: 100%;
-               /* display: flex;
-                align-items: center;
-                justify-content: center;*/
+                /* display: flex;
+                 align-items: center;
+                 justify-content: center;*/
                 opacity: 1;
                 transition: 0.4s ease;
             }
@@ -211,7 +251,7 @@
                 opacity: 0.5;
                 transition: 0.4s ease;
             }
-            
+
             .cls-img{
                 max-height: 100%;
                 max-width: 100%;
@@ -273,7 +313,7 @@
                             <li class="nav-item"><a class="nav-link" href="about.jsp" >About Us</a></li>
 
                             <li class="nav-item"><a class="nav-link" href="addproduct.jsp" data-toggle="modal"  data-target="#exampleModal">AddProduct</a></li>
-                            <li class="nav-item"><a class="nav-link" href="test.jsp" >BidProduct</a></li>
+                            <li class="nav-item"><a class="nav-link" href="bided_products.jsp" >BidProduct</a></li>
                             <li class="nav-item"><a class="nav-link" href="services.jsp" >OurService</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp" >Contact Us</a></li>
                             <li class="nav-item"><a class="nav-link" ><i class="fa fa-bell" aria-hidden="true"></i></a></li>
@@ -306,14 +346,24 @@
         </header>
         <!-- End Main Top -->
 
+
+
+
+
+
+
+
+
+
+
         <!--profile modal-->
 
-        <div class="modal fade animated bounceIn" id="profile-modal" tabindex="-1" role="dialog" aria-labelledby="profile-modal" aria-hidden="true">
+        <div class="modal fade"  id="profile-modal" data-backdrop='static' tabindex="-1" aria-hidden="true"  role="dialog" aria-labelledby="profile-modal" >
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-danger">
                         <h2 class="modal-title " id="exampleModalLabel" style="font-weight:bold;">User Profile</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" id="cross-but-1" class="close " onClick="window.location.reload()" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -508,7 +558,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:black">Close</button>
+                        <button id="close" type="button" onClick="window.location.reload()" class="btn btn-secondary " data-dismiss="modal" style="background-color:black">Close</button>
                         <button id="edit" type="button" class="btn btn-danger">Edit</button>
                     </div>
                 </div>
@@ -526,12 +576,12 @@
 
         <!--addproduct modal-->
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal"  data-backdrop='static' tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-danger">
                         <h5 class="modal-title" id="exampleModalLabel" style="font-weight:bolder;color: black;font-size: 23px;">Add Product</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button id="cross-but" type="button" class="close " onClick="window.location.reload()" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -556,7 +606,7 @@
 
                                     <input  id="default-btn" type="file"  name="image" hidden required>
                                     <!--end blob image -->
-                                    
+
                                     <!--its for blob image 1-->
 
                                     <div  class="wrapper wrapper1 d-flex align-items-center justify-content-center" >
@@ -572,9 +622,9 @@
 
                                     <input  id="default_btn_1" type="file"  name="image_1" hidden required>
                                     <!--end blob image 1-->
-                                    
-                                    
-                                     <!--its for blob image 2-->
+
+
+                                    <!--its for blob image 2-->
 
                                     <div  class="wrapper wrapper2 d-flex align-items-center justify-content-center" >
                                         <div class="image1 d-flex align-items-center justify-content-center">
@@ -627,7 +677,7 @@
                                             </td>
 
                                         </tr>
-                                        
+
                                         <tr>
                                             <th scope="row" style="font-weight:bolder;">End:</th>
                                             <td><input type="datetime-local" name="end_date" class="form-control" aria-describedby="addon-wrapping" required="" /></td>
@@ -655,67 +705,76 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background: black;color: white">Close</button>
+                        <button type="button" class="btn btn-secondary " onClick="window.location.reload()" data-dismiss="modal" style="background: black;color: white">Close</button>
 
                     </div>
                 </div>
             </div>
         </div>
         <!--end addproduct modal-->
-        
+
         <!--extras
          const icon1 = document.getElementById("choose-btn");
             const icon2 = document.getElementById("choose-btn1");
             const icon3 = document.getElementById("choose-btn2");
         -->
+        
+        <script>
+            ;
+            
+    
+}
+        </script>
+
+        
 
         <!--its for blob image-->
         <script>
-           
-            const dfltbtn = document.getElementById("default-btn");
-            const imuge = document.getElementById("imuge");
-            const flu = document.getElementById("flu");
-            let wrap = document.querySelector(".wrapper");
-            const regex = /[0-9A-Za-z\^\$\&\@\'\{\}\[\]\,\=\?\#\!\*\(\)\.\%\-\_\~]+$/;
+
+                                                const dfltbtn = document.getElementById("default-btn");
+                                                const imuge = document.getElementById("imuge");
+                                                const flu = document.getElementById("flu");
+                                                let wrap = document.querySelector(".wrapper");
+                                                const regex = /[0-9A-Za-z\^\$\&\@\'\{\}\[\]\,\=\?\#\!\*\(\)\.\%\-\_\~]+$/;
 
 
-            function filebtn() {
-                dfltbtn.click();
-            }
+                                                function filebtn() {
+                                                    dfltbtn.click();
+                                                }
 
-            dfltbtn.addEventListener("change", function () {
-                const file = this.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function () {
-                        const result = reader.result;
-                        imuge.src = result;
-                        wrap.classList.add("active");
-                    };
-                    reader.readAsDataURL(file);
-                }
-                if (this.value) {
-                    let valu = this.value.match(regex);
-                    flu.textContent = valu;
-                }
-            });
+                                                dfltbtn.addEventListener("change", function () {
+                                                    const file = this.files[0];
+                                                    if (file) {
+                                                        const reader = new FileReader();
+                                                        reader.onload = function () {
+                                                            const result = reader.result;
+                                                            imuge.src = result;
+                                                            wrap.classList.add("active");
+                                                        };
+                                                        reader.readAsDataURL(file);
+                                                    }
+                                                    if (this.value) {
+                                                        let valu = this.value.match(regex);
+                                                        flu.textContent = valu;
+                                                    }
+                                                });
 
 
 
         </script>
         <!--end blob image-->
-        
-        
-         <!--its for blob image 1-->
+
+
+        <!--its for blob image 1-->
         <script>
-           const default_btn_1=document.getElementById("default_btn_1");
-              const imuge_1 = document.getElementById("imuge_1");
+            const default_btn_1 = document.getElementById("default_btn_1");
+            const imuge_1 = document.getElementById("imuge_1");
             const flu_1 = document.getElementById("flu_1");
             let wrap1 = document.querySelector(".wrapper1");
             const regex1 = /[0-9A-Za-z\^\$\&\@\'\{\}\[\]\,\=\?\#\!\*\(\)\.\%\-\_\~]+$/;
-           function file_btn_1(){
-               default_btn_1.click();
-           }
+            function file_btn_1() {
+                default_btn_1.click();
+            }
             default_btn_1.addEventListener("change", function () {
                 const file1 = this.files[0];
                 if (file1) {
@@ -737,18 +796,18 @@
 
         </script>
         <!--end blob image 1-->
-        
-         <!--its for blob image 2-->
+
+        <!--its for blob image 2-->
         <script>
-           const default_btn_2=document.getElementById("default_btn_2");
-              const imuge_2 = document.getElementById("imuge_2");
+            const default_btn_2 = document.getElementById("default_btn_2");
+            const imuge_2 = document.getElementById("imuge_2");
             const flu_2 = document.getElementById("flu_2");
             let wrap2 = document.querySelector(".wrapper2");
             const regex2 = /[0-9A-Za-z\^\$\&\@\'\{\}\[\]\,\=\?\#\!\*\(\)\.\%\-\_\~]+$/;
-           function file_btn_2(){
-               default_btn_2.click();
-           }
-           
+            function file_btn_2() {
+                default_btn_2.click();
+            }
+
             default_btn_2.addEventListener("change", function () {
                 const file2 = this.files[0];
                 if (file2) {
@@ -769,10 +828,10 @@
 
         </script>
         <!--end blob image 2-->
-        
-   
-        
-        
+
+
+
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="js/jquery.superslides.min.js"></script>
@@ -876,7 +935,6 @@
         </script>
 
         <!--end ajax-->
-
 
 
 
