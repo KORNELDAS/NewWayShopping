@@ -1,11 +1,9 @@
-let toogle1=document.getElementsByClass("toogle1")[0];
-
-
-function demo(){
-    let sidebar1=document.getElementById("sidebar");
-    let content1=document.getElementById("content");
-    toogle1.classList.toggle("myclas");
- 
+function togglemenu(){
+    let toggle=document.querySelector('.toogle');
+    let navigate=document.querySelector('.navigate');
+    let main=document.querySelector('.main');
+    toggle.classList.toggle('active');
+    navigate.classList.toggle('active');
+    main.classList.toggle('active');
 }
-
 

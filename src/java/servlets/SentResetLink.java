@@ -49,7 +49,7 @@ public class SentResetLink extends HttpServlet {
             Random r = new Random();
             String email = request.getParameter("email");
             String key = EncryptText.getEncrypted(email + r.nextInt(1000), "MD5");
-            String link = "http://localhost:8082/NewWayShopping/forgotpwd.jsp?key=" + key;
+            String link = "http://localhost:8084/NewWayShopping/forgotpwd.jsp?key=" + key;
             //for checking email into database;
             try {
                  con = Database.getConnection();

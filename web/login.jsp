@@ -72,12 +72,7 @@
                                 <input type="password" required name="pass" class="form-control" id="exampleInputPassword1">
                             </div>
 
-                            <!--code for check box-->
-
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                                <label class="form-check-label" for="exampleCheck1" style="color:black;">Check me out</label>
-                            </div>
+                            
 
                             <!--code for submit-->
 

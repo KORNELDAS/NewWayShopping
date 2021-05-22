@@ -330,7 +330,7 @@
                                 <div id="dorp" class="dropdown">
                                     <ul>
                                         <li><a href="profile.jsp" data-toggle="modal"  data-target="#profile-modal"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
-                                        <li><a href="" ><i class="fa fa-shopping-cart" aria-hidden="true"></i>Your Orders</a></li>
+                                        <li><a href="bidders.jsp" ><i class="fa fa-gavel" aria-hidden="true"></i>Your Bidders</a></li>
                                         <li><a href="view_product.jsp" ><i class="fa fa-eye" aria-hidden="true"></i>View Product</a></li>
                                         <li><a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
                                     </ul>

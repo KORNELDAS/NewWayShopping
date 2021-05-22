@@ -44,43 +44,141 @@
         <link rel="stylesheet" href="css/custom.css">
 
         <style>
-            .countdown{
+            .cont-shop{
+                width: 250px;
+                height: 300px;
+                transition: 0.5s;
+                border-radius: 15px;
+                box-shadow: -10px -10px 15px  rgba(255,255,255,0.5),
+                    10px 10px 15px rgba(70,70,70,0.12);
+            }
+            .cls-img{
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 15px;
+                transition: .4s ease-in-out;
+                object-fit: cover;
+            }
+
+            .cont-shop:hover{
+                transform: scale(1.1);
+                transition: 0.5s;
+            }
+                        .cont-shop:hover .cls-img{
+                            -webkit-filter: grayscale(100%) blur(2px);
+                            filter: grayscale(100%) blur(2px);
+                            transition: .4s ease-in-out;
+                        }
+            .cont-shop:hover .bid-buttons{
+                display: block;
+            }
+
+
+            .count-time{
+                position: absolute;
+                z-index: 1;
+                top: -30px;
+                left: 27px;
+                color: white;
+                font-weight: bolder;
+                width: 120px;
                 height: 30px;
                 text-align: center;
-                width: 120px;
                 font-size: 15px;
-                font-weight: bolder;
-                color: white;
-                z-index: 1;
-                position: absolute;
-                top: 0;
-                left: 0;
-
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
             }
-            .bid{
-                height: 40px;
-                width: 60px;
-                font-size: 20px;
-                font-weight: bolder;
-                color: white;
-                z-index: 1;
+            .bid-buttons{
                 position: absolute;
-                left: 42%;
+                z-index: 1;
                 top: 40%;
+                left: 42%;
+                color: white;
+                font-weight: bolder;
+                width:60px;
+                height: 40px;
+                font-size: 25px;
                 border: 2px solid black;
                 border-radius: 8px;
-                transition: 0.4s ease;
                 text-align: center;
-               display: none;
-
+                cursor: pointer;
+                display: none;
+                transition: .4s ease-in-out;
             }
-            .bid:hover{
-                background: black!important;
-                transition: 0.4s ease!important;
-
+            .bid-buttons:hover{
+                background-color: black!important;
+                transition: .4s ease-in-out;
+            }
+            .img-nam{
+                position: absolute;
+                bottom: 0;
+                width: 250px;
+                color: white;
+                font-weight: bolder;
+                text-align: center;
+                border-bottom-left-radius: 15px;
+                border-bottom-right-radius: 15px;
             }
 
-           
+
+
+
+
+
+
+            /*            .countdown{
+                            height: 30px;
+                            text-align: center;
+                            width: 120px;
+                            font-size: 15px;
+                            font-weight: bolder;
+                            color: white;
+                            z-index: 1;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+            
+                        }
+                        .bid{
+                            height: 40px;
+                            width: 60px;
+                            font-size: 20px;
+                            font-weight: bolder;
+                            color: white;
+                            z-index: 1;
+                            position: absolute;
+                            left: 42%;
+                            top: 40%;
+                            border: 2px solid black;
+                            border-radius: 8px;
+                            transition: 0.4s ease;
+                            text-align: center;
+                           display: none;
+            
+                        }
+                        .bid:hover{
+                            background: black!important;
+                            transition: 0.4s ease!important;
+            
+                        }
+                        
+                        .bid-container{
+                            width: 250px;
+                            height: 300px;
+                            border-radius: 15px;
+                           border: none;
+                           -webkit-appearance: none;
+                           box-shadow: -10px -10px 15px  rgba(255,255,255,0.5),
+                               10px 10px 15px rgba(70,70,70,0.12);
+                           
+                        }
+                        .cls-img{
+                             max-width: 100%;
+                            max-height: 100%;
+                            border-radius: 15px;
+                        }*/
+
+
 
         </style>
     </head>
@@ -88,12 +186,9 @@
     <body>
 
 
-        <!-- Start Top Search -->
-
-        <!-- End Top Search -->
-
-        <!-- Start Slider -->
         <%@include file="header.jsp" %>
+        <!-- Start Slider -->
+
         <div id="slides-shop" class="cover-slides">
             <ul class="slides-container">
                 <li class="text-left">
@@ -103,7 +198,7 @@
                             <div class="col-md-12">
                                 <h1 class="m-b-20"><strong>Welcome To <br> NewWayshopping</strong></h1>
                                 <p class="m-b-40">Here you anything can BID and <br> whatever you want to product add
-                                    </p>
+                                </p>
                                 <p><a class="btn hvr-hover" href="#" onclick="invent()">Shop New</a></p>
                             </div>
                         </div>
@@ -144,33 +239,52 @@
         <!-- End Slider -->
 
         <!-- Start Categories  -->
-        <div class="categories-shop">
+        <div class="categories-shop" style="background-color:white;">
             <div class="container">
                 <div class="row">
                     <%                    Productdao pd = new Productdao(Database.getConnection());
                         ArrayList<Product> list = pd.getProduct1();
-                        int i=0;
+                        int i = 0;
                         for (Product li : list) {
-                           i++;
+                            i++;
                     %>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
-                        <div class="shop-cat-box bid-container"  onmouseover="bid(<%=i%>)" onmouseout="bid1(<%=i%>)">
-                            <div  class="countdown hvr-hover bg-danger">
-                                <p>10d 14h 54m</p>
-                            </div>
-                            <div  class="btn  bg-danger bid" id="<%=i%>" onclick="invent()">
-                                <p>Bid</p>
-                            </div>
-                            <img class="img-fluid" src="product_image/<%= li.getProduct_image()%>" alt="" style="height: 300px;" />
-                            <a class="btn hvr-hover" href="#"><%= li.getProduct_name()%></a>
-                           
-                        </div>
 
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="cont-shop d-flex align-items-center justify-content-center">
+
+                            <div class="bid-buttons bg-danger" id="<%= li.getProduct_id()%>" >
+                                Bid
+                            </div>
+                            <div class="count-time bg-danger"  >
+                                10h 20m 30s
+                            </div>
+                            <img src="product_image/<%= li.getProduct_image()%>" class="cls-img">
+                            <div class="img-nam bg-danger"><%= li.getProduct_name()%></div>
+                        </div>
                     </div>
+
+
+
+
+
+                    <!--                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
+                                            <div class=" bid-container d-flex align-items-center justify-content-center"  onmouseover="bid(<%=i%>)" onmouseout="bid1(<%=i%>)">
+                                                <div  class="countdown hvr-hover bg-danger">
+                                                    <p>10d 14h 54m</p>
+                                                </div>
+                                                <div  class="btn  bg-danger bid" id="<%=i%>" onclick="invent()">
+                                                    <p>Bid</p>
+                                                </div>
+                                                <img class="img-fluid cls-img" src="product_image/<%= li.getProduct_image()%>" alt="" />
+                                                <a class="btn hvr-hover" href="#"><%= li.getProduct_name()%></a>
+                                               
+                                            </div>
+                    
+                                        </div>-->
                     <%
                         }
                     %>
-                  
+
                 </div>
             </div>
         </div>
@@ -484,7 +598,7 @@
         <%@include file="footer.jsp"%>
         <!----> 
         <!-- ALL JS FILES -->
-         <script src="js/changing.js" type="text/javascript"></script>
+        <script src="js/changing.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>
@@ -501,19 +615,19 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
-        
+
         <!--this is for bid button-->
         <script>
-            function bid(id){
-                var idd=id;
-                var bid1=document.getElementById(id);
-                bid1.style.display="block";
-            }
-            function bid1(id){
-                var idd=id;
-                var bid2=document.getElementById(id);
-                bid2.style.display="none";
-            }
+                                    function bid(id) {
+                                        var idd = id;
+                                        var bid1 = document.getElementById(id);
+                                        bid1.style.display = "block";
+                                    }
+                                    function bid1(id) {
+                                        var idd = id;
+                                        var bid2 = document.getElementById(id);
+                                        bid2.style.display = "none";
+                                    }
         </script>
 
     </body>
