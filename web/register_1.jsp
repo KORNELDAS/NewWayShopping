@@ -280,7 +280,7 @@
 
                             <!--code for icon-->
 
-                            <p class="divider">
+<!--                            <p class="divider">
                                 <span class="bg-light">OR</span>
                             </p>
                             <div class="d-flex justify-content-center">
@@ -288,7 +288,7 @@
                                 <a href="#"> <i class='fab fa-facebook' style='font-size:40px;color:blue;margin-right: 15px'></i></a>
                                 <a href="#"> <i class='fab fa-twitter' style='font-size:40px;color:lightblue;margin-right: 15px'></i></a>
                                 <a href="#"> <i class='fab fa-github' style='font-size:40px;color:black;margin-right: 15px'></i></a>
-                            </div>
+                            </div>-->
                         </form><br>
 
                         <div id="loader" class="container text-center p-3 " style="display:none;transition: all 0.6s!important" >

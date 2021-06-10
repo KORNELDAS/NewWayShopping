@@ -184,7 +184,7 @@
                             k++;
 
                     %>
-                    <div class="col-auto ml-md-4 mb-md-5">
+                    <div class="col-auto ml-md-4 mb-md-5" id="item<%= k%>">
                         <div class="cont-shop d-flex align-items-center justify-content-center">
                             <form id="<%= k%>" action="product-detail.jsp" method="post">
                                 <input type="hidden" name="id#" value="<%= lit.getProduct_id()%>">
@@ -558,58 +558,57 @@
 
         </script>
         <%
-            ArrayList<Product> list2=pr.getProduct_welcome(user.getEmail());
-            int j=0;
+            ArrayList<Product> list2 = pr.getProduct_welcome(user.getEmail());
+            int j = 0;
         %>
 
         <!--this is for timer-->
         <script>
-           function countdown(element, date) {
-                    // Fetch the display element
-                    console.log(element);
-                    var el = document.getElementById(element);
+            function countdown(element,element1, date) {
+                // Fetch the display element
+                console.log(element);
+                var el = document.getElementById(element);
+                var countDownDate = new Date(date).getTime();
+                // Set the timer
+                var interval = setInterval(function () {
+                    
+                    var now = new Date().getTime();
 
-                    // Set the timer
-                    var interval = setInterval(function() {
-                        var countDownDate = new Date(date).getTime();
-                        var now = new Date().getTime();
-    
-                        // Find the distance between now and the count down date
-                        var distance = countDownDate - now;
+                    // Find the distance between now and the count down date
+                    var distance = countDownDate - now;
 
-                        // Time calculations for days, hours, minutes and seconds
-                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    // Time calculations for days, hours, minutes and seconds
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    el.innerHTML = days + "d " + hours + "h "
+                            + minutes + "m " + seconds + "s ";
+
+                    // If the count down is over, write some text 
+                    if (distance < 0) {
+                        clearInterval(interval);
+                        document.getElementById(element).innerHTML = "EXPIRED";
                         
-                        el.innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-    
-                        // If the count down is over, write some text 
-                        if (distance < 0) {
-                          clearInterval(interval);
-                          document.getElementById("demo").innerHTML = "EXPIRED";
-                        }
-                                          }, 1000);
+                    }
+                }, 1000);
+            }
+            const len = <%= list2.size()%>;
+            var arr = [<%
+                                      for (int i = 0; i < list2.size(); i++) {
+                                          out.print("\"" + list2.get(i).getEnd_date() + "\",");
                                       }
-                                  const len = <%= list2.size()%>;
-                                  var arr = [<%
-                                                for(int i=0;i<list2.size();i++)
-                                                   out.print("\""+list2.get(i).getEnd_date()+"\",");
-                                  %>];
-                                  var i;
-                                  document.addEventListener("DOMContentLoaded", function() {
-                                  for(i=1;i<=len;i++){
-                                      countdown('timer'+i, arr[i-1]);
-                                  } 
-                              });
+            %>];
+            var i;
+            document.addEventListener("DOMContentLoaded", function () {
+                for (i = 1; i <= len; i++) {
+                    countdown('timer' + i,'item'+i, arr[i - 1]);
+                }
+            });
         </script>
         <!--end of  timer-->
-        <%
-        
-        
-        %>
+       
     </body>
 </html>
 

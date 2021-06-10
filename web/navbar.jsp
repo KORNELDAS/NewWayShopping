@@ -46,35 +46,35 @@
                 overflow-y: auto;
                 height: 450px;
             }
-           
+
             /*its for add product modal rotate the cross*/
-              #cross-but{
-                  font-size:50px!important;
-                  transition: 0.7s ease;
-                  color: black!important;
-              }
-              #cross-but:hover{
-                  transform-origin: center center;
-                  transform: rotate(360deg);
-                  color: black!important;
-                  transition: 0.7s ease;
-              }
+            #cross-but{
+                font-size:50px!important;
+                transition: 0.7s ease;
+                color: black!important;
+            }
+            #cross-but:hover{
+                transform-origin: center center;
+                transform: rotate(360deg);
+                color: black!important;
+                transition: 0.7s ease;
+            }
             /*end*/
 
 
             /*its for add profile modal rotate the cross*/
-            
-             #cross-but-1{
-                 font-size:50px!important;
-                 transition: 0.7s ease;
-                 color: black!important;
-             }
-             #cross-but-1:hover{
-                 transform-origin: center center;
-                 transform: rotate(360deg);
-                 color: black!important;
-                 transition: 0.7s ease;
-             }
+
+            #cross-but-1{
+                font-size:50px!important;
+                transition: 0.7s ease;
+                color: black!important;
+            }
+            #cross-but-1:hover{
+                transform-origin: center center;
+                transform: rotate(360deg);
+                color: black!important;
+                transition: 0.7s ease;
+            }
 
 
             /*end*/
@@ -329,8 +329,8 @@
                                 <i id="up" onclick="demo1()" class="fa fa-chevron-up text-dark" style="cursor:pointer;display: none" aria-hidden="true"></i>
                                 <div id="dorp" class="dropdown">
                                     <ul>
-                                        <li><a href="profile.jsp" data-toggle="modal"  data-target="#profile-modal"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
-                                        <li><a href="bidders.jsp" ><i class="fa fa-gavel" aria-hidden="true"></i>Your Bidders</a></li>
+                                        <li><a  href="addproduct.jsp" id="mod_al" aria-hidden="true" data-toggle="modal"  data-target="#profile-modal"><i class="fa fa-user" ></i>Profile</a></li>
+                                        <li><a href="bidders.jsp" ><i class="fa fa-gavel" ></i>Your Bidders</a></li>
                                         <li><a href="view_product.jsp" ><i class="fa fa-eye" aria-hidden="true"></i>View Product</a></li>
                                         <li><a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
                                     </ul>
@@ -718,46 +718,46 @@
             const icon2 = document.getElementById("choose-btn1");
             const icon3 = document.getElementById("choose-btn2");
         -->
-        
+
         <script>
             ;
-            
-    
-}
+
+
+            }
         </script>
 
-        
+
 
         <!--its for blob image-->
         <script>
 
-                                                const dfltbtn = document.getElementById("default-btn");
-                                                const imuge = document.getElementById("imuge");
-                                                const flu = document.getElementById("flu");
-                                                let wrap = document.querySelector(".wrapper");
-                                                const regex = /[0-9A-Za-z\^\$\&\@\'\{\}\[\]\,\=\?\#\!\*\(\)\.\%\-\_\~]+$/;
+            const dfltbtn = document.getElementById("default-btn");
+            const imuge = document.getElementById("imuge");
+            const flu = document.getElementById("flu");
+            let wrap = document.querySelector(".wrapper");
+            const regex = /[0-9A-Za-z\^\$\&\@\'\{\}\[\]\,\=\?\#\!\*\(\)\.\%\-\_\~]+$/;
 
 
-                                                function filebtn() {
-                                                    dfltbtn.click();
-                                                }
+            function filebtn() {
+                dfltbtn.click();
+            }
 
-                                                dfltbtn.addEventListener("change", function () {
-                                                    const file = this.files[0];
-                                                    if (file) {
-                                                        const reader = new FileReader();
-                                                        reader.onload = function () {
-                                                            const result = reader.result;
-                                                            imuge.src = result;
-                                                            wrap.classList.add("active");
-                                                        };
-                                                        reader.readAsDataURL(file);
-                                                    }
-                                                    if (this.value) {
-                                                        let valu = this.value.match(regex);
-                                                        flu.textContent = valu;
-                                                    }
-                                                });
+            dfltbtn.addEventListener("change", function () {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function () {
+                        const result = reader.result;
+                        imuge.src = result;
+                        wrap.classList.add("active");
+                    };
+                    reader.readAsDataURL(file);
+                }
+                if (this.value) {
+                    let valu = this.value.match(regex);
+                    flu.textContent = valu;
+                }
+            });
 
 
 
@@ -936,6 +936,30 @@
 
         <!--end ajax-->
 
+        
+        <!--this is for profile dropdown hiding when click on somewhere else than dropdown-->
+        <script>
+//            $('#mod_al').click(function (e) { //button click class name is myDiv
+//
+//                $('#profile-modal').modal('show');
+//
+//            });
+//        
+//            $('.media-body').click(function (e) { //button click class name is myDiv
+//
+//                e.stopPropagation();
+//
+//            });
+//
+//            $(function () {
+//                $(document).click(function () {
+//                    $('.dropdown').hide(); //hide the button
+//                    $('#up').hide();
+//                    $('#down').show();
+//
+//                });
+//            });
+        </script>
 
 
 

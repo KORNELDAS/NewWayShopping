@@ -45,6 +45,7 @@
 
         <style>
             .cont-shop{
+
                 width: 250px;
                 height: 300px;
                 transition: 0.5s;
@@ -64,11 +65,11 @@
                 transform: scale(1.1);
                 transition: 0.5s;
             }
-                        .cont-shop:hover .cls-img{
-                            -webkit-filter: grayscale(100%) blur(2px);
-                            filter: grayscale(100%) blur(2px);
-                            transition: .4s ease-in-out;
-                        }
+            .cont-shop:hover .cls-img{
+                -webkit-filter: grayscale(100%) blur(2px);
+                filter: grayscale(100%) blur(2px);
+                transition: .4s ease-in-out;
+            }
             .cont-shop:hover .bid-buttons{
                 display: block;
             }
@@ -125,58 +126,6 @@
 
 
 
-
-            /*            .countdown{
-                            height: 30px;
-                            text-align: center;
-                            width: 120px;
-                            font-size: 15px;
-                            font-weight: bolder;
-                            color: white;
-                            z-index: 1;
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-            
-                        }
-                        .bid{
-                            height: 40px;
-                            width: 60px;
-                            font-size: 20px;
-                            font-weight: bolder;
-                            color: white;
-                            z-index: 1;
-                            position: absolute;
-                            left: 42%;
-                            top: 40%;
-                            border: 2px solid black;
-                            border-radius: 8px;
-                            transition: 0.4s ease;
-                            text-align: center;
-                           display: none;
-            
-                        }
-                        .bid:hover{
-                            background: black!important;
-                            transition: 0.4s ease!important;
-            
-                        }
-                        
-                        .bid-container{
-                            width: 250px;
-                            height: 300px;
-                            border-radius: 15px;
-                           border: none;
-                           -webkit-appearance: none;
-                           box-shadow: -10px -10px 15px  rgba(255,255,255,0.5),
-                               10px 10px 15px rgba(70,70,70,0.12);
-                           
-                        }
-                        .cls-img{
-                             max-width: 100%;
-                            max-height: 100%;
-                            border-radius: 15px;
-                        }*/
 
 
 
@@ -241,7 +190,7 @@
         <!-- Start Categories  -->
         <div class="categories-shop" style="background-color:white;">
             <div class="container">
-                <div class="row">
+                <div class="row d-flex align-items-center justify-content-center">
                     <%                    Productdao pd = new Productdao(Database.getConnection());
                         ArrayList<Product> list = pd.getProduct1();
                         int i = 0;
@@ -249,10 +198,10 @@
                             i++;
                     %>
 
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-auto ml-md-4 mb-md-5">
                         <div class="cont-shop d-flex align-items-center justify-content-center">
 
-                            <div class="bid-buttons bg-danger" id="<%= li.getProduct_id()%>" >
+                            <div class="bid-buttons bg-danger" id="<%= li.getProduct_id()%>" onclick="invent()">
                                 Bid
                             </div>
                             <div class="count-time bg-danger"  >
@@ -267,20 +216,7 @@
 
 
 
-                    <!--                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
-                                            <div class=" bid-container d-flex align-items-center justify-content-center"  onmouseover="bid(<%=i%>)" onmouseout="bid1(<%=i%>)">
-                                                <div  class="countdown hvr-hover bg-danger">
-                                                    <p>10d 14h 54m</p>
-                                                </div>
-                                                <div  class="btn  bg-danger bid" id="<%=i%>" onclick="invent()">
-                                                    <p>Bid</p>
-                                                </div>
-                                                <img class="img-fluid cls-img" src="product_image/<%= li.getProduct_image()%>" alt="" />
-                                                <a class="btn hvr-hover" href="#"><%= li.getProduct_name()%></a>
-                                               
-                                            </div>
-                    
-                                        </div>-->
+                  
                     <%
                         }
                     %>
@@ -291,7 +227,7 @@
         <!-- End Categories -->
 
         <!-- Start Products  -->
-        <div class="products-box">
+<!--        <div class="products-box">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -419,7 +355,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- End Products  -->
 
         <!-- Start Blog  -->
