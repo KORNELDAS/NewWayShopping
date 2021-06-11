@@ -190,7 +190,7 @@
                                 <input type="hidden" name="id#" value="<%= lit.getProduct_id()%>">
 
                             </form>
-                            <div class="bid-buttons bg-danger" id="<%= lit.getProduct_id()%>" onclick="product_det(<%= k%>)">
+                                <div class="bid-buttons bg-danger bid_but<%=k%>" id="<%= lit.getProduct_id()%>" onclick="product_det(<%= k%>)">
                                 Bid
                             </div>
                             <div class="count-time bg-danger" id="timer<%= k%>" >
@@ -564,7 +564,7 @@
 
         <!--this is for timer-->
         <script>
-            function countdown(element,element1, date) {
+            function countdown(element,element1,element2, date) {
                 // Fetch the display element
                 console.log(element);
                 var el = document.getElementById(element);
@@ -590,6 +590,8 @@
                     if (distance < 0) {
                         clearInterval(interval);
                         document.getElementById(element).innerHTML = "EXPIRED";
+                        document.getElementById(element1).style.display="none";
+                       // document.querySelector('.'+element2).style.display="none";
                         
                     }
                 }, 1000);
@@ -603,7 +605,7 @@
             var i;
             document.addEventListener("DOMContentLoaded", function () {
                 for (i = 1; i <= len; i++) {
-                    countdown('timer' + i,'item'+i, arr[i - 1]);
+                    countdown('timer' + i,'item'+i,'bid_but'+i, arr[i - 1]);
                 }
             });
         </script>
