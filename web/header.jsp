@@ -86,7 +86,8 @@
 
                                         <input type="text" placeholder="search" >
                                         <span><i class="fa fa-search" aria-hidden="true"></i></span>
-                                    </div></li>
+                                     </div>
+                                </li>
                                 <li><a href="#">Our location</a></li>
                                 <li><a href="#">Contact Us</a></li>
                             </ul>

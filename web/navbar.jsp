@@ -41,6 +41,46 @@
 
 
         <style>
+           
+            /*start of search box*/
+            
+             .search-box{
+                position: relative;
+                border-radius: 55px;
+                padding: 15px;
+                background: white;
+                height: 15px;
+                width: 280px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                
+                    
+                transition: 0.5s;
+            }
+
+            .search-box span i{
+                font-size: 15px;
+                cursor: pointer;
+                transition: 0.5s;
+
+            }
+            .search-box span i:hover{
+                color: black;
+                transform: scale(1.2);
+                transition: 0.5s;
+            }
+
+            .search-box input{
+                background: transparent;
+                font-size: 15px;
+                border: 0;
+                width: 400px;
+                outline: none;
+            }
+            /*end of search box*/
+          
+            
             .modal-body{
                 overflow: hidden;
                 overflow-y: auto;
@@ -257,6 +297,9 @@
                 max-width: 100%;
             }
             /*its end for blob image*/
+            
+            
+            
         </style>
 
 
@@ -277,6 +320,12 @@
                         </div>
                         <div class="our-link">
                             <ul>
+                                <li> <div class="search-box">
+
+                                        <input type="text" placeholder="search" >
+                                        <span><i class="fa fa-search" aria-hidden="true"></i></span>
+                                     </div>
+                                </li>
 
                                 <li><a href="#">Our location</a></li>
                                 <li><a href="#">Contact Us</a></li>

@@ -55,6 +55,10 @@
         <servlet-name>Select_Help</servlet-name>
         <servlet-class>servlets.Select_Help</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StatusProduct</servlet-name>
+        <servlet-class>servlets.StatusProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration_servlet</servlet-name>
         <url-pattern>/Registration_servlet</url-pattern>
@@ -106,6 +110,10 @@
     <servlet-mapping>
         <servlet-name>Select_Help</servlet-name>
         <url-pattern>/Select_Help</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StatusProduct</servlet-name>
+        <url-pattern>/StatusProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -118,6 +118,13 @@
                 border-bottom-right-radius: 15px;
             }
 
+
+
+
+            #but_mod{
+                display: none;
+            }
+
         </style>
     </head>
     <body>
@@ -182,32 +189,53 @@
                         int k = 0;
                         for (Product lit : list1) {
                             k++;
+                            if(lit.getStatus()!=0){
+                            
 
                     %>
+
                     <div class="col-auto ml-md-4 mb-md-5" id="item<%= k%>">
-                        <div class="cont-shop d-flex align-items-center justify-content-center">
+                        <div class="cont-shop d-flex align-items-center justify-content-center" id="chng<%=k%>">
                             <form id="<%= k%>" action="product-detail.jsp" method="post">
                                 <input type="hidden" name="id#" value="<%= lit.getProduct_id()%>">
 
                             </form>
-                                <div class="bid-buttons bg-danger bid_but<%=k%>" id="<%= lit.getProduct_id()%>" onclick="product_det(<%= k%>)">
+
+                            <form id="status1<%= k%>" action="StatusProduct" method="post">
+                                <input type="hidden" name="id#1" value="<%= lit.getProduct_id()%>">    
+                            </form> 
+
+
+                            <div class="bid-buttons bg-danger bid_but<%=k%>" id="<%= lit.getProduct_id()%>" onclick="product_det(<%= k%>)">
                                 Bid
                             </div>
                             <div class="count-time bg-danger" id="timer<%= k%>" >
                                 10h 20m 30s
                             </div>
-                            <img src="product_image/<%= lit.getProduct_image()%>" class="cls-img">
+                            <img src="product_image/<%= lit.getProduct_image()%>"  class="cls-img">
                             <div class="img-nam bg-danger"><%= lit.getProduct_name()%> </div>
                         </div>
                     </div>
 
+                  
+
+                 
+
+
+
                     <%
+                        }
                         }
                     %>
                 </div>
             </div>
         </div>
-        <!-- End Categories -->  
+        <!-- End Categories --> 
+
+
+
+
+
 
         <!-- Start Products  -->
         <div class="products-box">
@@ -514,15 +542,18 @@
             </div>
         </div>
 
+
+
         <!--end-->
         <!-- End Instagram Feed  -->
         <%@include file="footer.jsp" %>
 
 
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha512-sJa5KWq3F99QOeijUOm9O+BgDgVtzrWBBagZtjlW7F3I47NO1OaNJvbut+9KOPmjNr4Wb3blU4vQiQdi+Zk6wg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
 
@@ -531,87 +562,98 @@
 
 
 
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
 
-        <script src="js/jquery.superslides.min.js"></script>
-        <script src="js/bootstrap-select.js"></script>
-        <script src="js/inewsticker.js"></script>
-        <script src="js/bootsnav.js."></script>
-        <script src="js/images-loded.min.js"></script>
-        <script src="js/isotope.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/baguetteBox.min.js"></script>
-        <script src="js/form-validator.min.js"></script>
-        <script src="js/contact-form-script.js"></script>
-        <script src="js/custom.js"></script>
+    <!--        <script src="js/popper.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>-->
 
-        <script>
+    <script src="js/jquery.superslides.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/inewsticker.js"></script>
+    <script src="js/bootsnav.js."></script>
+    <script src="js/images-loded.min.js"></script>
+    <script src="js/isotope.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/baguetteBox.min.js"></script>
+    <script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+    <script src="js/custom.js"></script>
 
-
-                                function product_det(k) {
-                                    let sub = document.getElementById(k);
-                                    sub.submit();
-                                }
+    <script>
 
 
-        </script>
-        <%
-            ArrayList<Product> list2 = pr.getProduct_welcome(user.getEmail());
-            int j = 0;
-        %>
+                                        function product_det(k) {
+                                            let sub = document.getElementById(k);
+                                            sub.submit();
+                                        }
 
-        <!--this is for timer-->
-        <script>
-            function countdown(element,element1,element2, date) {
-                // Fetch the display element
-                console.log(element);
-                var el = document.getElementById(element);
-                var countDownDate = new Date(date).getTime();
-                // Set the timer
-                var interval = setInterval(function () {
-                    
-                    var now = new Date().getTime();
 
-                    // Find the distance between now and the count down date
-                    var distance = countDownDate - now;
+                                        function zer_chng(eve) {
+                                            $(document).ready(function () {
+                                                $(eve).submit(function () {
+                                                    console.log(eve + " bad");
+                                                });
+                                                console.log(eve);
+                                            });
+                                        }
 
-                    // Time calculations for days, hours, minutes and seconds
-                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                    el.innerHTML = days + "d " + hours + "h "
-                            + minutes + "m " + seconds + "s ";
+    </script>
+    <%
+        ArrayList<Product> list2 = pr.getProduct_welcome(user.getEmail());
+        int j = 0;
+    %>
 
-                    // If the count down is over, write some text 
-                    if (distance < 0) {
-                        clearInterval(interval);
-                        document.getElementById(element).innerHTML = "EXPIRED";
-                        document.getElementById(element1).style.display="none";
-                       // document.querySelector('.'+element2).style.display="none";
-                        
-                    }
-                }, 1000);
-            }
-            const len = <%= list2.size()%>;
-            var arr = [<%
-                                      for (int i = 0; i < list2.size(); i++) {
-                                          out.print("\"" + list2.get(i).getEnd_date() + "\",");
-                                      }
-            %>];
-            var i;
-            document.addEventListener("DOMContentLoaded", function () {
-                for (i = 1; i <= len; i++) {
-                    countdown('timer' + i,'item'+i,'bid_but'+i, arr[i - 1]);
+    <!--this is for timer-->
+    <script>
+        function countdown(element, bid_but, element2,chngColor, date) {
+            // Fetch the display element
+            console.log(element);
+            var el = document.getElementById(element);
+            var countDownDate = new Date(date).getTime();
+            // Set the timer
+            var interval = setInterval(function () {
+
+                var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                el.innerHTML = days + "d " + hours + "h "
+                        + minutes + "m " + seconds + "s ";
+
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(interval);
+                    document.getElementById(element).innerHTML = "EXPIRED";
+                    document.querySelector("."+bid_but).style.display="none";
+
+                   document.getElementById(chngColor).setAttribute("style","-webkit-filter: grayscale(100%) blur(2px);filter: grayscale(100%) blur(2px);transition: .4s ease-in-out;");
+                  document.getElementById(element2).submit();
+
+
                 }
-            });
-        </script>
-        <!--end of  timer-->
-       
-    </body>
+            }, 1000);
+        }
+        const len = <%= list2.size()%>;
+        var arr = [<%
+            for (int i = 0; i < list2.size(); i++) {
+                out.print("\"" + list2.get(i).getEnd_date() + "\",");
+            }
+        %>];
+        var i;
+        document.addEventListener("DOMContentLoaded", function () {
+            for (i = 1; i <= len; i++) {
+                countdown('timer' + i, 'bid_but'+i, 'status1' + i,'chng'+i, arr[i - 1]);
+            }
+        });
+    </script>
+    <!--end of  timer-->
 </html>
 
 <!-- date fromat in database should be saved as (FEB 5,2021 15:20:23)   -->
